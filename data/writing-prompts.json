@@ -1,0 +1,70 @@
+{
+  "prompts": [
+    {
+      "id": "w1",
+      "taskType": "task1",
+      "title": "Academic Writing Task 1 - Bar Chart",
+      "prompt": "The chart below shows the percentage of households in owned and rented accommodation in England and Wales between 1918 and 2011.",
+      "instructions": "Summarise the information by selecting and reporting the main features, and make comparisons where relevant. Write at least 150 words.",
+      "timeLimit": 1200,
+      "minWords": 150,
+      "maxWords": 200,
+      "sampleTopic": "Housing Trends"
+    },
+    {
+      "id": "w2",
+      "taskType": "task1",
+      "title": "Academic Writing Task 1 - Line Graph",
+      "prompt": "The graph below shows the consumption of fish and some different kinds of meat in a European country between 1979 and 2004.",
+      "instructions": "Summarise the information by selecting and reporting the main features, and make comparisons where relevant. Write at least 150 words.",
+      "timeLimit": 1200,
+      "minWords": 150,
+      "maxWords": 200,
+      "sampleTopic": "Food Consumption Patterns"
+    },
+    {
+      "id": "w3",
+      "taskType": "task1",
+      "title": "General Training Task 1 - Formal Letter",
+      "prompt": "You have recently attended a course at a local college or training center. Write a letter to the course director.",
+      "instructions": "In your letter: - Explain why you chose the course - Describe what you liked about the course - Suggest how the course could be improved. Write at least 150 words.",
+      "timeLimit": 1200,
+      "minWords": 150,
+      "maxWords": 200,
+      "sampleTopic": "Course Feedback"
+    },
+    {
+      "id": "w4",
+      "taskType": "task2",
+      "title": "Academic Writing Task 2 - Technology",
+      "prompt": "Some people think that the best way to reduce crime is to give longer prison sentences. Others, however, believe there are better alternative ways of reducing crime.",
+      "instructions": "Discuss both views and give your own opinion. Write at least 250 words.",
+      "timeLimit": 2400,
+      "minWords": 250,
+      "maxWords": 300,
+      "sampleTopic": "Crime and Punishment"
+    },
+    {
+      "id": "w5",
+      "taskType": "task2",
+      "title": "Academic Writing Task 2 - Education",
+      "prompt": "Some people believe that universities should focus on providing academic skills, while others think they should prepare students for employment.",
+      "instructions": "Discuss both views and give your own opinion. Write at least 250 words.",
+      "timeLimit": 2400,
+      "minWords": 250,
+      "maxWords": 300,
+      "sampleTopic": "Higher Education"
+    },
+    {
+      "id": "w6",
+      "taskType": "task2",
+      "title": "General Training Task 2 - Environment",
+      "prompt": "Some people say that the main environmental problem of our time is the loss of particular species of plants and animals. Others say that there are more important environmental problems.",
+      "instructions": "Discuss both views and give your own opinion. Write at least 250 words.",
+      "timeLimit": 2400,
+      "minWords": 250,
+      "maxWords": 300,
+      "sampleTopic": "Environmental Issues"
+    }
+  ]
+}

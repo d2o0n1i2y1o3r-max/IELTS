@@ -1,0 +1,148 @@
+{
+  "passages": [
+    {
+      "id": "r1",
+      "title": "The History of Tea",
+      "topic": "Food & Culture",
+      "timeLimit": 1200,
+      "passage": "The story of tea begins in China. According to legend, in 2737 BC, the Chinese emperor Shen Nung was sitting beneath a tree while his servant boiled drinking water, when some leaves from the tree blew into the water. Shen Nung, a renowned herbalist, decided to try the infusion that his servant had accidentally created. The tree was a Camellia sinensis, and the resulting drink was what we now call tea.\n\nTea became a popular drink in China during the Tang Dynasty (618-907 AD). It was during this period that tea was first cultivated and processed. The Chinese developed various methods of processing tea leaves, including steaming, drying, and pressing them into cakes. Tea was also used as a form of currency in some regions.\n\nIn the 9th century, tea was introduced to Japan by Buddhist monks who had traveled to China. The Japanese developed their own tea ceremony, known as the Chanoyu, which emphasized the spiritual aspects of tea drinking. This ceremony became an important part of Japanese culture and is still practiced today.\n\nTea reached Europe in the 16th century through Portuguese traders and missionaries. However, it was the Dutch who began to import tea on a large scale in the 17th century. Tea became fashionable in the Netherlands and eventually spread to other European countries, including England.\n\nThe British East India Company played a crucial role in the tea trade. They established tea plantations in India, beginning in the 19th century, to reduce their dependence on Chinese tea. The British also developed a taste for tea with milk and sugar, which became the traditional way of drinking tea in Britain.\n\nToday, tea is the second most consumed beverage in the world after water. It is grown in many countries, including China, India, Kenya, and Sri Lanka. There are many varieties of tea, including black, green, white, and oolong, each with its own unique flavor and health benefits.",
+      "questions": [
+        {
+          "id": "r1q1",
+          "type": "multiple-choice",
+          "question": "According to the legend, who accidentally discovered tea?",
+          "options": ["A Chinese emperor", "A Buddhist monk", "A Portuguese trader", "A British merchant"],
+          "correctAnswer": "A Chinese emperor",
+          "explanation": "The legend states that Emperor Shen Nung discovered tea when leaves blew into his servant's boiling water."
+        },
+        {
+          "id": "r1q2",
+          "type": "true-false-notgiven",
+          "question": "Tea was used as currency during the Tang Dynasty.",
+          "options": ["TRUE", "FALSE", "NOT GIVEN"],
+          "correctAnswer": "TRUE",
+          "explanation": "The passage states that 'Tea was also used as a form of currency in some regions' during the Tang Dynasty."
+        },
+        {
+          "id": "r1q3",
+          "type": "fill-blank",
+          "question": "The Japanese tea ceremony, known as ______, emphasized the spiritual aspects of tea drinking.",
+          "correctAnswer": "Chanoyu",
+          "explanation": "The passage mentions that the Japanese developed their own tea ceremony, known as the Chanoyu."
+        },
+        {
+          "id": "r1q4",
+          "type": "multiple-choice",
+          "question": "Which country played a crucial role in establishing tea plantations in India?",
+          "options": ["Portugal", "Netherlands", "Britain", "Japan"],
+          "correctAnswer": "Britain",
+          "explanation": "The British East India Company established tea plantations in India in the 19th century."
+        },
+        {
+          "id": "r1q5",
+          "type": "true-false-notgiven",
+          "question": "Tea is the most consumed beverage in the world today.",
+          "options": ["TRUE", "FALSE", "NOT GIVEN"],
+          "correctAnswer": "FALSE",
+          "explanation": "The passage states that tea is the 'second most consumed beverage in the world after water,' not the first."
+        }
+      ]
+    },
+    {
+      "id": "r2",
+      "title": "The Impact of Social Media",
+      "topic": "Technology & Society",
+      "timeLimit": 1200,
+      "passage": "Social media has revolutionized the way people communicate and share information in the 21st century. Platforms such as Facebook, Twitter, Instagram, and TikTok have billions of users worldwide and have become integral parts of daily life for many people.\n\nOne of the most significant impacts of social media is its ability to connect people across geographical boundaries. Friends and family members can stay in touch regardless of distance, and people can form communities based on shared interests, hobbies, or causes. This has led to the creation of global networks that were not possible before the digital age.\n\nHowever, social media also has its drawbacks. Studies have shown that excessive use of social media can lead to feelings of anxiety, depression, and loneliness. The constant comparison to others' seemingly perfect lives can create unrealistic expectations and lower self-esteem. Additionally, the spread of misinformation and fake news has become a serious concern, as false information can quickly go viral and influence public opinion.\n\nSocial media has also transformed the business world. Companies now use these platforms for marketing, customer service, and brand building. Influencers, individuals who have built large followings on social media, can earn significant incomes through sponsored content and partnerships with brands.\n\nDespite these challenges, social media continues to evolve and shape society. New platforms emerge regularly, each with its own features and user base. As technology advances, social media will likely continue to play a significant role in how people interact, consume information, and perceive the world around them.",
+      "questions": [
+        {
+          "id": "r2q1",
+          "type": "multiple-choice",
+          "question": "According to the passage, what is one positive impact of social media?",
+          "options": ["It increases productivity at work", "It connects people across geographical boundaries", "It eliminates all forms of loneliness", "It guarantees accurate information"],
+          "correctAnswer": "It connects people across geographical boundaries",
+          "explanation": "The passage states that social media 'has the ability to connect people across geographical boundaries.'"
+        },
+        {
+          "id": "r2q2",
+          "type": "true-false-notgiven",
+          "question": "Excessive use of social media can improve mental health.",
+          "options": ["TRUE", "FALSE", "NOT GIVEN"],
+          "correctAnswer": "FALSE",
+          "explanation": "The passage states that excessive social media use 'can lead to feelings of anxiety, depression, and loneliness.'"
+        },
+        {
+          "id": "r2q3",
+          "type": "fill-blank",
+          "question": "Individuals who have built large followings on social media are called ______.",
+          "correctAnswer": "influencers",
+          "explanation": "The passage defines influencers as 'individuals who have built large followings on social media.'"
+        },
+        {
+          "id": "r2q4",
+          "type": "multiple-choice",
+          "question": "What is a serious concern related to social media mentioned in the passage?",
+          "options": ["Lack of entertainment", "Spread of misinformation", "High cost of usage", "Limited user base"],
+          "correctAnswer": "Spread of misinformation",
+          "explanation": "The passage mentions that 'the spread of misinformation and fake news has become a serious concern.'"
+        },
+        {
+          "id": "r2q5",
+          "type": "true-false-notgiven",
+          "question": "Social media platforms have stopped evolving since their creation.",
+          "options": ["TRUE", "FALSE", "NOT GIVEN"],
+          "correctAnswer": "FALSE",
+          "explanation": "The passage states that 'social media continues to evolve' and 'New platforms emerge regularly.'"
+        }
+      ]
+    },
+    {
+      "id": "r3",
+      "title": "Renewable Energy Sources",
+      "topic": "Environment & Science",
+      "timeLimit": 1200,
+      "passage": "As concerns about climate change and environmental sustainability grow, renewable energy sources have become increasingly important. Renewable energy comes from natural sources that are continuously replenished, such as sunlight, wind, rain, tides, waves, and geothermal heat.\n\nSolar energy is one of the most promising renewable sources. Solar panels convert sunlight directly into electricity using photovoltaic cells. The cost of solar panels has decreased significantly over the past decade, making solar energy more accessible to homeowners and businesses. However, solar energy production is dependent on weather conditions and daylight hours, which can be inconsistent.\n\nWind energy is another major renewable source. Wind turbines convert the kinetic energy of wind into mechanical power, which can then be used to generate electricity. Wind farms can be located onshore or offshore, with offshore farms often having stronger and more consistent winds. While wind energy is clean and abundant, some people object to wind farms due to visual impact and noise concerns.\n\nHydroelectric power uses the flow of water to generate electricity. It is one of the oldest and most widely used forms of renewable energy. Large dams can produce significant amounts of electricity, but they can also have environmental impacts, such as disrupting aquatic ecosystems and displacing communities.\n\nGeothermal energy harnesses heat from within the Earth. This energy source is reliable and consistent, as it is not dependent on weather conditions. However, geothermal power plants are typically located near tectonic plate boundaries, which limits their geographical availability.\n\nDespite the challenges, the transition to renewable energy is essential for reducing greenhouse gas emissions and combating climate change. Many countries have set ambitious targets for increasing their use of renewable energy in the coming decades.",
+      "questions": [
+        {
+          "id": "r3q1",
+          "type": "multiple-choice",
+          "question": "What is a disadvantage of solar energy mentioned in the passage?",
+          "options": ["It is too expensive", "It depends on weather conditions", "It produces pollution", "It is not renewable"],
+          "correctAnswer": "It depends on weather conditions",
+          "explanation": "The passage states that solar energy production 'is dependent on weather conditions and daylight hours, which can be inconsistent.'"
+        },
+        {
+          "id": "r3q2",
+          "type": "true-false-notgiven",
+          "question": "Offshore wind farms typically have weaker winds than onshore farms.",
+          "options": ["TRUE", "FALSE", "NOT GIVEN"],
+          "correctAnswer": "FALSE",
+          "explanation": "The passage states that offshore farms 'often having stronger and more consistent winds.'"
+        },
+        {
+          "id": "r3q3",
+          "type": "fill-blank",
+          "question": "______ energy uses the flow of water to generate electricity.",
+          "correctAnswer": "Hydroelectric",
+          "explanation": "The passage explains that 'Hydroelectric power uses the flow of water to generate electricity.'"
+        },
+        {
+          "id": "r3q4",
+          "type": "multiple-choice",
+          "question": "Why is geothermal energy considered reliable?",
+          "options": ["It is inexpensive to build", "It is not dependent on weather conditions", "It can be built anywhere", "It produces the most electricity"],
+          "correctAnswer": "It is not dependent on weather conditions",
+          "explanation": "The passage states that geothermal energy 'is reliable and consistent, as it is not dependent on weather conditions.'"
+        },
+        {
+          "id": "r3q5",
+          "type": "true-false-notgiven",
+          "question": "Hydroelectric power has no environmental impacts.",
+          "options": ["TRUE", "FALSE", "NOT GIVEN"],
+          "correctAnswer": "FALSE",
+          "explanation": "The passage mentions that large dams 'can also have environmental impacts, such as disrupting aquatic ecosystems and displacing communities.'"
+        }
+      ]
+    }
+  ]
+}

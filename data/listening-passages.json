@@ -1,0 +1,148 @@
+{
+  "passages": [
+    {
+      "id": "l1",
+      "title": "University Library Tour",
+      "topic": "Education",
+      "timeLimit": 600,
+      "script": "Good morning everyone, and welcome to the university library. I'm Sarah, the head librarian, and I'll be giving you a tour of our facilities today. The library is open from 8 AM to 10 PM Monday through Friday, and from 9 AM to 6 PM on weekends. We have over 500,000 books and journals available for your research and study needs.\n\nLet's start with the ground floor. Here you'll find the main circulation desk where you can check out books, return materials, and get your library card if you haven't already. To borrow books, you'll need your student ID card. Undergraduate students can borrow up to 10 books for 2 weeks, while postgraduate students can borrow up to 15 books for 4 weeks. You can renew books online if no one else has requested them.\n\nMoving to the first floor, we have the reference section. These books cannot be borrowed, but you can use them within the library. We also have computer terminals here where you can access our online databases and electronic journals. Make sure to log in with your student credentials to access these resources from home as well.\n\nThe second floor is dedicated to quiet study areas. We have individual study carrels along the walls and group study rooms that can be reserved at the circulation desk. Please keep your voice down in this area as many students come here for focused study time.\n\nOn the third floor, you'll find the special collections and archives. This area houses rare books, manuscripts, and university records. Access to these materials requires special permission, so please speak to me if you need to use them for your research.\n\nFinally, the basement level has the multimedia center where you can find DVDs, CDs, and language learning materials. We also have viewing rooms where you can watch films or listen to audio materials for your coursework.\n\nIf you have any questions during your visit, please don't hesitate to ask at the circulation desk. We're here to help you make the most of our library resources. Thank you for joining the tour, and we wish you success in your studies.",
+      "questions": [
+        {
+          "id": "l1q1",
+          "type": "multiple-choice",
+          "question": "What are the library's weekend hours?",
+          "options": ["8 AM to 10 PM", "9 AM to 6 PM", "8 AM to 6 PM", "10 AM to 8 PM"],
+          "correctAnswer": "9 AM to 6 PM",
+          "explanation": "The speaker states that the library is open 'from 9 AM to 6 PM on weekends.'"
+        },
+        {
+          "id": "l1q2",
+          "type": "form-completion",
+          "question": "To borrow books, students need their ______ card.",
+          "correctAnswer": "student ID",
+          "explanation": "The speaker mentions 'To borrow books, you'll need your student ID card.'"
+        },
+        {
+          "id": "l1q3",
+          "type": "multiple-choice",
+          "question": "How many books can undergraduate students borrow at once?",
+          "options": ["5 books", "10 books", "15 books", "20 books"],
+          "correctAnswer": "10 books",
+          "explanation": "The speaker states that 'Undergraduate students can borrow up to 10 books for 2 weeks.'"
+        },
+        {
+          "id": "l1q4",
+          "type": "matching",
+          "question": "Match the library sections to their locations:",
+          "options": ["Ground floor", "First floor", "Second floor", "Third floor"],
+          "matchItems": ["Main circulation desk", "Reference section and computers", "Quiet study areas", "Special collections and archives"],
+          "correctAnswer": "Main circulation desk - Ground floor; Reference section and computers - First floor; Quiet study areas - Second floor; Special collections and archives - Third floor",
+          "explanation": "The speaker describes each floor's purpose: ground floor has circulation desk, first floor has reference section, second floor has quiet study areas, and third floor has special collections."
+        },
+        {
+          "id": "l1q5",
+          "type": "form-completion",
+          "question": "Group study rooms can be reserved at the ______ desk.",
+          "correctAnswer": "circulation",
+          "explanation": "The speaker mentions that 'group study rooms can be reserved at the circulation desk.'"
+        }
+      ]
+    },
+    {
+      "id": "l2",
+      "title": "Job Interview Advice",
+      "topic": "Work & Career",
+      "timeLimit": 600,
+      "script": "Hello and welcome to today's workshop on job interview skills. I'm Mark, a career counselor with over 15 years of experience helping people succeed in their job searches. Today, I'll share some essential tips to help you perform your best in interviews.\n\nFirst, preparation is key. Research the company thoroughly before your interview. Visit their website, read recent news about them, and understand their products or services. This shows genuine interest and helps you ask informed questions. Also, review the job description carefully and think of examples from your experience that demonstrate the skills they're looking for.\n\nNext, practice your responses to common interview questions. Questions like 'Tell me about yourself' or 'What are your strengths and weaknesses?' are almost universal. Prepare concise, honest answers that highlight your relevant experience. However, don't memorize your responses word for word – you want to sound natural, not robotic.\n\nOn the day of the interview, arrive about 10-15 minutes early. This gives you time to compose yourself and shows punctuality. Dress appropriately for the industry – when in doubt, it's better to be slightly overdressed than underdressed. Bring extra copies of your resume and a notepad to take notes.\n\nDuring the interview, maintain good eye contact and positive body language. Listen carefully to each question and take a moment to think before responding. It's better to pause briefly than to rush into an answer you're not confident about. Be honest about your skills and experience – if you don't know something, admit it but express willingness to learn.\n\nAt the end of the interview, you'll usually have the opportunity to ask questions. This is your chance to demonstrate your interest and learn more about the role. Ask about the team structure, company culture, or next steps in the hiring process. Avoid questions about salary or benefits in the first interview unless the interviewer brings them up.\n\nAfter the interview, send a thank-you email within 24 hours. This simple gesture can set you apart from other candidates and reinforce your interest in the position. Keep it brief, professional, and reference something specific from your conversation.\n\nRemember, interviews are a two-way process. While they're evaluating you, you're also evaluating whether this company and role are right for you. With proper preparation and a positive attitude, you'll be well on your way to interview success.",
+      "questions": [
+        {
+          "id": "l2q1",
+          "type": "multiple-choice",
+          "question": "What does the speaker recommend researching before an interview?",
+          "options": ["Only the job salary", "The company and its products/services", "Other companies in the industry", "The interviewer's background"],
+          "correctAnswer": "The company and its products/services",
+          "explanation": "The speaker advises to 'Research the company thoroughly' and 'understand their products or services.'"
+        },
+        {
+          "id": "l2q2",
+          "type": "true-false-notgiven",
+          "question": "The speaker recommends memorizing responses word for word.",
+          "options": ["TRUE", "FALSE", "NOT GIVEN"],
+          "correctAnswer": "FALSE",
+          "explanation": "The speaker explicitly states 'don't memorize your responses word for word – you want to sound natural, not robotic.'"
+        },
+        {
+          "id": "l2q3",
+          "type": "form-completion",
+          "question": "It's recommended to arrive about ______ minutes early for an interview.",
+          "correctAnswer": "10-15",
+          "explanation": "The speaker advises to 'arrive about 10-15 minutes early.'"
+        },
+        {
+          "id": "l2q4",
+          "type": "multiple-choice",
+          "question": "What should you avoid asking about in a first interview?",
+          "options": ["Team structure", "Company culture", "Salary and benefits", "Next steps in hiring"],
+          "correctAnswer": "Salary and benefits",
+          "explanation": "The speaker advises to 'Avoid questions about salary or benefits in the first interview unless the interviewer brings them up.'"
+        },
+        {
+          "id": "l2q5",
+          "type": "form-completion",
+          "question": "Send a thank-you email within ______ hours after the interview.",
+          "correctAnswer": "24",
+          "explanation": "The speaker recommends to 'send a thank-you email within 24 hours.'"
+        }
+      ]
+    },
+    {
+      "id": "l3",
+      "title": "Travel Announcement",
+      "topic": "Travel & Tourism",
+      "timeLimit": 600,
+      "script": "Attention all passengers, this is an important announcement regarding flight BA247 to London Heathrow. We regret to inform you that this flight has been delayed due to adverse weather conditions at the destination airport.\n\nThe new estimated departure time is 3:45 PM, which is approximately 2 hours and 15 minutes later than originally scheduled. We apologize for this inconvenience and appreciate your patience and understanding.\n\nPassengers who have connecting flights in London should proceed to the transfer desk immediately after arrival. Our staff will assist you with rebooking if necessary. For those with onward connections to other European destinations, we have arranged alternative flights to minimize disruption to your travel plans.\n\nComplimentary meal vouchers will be provided to all passengers at the customer service desk near gate 12. These vouchers can be used at any restaurant in the terminal building. Additionally, passengers who have been waiting for more than 4 hours will be eligible for hotel accommodation if the delay extends overnight.\n\nFor those who wish to make alternative travel arrangements, our ticketing office is open and can assist with rebooking on other flights subject to availability. Change fees will be waived for this flight due to the weather-related delay.\n\nWe will provide regular updates every 30 minutes regarding the status of your flight. Please ensure your mobile phone is turned on so you can receive SMS notifications. You can also check the flight status screens located throughout the terminal or download our airline app for real-time updates.\n\nOnce again, we sincerely apologize for this delay. Our team is working diligently to get you to your destination as safely and quickly as possible. If you have any questions or require special assistance, please don't hesitate to speak with any of our customer service representatives who are wearing blue uniforms.\n\nThank you for your cooperation, and we hope to have you on your way to London very soon.",
+      "questions": [
+        {
+          "id": "l3q1",
+          "type": "multiple-choice",
+          "question": "Why is flight BA247 delayed?",
+          "options": ["Mechanical issues", "Adverse weather conditions", "Staff shortage", "Security concerns"],
+          "correctAnswer": "Adverse weather conditions",
+          "explanation": "The announcement states the flight is 'delayed due to adverse weather conditions at the destination airport.'"
+        },
+        {
+          "id": "l3q2",
+          "type": "form-completion",
+          "question": "The new estimated departure time is ______ PM.",
+          "correctAnswer": "3:45",
+          "explanation": "The announcement states 'The new estimated departure time is 3:45 PM.'"
+        },
+        {
+          "id": "l3q3",
+          "type": "multiple-choice",
+          "question": "Where can passengers get meal vouchers?",
+          "options": ["At the boarding gate", "At the customer service desk near gate 12", "At the ticketing office", "On the aircraft"],
+          "correctAnswer": "At the customer service desk near gate 12",
+          "explanation": "The announcement states meal vouchers 'will be provided to all passengers at the customer service desk near gate 12.'"
+        },
+        {
+          "id": "l3q4",
+          "type": "true-false-notgiven",
+          "question": "Change fees will be charged for rebooking on other flights.",
+          "options": ["TRUE", "FALSE", "NOT GIVEN"],
+          "correctAnswer": "FALSE",
+          "explanation": "The announcement states 'Change fees will be waived for this flight due to the weather-related delay.'"
+        },
+        {
+          "id": "l3q5",
+          "type": "matching",
+          "question": "Match the service to the location:",
+          "options": ["Customer service desk", "Transfer desk", "Ticketing office", "Flight status screens"],
+          "matchItems": ["Meal vouchers", "Connecting flight assistance", "Alternative travel arrangements", "Flight updates"],
+          "correctAnswer": "Meal vouchers - Customer service desk; Connecting flight assistance - Transfer desk; Alternative travel arrangements - Ticketing office; Flight updates - Flight status screens",
+          "explanation": "The announcement mentions meal vouchers at customer service desk, connecting flights at transfer desk, rebooking at ticketing office, and updates on flight status screens."
+        }
+      ]
+    }
+  ]
+}

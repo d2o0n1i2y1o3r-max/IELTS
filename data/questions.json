@@ -1,0 +1,244 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "part": "part1",
+      "topic": "Hometown & Neighborhood",
+      "topicKey": "topics.hometown",
+      "question": "Can you describe the town or city where you grew up?",
+      "instructions": "Answer in 2-3 detailed sentences. Focus on location, notable features, and what you like about it.",
+      "timeLimit": 45,
+      "prepTime": 0
+    },
+    {
+      "id": "q2",
+      "part": "part1",
+      "topic": "Hometown & Neighborhood",
+      "topicKey": "topics.hometown",
+      "question": "What is your favorite place in your hometown, and why?",
+      "instructions": "Speak naturally about a specific spot, park, cafe, or landmark.",
+      "timeLimit": 45,
+      "prepTime": 0
+    },
+    {
+      "id": "q3",
+      "part": "part1",
+      "topic": "Work & Education",
+      "topicKey": "topics.work_study",
+      "question": "Do you work or are you a student? What do you enjoy most about it?",
+      "instructions": "State your current occupation or study path clearly and describe your main motivation.",
+      "timeLimit": 45,
+      "prepTime": 0
+    },
+    {
+      "id": "q4",
+      "part": "part1",
+      "topic": "Work & Education",
+      "topicKey": "topics.work_study",
+      "question": "What skill would you like to learn in the future for your career or studies?",
+      "instructions": "Mention a hard or soft skill and explain why it is important for your future goals.",
+      "timeLimit": 45,
+      "prepTime": 0
+    },
+    {
+      "id": "q5",
+      "part": "part1",
+      "topic": "Technology & Daily Life",
+      "topicKey": "topics.technology",
+      "question": "How often do you use social media, and what do you mostly use it for?",
+      "instructions": "Be honest and elaborate on positive or negative aspects of your daily tech usage.",
+      "timeLimit": 45,
+      "prepTime": 0
+    },
+    {
+      "id": "q6",
+      "part": "part1",
+      "topic": "Technology & Daily Life",
+      "topicKey": "topics.technology",
+      "question": "Do you prefer reading physical books or reading on digital screens?",
+      "instructions": "Compare both options and give reasons for your preference.",
+      "timeLimit": 45,
+      "prepTime": 0
+    },
+    {
+      "id": "q7",
+      "part": "part1",
+      "topic": "Free Time & Hobbies",
+      "topicKey": "topics.hobbies",
+      "question": "What hobbies or activities do you enjoy doing on weekends?",
+      "instructions": "Discuss 1-2 activities and explain how they help you relax.",
+      "timeLimit": 45,
+      "prepTime": 0
+    },
+    {
+      "id": "q8",
+      "part": "part1",
+      "topic": "Free Time & Hobbies",
+      "topicKey": "topics.hobbies",
+      "question": "Did you have different hobbies when you were a child?",
+      "instructions": "Compare past hobbies with current ones using appropriate past tense structures.",
+      "timeLimit": 45,
+      "prepTime": 0
+    },
+    {
+      "id": "q9",
+      "part": "part2",
+      "topic": "Memorable Experiences",
+      "topicKey": "topics.experiences",
+      "question": "Describe a memorable journey or trip you took that you will never forget.",
+      "bulletPoints": [
+        "Where you went and who you went with",
+        "What you did during the trip",
+        "What made the trip so memorable",
+        "And explain how you felt about the experience overall"
+      ],
+      "instructions": "You have 1 minute to prepare your notes, then speak continuously for up to 2 minutes.",
+      "timeLimit": 120,
+      "prepTime": 60
+    },
+    {
+      "id": "q10",
+      "part": "part2",
+      "topic": "People & Role Models",
+      "topicKey": "topics.people",
+      "question": "Describe a person who has inspired you in your life or career.",
+      "bulletPoints": [
+        "Who this person is and how you know them",
+        "What qualities or achievements make them inspiring",
+        "What you have learned from them",
+        "And explain why they have had such an impact on you"
+      ],
+      "instructions": "Prepare notes for 1 minute, then deliver a 2-minute structured talk.",
+      "timeLimit": 120,
+      "prepTime": 60
+    },
+    {
+      "id": "q11",
+      "part": "part2",
+      "topic": "Technology & Innovation",
+      "topicKey": "topics.technology",
+      "question": "Describe a piece of technology or a website that saves you a lot of time.",
+      "bulletPoints": [
+        "What technology or website it is",
+        "How you discovered it and how often you use it",
+        "What specific tasks it helps you complete",
+        "And explain why it is so valuable in your routine"
+      ],
+      "instructions": "Use 1 minute preparation time to structure your points logically.",
+      "timeLimit": 120,
+      "prepTime": 60
+    },
+    {
+      "id": "q12",
+      "part": "part2",
+      "topic": "Environment & Nature",
+      "topicKey": "topics.environment",
+      "question": "Describe a natural place (such as a park, mountain, or beach) that you enjoy visiting.",
+      "bulletPoints": [
+        "Where this place is located",
+        "What it looks and feels like",
+        "What activities people can do there",
+        "And explain why keeping such places clean and protected is important"
+      ],
+      "instructions": "Organize your response into clear introduction, main points, and conclusion.",
+      "timeLimit": 120,
+      "prepTime": 60
+    },
+    {
+      "id": "q13",
+      "part": "part3",
+      "topic": "Tourism & Globalization",
+      "topicKey": "topics.tourism",
+      "question": "How has international tourism affected traditional cultures and local economies around the world?",
+      "instructions": "Discuss both positive economic impacts and potential negative cultural homogenization.",
+      "timeLimit": 90,
+      "prepTime": 0
+    },
+    {
+      "id": "q14",
+      "part": "part3",
+      "topic": "Tourism & Globalization",
+      "topicKey": "topics.tourism",
+      "question": "Do you think eco-tourism will become more popular than mass tourism in the future?",
+      "instructions": "Provide clear arguments, examples, and express a speculative opinion using advanced conditionals.",
+      "timeLimit": 90,
+      "prepTime": 0
+    },
+    {
+      "id": "q15",
+      "part": "part3",
+      "topic": "Artificial Intelligence & Society",
+      "topicKey": "topics.technology",
+      "question": "To what extent do you think AI and automation will replace human workforce in creative fields?",
+      "instructions": "Synthesize multiple viewpoints, balance technological benefits with human originality.",
+      "timeLimit": 90,
+      "prepTime": 0
+    },
+    {
+      "id": "q16",
+      "part": "part3",
+      "topic": "Artificial Intelligence & Society",
+      "topicKey": "topics.technology",
+      "question": "What responsibilities should technology companies have regarding user data privacy and security?",
+      "instructions": "Use precise formal vocabulary (regulations, compliance, ethics, transparency).",
+      "timeLimit": 90,
+      "prepTime": 0
+    },
+    {
+      "id": "q17",
+      "part": "part3",
+      "topic": "Education & Modern Learning",
+      "topicKey": "topics.work_study",
+      "question": "Are traditional classroom degrees becoming less valuable compared to practical online certifications?",
+      "instructions": "Analyze the pros and cons of formal higher education versus self-paced micro-credentials.",
+      "timeLimit": 90,
+      "prepTime": 0
+    },
+    {
+      "id": "q18",
+      "part": "part3",
+      "topic": "Environment & Sustainability",
+      "topicKey": "topics.environment",
+      "question": "Is environmental protection the primary responsibility of individual citizens or national governments?",
+      "instructions": "Compare individual behavior (recycling, energy saving) with systemic policy measures.",
+      "timeLimit": 90,
+      "prepTime": 0
+    },
+    {
+      "id": "q19",
+      "part": "part1",
+      "topic": "Food & Cooking",
+      "topicKey": "topics.food",
+      "question": "Do you enjoy cooking at home, or do you prefer eating out at restaurants?",
+      "instructions": "Share your preference and mention your favorite dish or cooking habit.",
+      "timeLimit": 45,
+      "prepTime": 0
+    },
+    {
+      "id": "q20",
+      "part": "part2",
+      "topic": "Books & Media",
+      "topicKey": "topics.books",
+      "question": "Describe a book, movie, or documentary that made a strong impression on you.",
+      "bulletPoints": [
+        "What it was and what the story was about",
+        "When and where you watched or read it",
+        "Which character or scene was most memorable",
+        "And explain why it had such a powerful effect on your perspective"
+      ],
+      "instructions": "Take 1 minute to plan, then speak with clear transitions and varied vocabulary.",
+      "timeLimit": 120,
+      "prepTime": 60
+    },
+    {
+      "id": "q21",
+      "part": "part3",
+      "topic": "Urban Planning & Living",
+      "topicKey": "topics.hometown",
+      "question": "How can modern cities solve traffic congestion while becoming more environmentally sustainable?",
+      "instructions": "Explore public transport systems, urban architecture, green spaces, and electric transit.",
+      "timeLimit": 90,
+      "prepTime": 0
+    }
+  ]
+}
