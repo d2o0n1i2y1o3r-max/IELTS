@@ -1,38 +1,34 @@
 import { useState, useCallback, useEffect } from 'react';
 
-export type MascotMood = 'calm' | 'angry';
+export type MascotMood = 'calm' | 'agitated';
 
-export function useMascotMood(threshold = 3) {
-  const [angerLevel, setAngerLevel] = useState(0);
-
-  const handleCorrectAnswer = useCallback(() => {
-    setAngerLevel((prev) => Math.max(0, prev - 1));
+export function useMascotMood() {
+  const [mood, setMood] = useState<MascotMood>('calm');
+  const [agitatedCount, setAgitatedCount] = useState(0);
+  
+  const updateMood = useCallback((newMood: MascotMood) => {
+    setMood(newMood);
+    if (newMood === 'agitated') {
+      setAgitatedCount((prev) => prev + 1);
+    } else {
+      setAgitatedCount(0); // Reset on calm
+    }
   }, []);
 
-  const handleIncorrectAnswer = useCallback(() => {
-    setAngerLevel((prev) => prev + 1);
-  }, []);
-
-  const resetMood = useCallback(() => {
-    setAngerLevel(0);
-  }, []);
-
+  // Auto-calm over time if idle
   useEffect(() => {
-    if (angerLevel > 0) {
+    if (mood === 'agitated') {
       const timer = setTimeout(() => {
-        setAngerLevel((prev) => Math.max(0, prev - 1));
-      }, 5000); 
+        setMood('calm');
+        setAgitatedCount(0);
+      }, 10000); // Reset to calm after 10s of inactivity
       return () => clearTimeout(timer);
     }
-  }, [angerLevel]);
-
-  const mood: MascotMood = angerLevel >= threshold ? 'angry' : 'calm';
+  }, [mood]);
 
   return {
     mood,
-    angerLevel,
-    handleCorrectAnswer,
-    handleIncorrectAnswer,
-    resetMood
+    agitatedCount,
+    updateMood
   };
 }
