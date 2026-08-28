@@ -19,7 +19,7 @@ export default function Navbar() {
     { href: '/writing', label: t('nav.writing'), icon: PenTool },
     { href: '/reading', label: t('nav.reading'), icon: BookOpen },
     { href: '/listening', label: t('nav.listening'), icon: Headphones },
-    { href: '/session', label: t('nav.practice'), icon: Mic },
+    { href: '/speaking', label: t('nav.practice'), icon: Mic },
     { href: '/history', label: t('nav.history'), icon: History },
     { href: '/mascot', label: 'AI Mascot', icon: Bot },
     { href: '/register', label: "Ro'yxatdan o'tish", icon: UserPlus },

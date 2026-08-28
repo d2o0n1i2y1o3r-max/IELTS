@@ -1,9 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
-import AIMascot from '@/components/AIMascot';
-import { useMascotMood } from '@/hooks/useMascotMood';
-import { Send, User } from 'lucide-react';
+import { Send, User, MessageSquare } from 'lucide-react';
 
 interface Message {
   id: string;
@@ -12,20 +10,18 @@ interface Message {
   error?: boolean;
 }
 
-export default function MascotChatPage() {
-  const { mood, updateMood } = useMascotMood();
+export default function FreeTalkChat() {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
       role: 'assistant',
-      content: "Salom! Men sizning IELTS bo'yicha AI yordamchiningizman. Grammatika, so'z boyligi yoki IELTS strategiyalari bo'yicha istalgan savolingizni bering!",
+      content: "Salom! Men sizning IELTS Speaking sherigingizman. Istalgan mavzuda suhbatlashishimiz mumkin - kundalik hayot, o'qish, ish, sayohat yoki boshqa qiziqarli mavzular. Qanday mavzuda gaplashmoqchisiz?",
     }
   ]);
   const [input, setInput] = useState('');
   const [isThinking, setIsThinking] = useState(false);
   const endOfMessagesRef = useRef<HTMLDivElement>(null);
 
-  // Auto-scroll to bottom
   useEffect(() => {
     endOfMessagesRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, isThinking]);
@@ -40,7 +36,7 @@ export default function MascotChatPage() {
     setIsThinking(true);
 
     try {
-      const response = await fetch('/api/mascot', {
+      const response = await fetch('/api/speaking/free-talk', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -52,7 +48,6 @@ export default function MascotChatPage() {
 
       if (data.reply) {
         setMessages(prev => [...prev, { id: (Date.now() + 1).toString(), role: 'assistant', content: data.reply }]);
-        if (data.mood) updateMood(data.mood);
         
         if (data.error) {
           console.error('API Error:', data.error);
@@ -61,14 +56,13 @@ export default function MascotChatPage() {
         throw new Error('No reply from AI');
       }
     } catch (error) {
-      console.error('Mascot fetch error:', error);
+      console.error('Free talk fetch error:', error);
       setMessages(prev => [...prev, { 
         id: (Date.now() + 1).toString(), 
         role: 'assistant', 
         content: "Tarmoq xatosi yuz berdi. Iltimos, internet ulanishingizni tekshiring va qaytadan urinib ko'ring.",
         error: true
       }]);
-      updateMood('agitated');
     } finally {
       setIsThinking(false);
     }
@@ -84,7 +78,7 @@ export default function MascotChatPage() {
     setMessages(prev => prev.filter(m => m.id !== messageId));
 
     try {
-      const response = await fetch('/api/mascot', {
+      const response = await fetch('/api/speaking/free-talk', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -96,7 +90,6 @@ export default function MascotChatPage() {
 
       if (data.reply) {
         setMessages(prev => [...prev, { id: (Date.now() + 1).toString(), role: 'assistant', content: data.reply }]);
-        if (data.mood) updateMood(data.mood);
         
         if (data.error) {
           console.error('API Error:', data.error);
@@ -105,53 +98,31 @@ export default function MascotChatPage() {
         throw new Error('No reply from AI');
       }
     } catch (error) {
-      console.error('Mascot retry error:', error);
+      console.error('Free talk retry error:', error);
       setMessages(prev => [...prev, { 
         id: (Date.now() + 1).toString(), 
         role: 'assistant', 
         content: "Qayta urinish ham muvaffaqiyatsiz bo'ldi. Iltimos keyinroq qayta urinib ko'ring.",
         error: true
       }]);
-      updateMood('agitated');
     } finally {
       setIsThinking(false);
     }
   };
 
   return (
-    <div className="flex flex-col lg:flex-row gap-8 max-w-5xl mx-auto min-h-[75vh]">
-      
-      {/* Left side: Mascot & Status */}
-      <div className="lg:w-1/3 flex flex-col items-center justify-start mt-8 space-y-6">
-        <div className="text-center space-y-2">
-          <h1 className="text-3xl font-bold text-slate-900 dark:text-white">AI Buddy</h1>
-          <p className="text-slate-500 dark:text-slate-400 text-sm">
-            IELTS savollaringizga javob beradi va holatingizga qarab o'zgaradi.
-          </p>
+    <div className="flex flex-col gap-6 max-w-4xl mx-auto">
+      <div className="flex items-center gap-3 pb-6 border-b border-slate-200 dark:border-slate-800">
+        <div className="p-3 bg-blue-100 dark:bg-blue-900/40 rounded-2xl text-blue-600 dark:text-blue-400">
+          <MessageSquare className="w-6 h-6" />
         </div>
-        
-        <div className="bg-white/50 dark:bg-slate-900/50 p-8 rounded-3xl shadow-sm border border-slate-200 dark:border-slate-800 flex flex-col items-center w-full">
-          <AIMascot mood={mood} isThinking={isThinking} className="my-4" />
-          
-          <div className="mt-6 flex flex-col items-center w-full space-y-2">
-            <span className="text-sm font-medium text-slate-500 dark:text-slate-400">
-              Joriy Holat: <span className={mood === 'agitated' ? 'text-red-500 font-bold' : 'text-blue-500 font-bold'}>{mood.toUpperCase()}</span>
-            </span>
-            {isThinking && (
-              <span className="text-xs text-slate-400 animate-pulse">AI o'ylamoqda...</span>
-            )}
-          </div>
+        <div>
+          <h1 className="text-2xl font-bold text-slate-900 dark:text-white">Erkin Suhbat</h1>
+          <p className="text-sm text-slate-500 dark:text-slate-400">IELTS Speaking uchun tabiiy muloqot mashqi</p>
         </div>
       </div>
 
-      {/* Right side: Chat UI */}
-      <div className="lg:w-2/3 flex flex-col bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl shadow-sm overflow-hidden h-[600px]">
-        {/* Header */}
-        <div className="px-6 py-4 border-b border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50 flex justify-between items-center">
-          <h2 className="font-semibold text-slate-800 dark:text-slate-200">Suhbat</h2>
-        </div>
-
-        {/* Messages */}
+      <div className="flex flex-col bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl shadow-sm overflow-hidden h-[600px]">
         <div className="flex-1 overflow-y-auto p-6 space-y-6">
           {messages.map(msg => (
             <div key={msg.id} className={`flex gap-3 ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
@@ -201,7 +172,6 @@ export default function MascotChatPage() {
           <div ref={endOfMessagesRef} />
         </div>
 
-        {/* Input */}
         <div className="p-4 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
           <form onSubmit={handleSend} className="flex items-center gap-2 relative">
             <input
@@ -209,7 +179,7 @@ export default function MascotChatPage() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               disabled={isThinking}
-              placeholder="Savolingizni yozing..."
+              placeholder="Xabaringizni yozing..."
               className="flex-1 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-full px-5 py-3 text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors disabled:opacity-50"
             />
             <button
