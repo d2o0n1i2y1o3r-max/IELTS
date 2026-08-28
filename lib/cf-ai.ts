@@ -1,34 +1,34 @@
 ﻿/**
- * Cloudflare Workers AI — umumiy yordamchi funksiya.
- * Token va Account ID faqat process.env orqali o'qiladi.
+ * Mistral AI — umumiy yordamchi funksiya.
+ * API kaliti faqat process.env orqali o'qiladi.
  */
 
-const CF_API_BASE = 'https://api.cloudflare.com/client/v4/accounts';
+const MISTRAL_API_BASE = 'https://api.mistral.ai/v1';
 
-export interface CfAIOptions {
+export interface MistralAIOptions {
   model?: string;
   maxTokens?: number;
   temperature?: number;
 }
 
 /**
- * Cloudflare Workers AI ga so'rov yuboradi va matn javob qaytaradi.
+ * Mistral AI ga so'rov yuboradi va matn javob qaytaradi.
  */
 export async function callCfAI(
   prompt: string,
-  options: CfAIOptions = {}
+  options: MistralAIOptions = {}
 ): Promise<string> {
-  const token = process.env.CF_API_TOKEN;
-  const accountId = process.env.CF_ACCOUNT_ID;
+  const apiKey = process.env.MISTRAL_API_KEY;
 
-  if (!token || !accountId) {
-    throw new Error('CF_API_TOKEN yoki CF_ACCOUNT_ID .env.local da topilmadi');
+  if (!apiKey) {
+    throw new Error('MISTRAL_API_KEY .env.local da topilmadi');
   }
 
-  const model = options.model ?? '@cf/meta/llama-3.1-8b-instruct';
-  const url = `${CF_API_BASE}/${accountId}/ai/run/${model}`;
+  const model = options.model ?? 'mistral-small-latest';
+  const url = `${MISTRAL_API_BASE}/chat/completions`;
 
   const body = {
+    model: model,
     messages: [
       {
         role: 'user',
@@ -42,7 +42,7 @@ export async function callCfAI(
   const res = await fetch(url, {
     method: 'POST',
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${apiKey}`,
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(body),
@@ -50,25 +50,27 @@ export async function callCfAI(
 
   if (!res.ok) {
     const errText = await res.text().catch(() => res.statusText);
-    throw new Error(`CF AI xatosi (${res.status}): ${errText}`);
+    throw new Error(`Mistral AI xatosi (${res.status}): ${errText}`);
   }
 
   const data = await res.json() as {
-    success: boolean;
-    result?: { response?: string };
-    errors?: { message: string }[];
+    choices?: Array<{ message?: { content?: string } }>;
+    error?: { message: string };
   };
 
-  if (!data.success || !data.result?.response) {
-    const errMsg = data.errors?.map((e) => e.message).join(', ') ?? 'Bo\'sh javob';
-    throw new Error(`CF AI muvaffaqiyatsiz: ${errMsg}`);
+  if (data.error) {
+    throw new Error(`Mistral API muvaffaqiyatsiz: ${data.error.message}`);
   }
 
-  return data.result.response.trim();
+  if (!data.choices || !data.choices[0] || !data.choices[0].message?.content) {
+    throw new Error('Bo\'sh javob');
+  }
+
+  return data.choices[0].message.content.trim();
 }
 
 /**
- * CF AI javobidan JSON ob'ektini xavfsiz ajratib oladi.
+ * Mistral AI javobidan JSON ob'ektini xavfsiz ajratib oladi.
  * Markdown code block larini tozalab JSON parse qiladi.
  */
 export function parseCfAIJson<T>(raw: string): T | null {

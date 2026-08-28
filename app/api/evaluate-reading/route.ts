@@ -84,7 +84,7 @@ export async function POST(request: Request) {
       : 'Keep practising reading comprehension to improve your score.'
   }`;
 
-  if (process.env.CF_API_TOKEN && process.env.CF_ACCOUNT_ID && wrongAnswers.length > 0) {
+  if (process.env.MISTRAL_API_KEY && wrongAnswers.length > 0) {
     const wrongSummary = wrongAnswers
       .map(
         (w) =>

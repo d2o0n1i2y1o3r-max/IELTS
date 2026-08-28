@@ -33,11 +33,11 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Messages are required' }, { status: 400 });
     }
 
-    if (!process.env.CF_API_TOKEN || !process.env.CF_ACCOUNT_ID) {
-      console.error('Missing CF_API_TOKEN or CF_ACCOUNT_ID environment variables');
+    if (!process.env.MISTRAL_API_KEY) {
+      console.error('Missing MISTRAL_API_KEY environment variable');
       const lastMessage = messages[messages.length - 1]?.content || '';
       let mood: 'calm' | 'agitated' = 'calm';
-      let reply = "Hozircha AI ulanish sozlanmagan. Iltimos, .env.local faylida CF_API_TOKEN va CF_ACCOUNT_ID o'rnating. Shunga qaramay, IELTS bo'yicha umumiy maslahat bera olaman!";
+      let reply = "Hozircha AI ulanish sozlanmagan. Iltimos, .env.local faylida MISTRAL_API_KEY o'rnating. Shunga qaramay, IELTS bo'yicha umumiy maslahat bera olaman!";
       
       if (lastMessage.toLowerCase().includes('xato') || lastMessage.toLowerCase().includes('yomon') || lastMessage.toLowerCase().includes('qiyin')) {
          mood = 'agitated';
@@ -72,7 +72,7 @@ Respond STRICTLY with a raw valid JSON object in this format (no extra text, no 
     try {
       raw = await retryWithBackoff(() => callCfAI(prompt, { maxTokens: 1024, temperature: 0.6 }));
     } catch (apiError) {
-      console.error('CF AI API call failed after retries:', apiError);
+      console.error('Mistral AI API call failed after retries:', apiError);
       const lastMessage = messages[messages.length - 1].content.toLowerCase();
       let mood: 'calm' | 'agitated' = 'calm';
       let reply = "AI serveriga ulanishda xatolik yuz berdi. Iltimos, qaytadan urinib ko'ring yoki keyinroq qayta boring.";

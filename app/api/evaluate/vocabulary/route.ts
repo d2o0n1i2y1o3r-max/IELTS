@@ -11,7 +11,7 @@ function fallbackCheck(word: string, sentence: string): VocabCheckResult {
   return {
     correct: true,
     corrected: sentence,
-    reason: `"${word}" appears to be used correctly in context. (AI unavailable — please add CF_API_TOKEN to enable full checking.)`,
+    reason: `"${word}" appears to be used correctly in context. (AI unavailable — please add MISTRAL_API_KEY to enable full checking.)`,
   };
 }
 
@@ -29,7 +29,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: '"word" and "sentence" are required' }, { status: 400 });
   }
 
-  if (!process.env.CF_API_TOKEN || !process.env.CF_ACCOUNT_ID) {
+  if (!process.env.MISTRAL_API_KEY) {
     return NextResponse.json({ result: fallbackCheck(word, sentence) });
   }
 

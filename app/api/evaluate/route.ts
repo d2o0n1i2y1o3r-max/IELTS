@@ -60,8 +60,8 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Transcript text is required' }, { status: 400 });
   }
 
-  // CF AI mavjud bo'lmasa fallback ishlatiladi
-  if (!process.env.CF_API_TOKEN || !process.env.CF_ACCOUNT_ID) {
+  // Mistral AI mavjud bo'lmasa fallback ishlatiladi
+  if (!process.env.MISTRAL_API_KEY) {
     return NextResponse.json({ evaluation: fallbackEvaluate(transcript, questionText ?? 'Speaking prompt') });
   }
 

@@ -78,7 +78,7 @@ export async function POST(request: Request) {
       : 'Focus on catching key details and specific information in audio passages.'
   }`;
 
-  if (process.env.CF_API_TOKEN && process.env.CF_ACCOUNT_ID && wrongAnswers.length > 0) {
+  if (process.env.MISTRAL_API_KEY && wrongAnswers.length > 0) {
     const wrongSummary = wrongAnswers
       .map(
         (w) =>
