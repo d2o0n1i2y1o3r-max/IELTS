@@ -3,7 +3,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import AIMascot from '@/components/AIMascot';
 import { useMascotMood } from '@/hooks/useMascotMood';
-import { Mic, User, RotateCcw, MessageSquare } from 'lucide-react';
+import { Mic, User, RotateCcw, MessageSquare, Square, Play } from 'lucide-react';
 
 declare global {
   interface Window {
@@ -23,20 +23,17 @@ type VoiceState = 'idle' | 'listening' | 'processing' | 'speaking';
 
 export default function VoiceChatPage() {
   const { mood, updateMood } = useMascotMood();
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      id: '1',
-      role: 'assistant',
-      content: "Salom! Men sizning IELTS bo'yicha AI yordamchiningizman. Ovoz orqali gaplashishimiz mumkin. 'Boshlash' tugmasini bosing va gapira boshlang!",
-    }
-  ]);
+  const [messages, setMessages] = useState<Message[]>([]);
   const [voiceState, setVoiceState] = useState<VoiceState>('idle');
   const [transcript, setTranscript] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [isConversationActive, setIsConversationActive] = useState(true);
+  const [needsUserInteraction, setNeedsUserInteraction] = useState(false);
   const endOfMessagesRef = useRef<HTMLDivElement>(null);
   
   const recognitionRef = useRef<any>(null);
   const synthesisRef = useRef<SpeechSynthesis | null>(null);
+  const hasAutoStartedRef = useRef(false);
 
   useEffect(() => {
     endOfMessagesRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -48,7 +45,88 @@ export default function VoiceChatPage() {
     }
   }, []);
 
+  const speakResponse = (text: string) => {
+    return new Promise<void>((resolve, reject) => {
+      if (!synthesisRef.current) {
+        setVoiceState('idle');
+        reject(new Error('Speech synthesis not available'));
+        return;
+      }
+
+      setVoiceState('speaking');
+      
+      const utterance = new SpeechSynthesisUtterance(text);
+      
+      let voices = synthesisRef.current.getVoices();
+      if (voices.length === 0) {
+        voices = synthesisRef.current.getVoices();
+      }
+
+      const uzVoice = voices.find(voice => voice.lang.includes('uz'));
+      const ruVoice = voices.find(voice => voice.lang.includes('ru'));
+      const enVoice = voices.find(voice => voice.lang.includes('en'));
+
+      if (uzVoice) {
+        utterance.voice = uzVoice;
+        utterance.lang = 'uz-UZ';
+      } else if (ruVoice) {
+        utterance.voice = ruVoice;
+        utterance.lang = 'ru-RU';
+        setErrorMessage('O\'zbek tili ovozi topilmadi, rus tilidan foydalanilmoqda.');
+      } else if (enVoice) {
+        utterance.voice = enVoice;
+        utterance.lang = 'en-US';
+        setErrorMessage('O\'zbek va rus tillari ovozlari topilmadi, ingliz tilidan foydalanilmoqda.');
+      }
+
+      utterance.rate = 0.9;
+      utterance.pitch = 1;
+
+      utterance.onend = () => {
+        setVoiceState('idle');
+        if (isConversationActive) {
+          setTimeout(() => {
+            startListening();
+          }, 500);
+        }
+        resolve();
+      };
+
+      utterance.onerror = () => {
+        setVoiceState('idle');
+        reject(new Error('Speech synthesis error'));
+      };
+
+      synthesisRef.current.speak(utterance);
+    });
+  };
+
+  useEffect(() => {
+    if (!hasAutoStartedRef.current && isConversationActive) {
+      hasAutoStartedRef.current = true;
+      initializeConversation();
+    }
+  }, [isConversationActive]);
+
+  const initializeConversation = async () => {
+    const welcomeMessage: Message = {
+      id: '1',
+      role: 'assistant',
+      content: "Salom! Bugun nima haqida gaplashamiz?"
+    };
+    setMessages([welcomeMessage]);
+    
+    try {
+      await speakResponse(welcomeMessage.content);
+    } catch (error) {
+      console.log('Auto-start blocked by browser, requiring user interaction');
+      setNeedsUserInteraction(true);
+    }
+  };
+
   const startListening = () => {
+    if (!isConversationActive) return;
+    
     setErrorMessage('');
     
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -120,6 +198,25 @@ export default function VoiceChatPage() {
     setVoiceState('idle');
   };
 
+  const stopConversation = () => {
+    stopListening();
+    if (synthesisRef.current) {
+      synthesisRef.current.cancel();
+    }
+    setIsConversationActive(false);
+    setVoiceState('idle');
+  };
+
+  const resumeConversation = () => {
+    setIsConversationActive(true);
+    setNeedsUserInteraction(false);
+    if (messages.length === 0) {
+      initializeConversation();
+    } else {
+      startListening();
+    }
+  };
+
   const handleUserMessage = async (userText: string) => {
     setVoiceState('processing');
     setTranscript('');
@@ -128,7 +225,7 @@ export default function VoiceChatPage() {
     setMessages(prev => [...prev, userMessage]);
 
     try {
-      const response = await fetch('/api/mascot', {
+      const response = await fetch('/api/voice-chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -163,55 +260,6 @@ export default function VoiceChatPage() {
     }
   };
 
-  const speakResponse = (text: string) => {
-    if (!synthesisRef.current) {
-      setVoiceState('idle');
-      return;
-    }
-
-    setVoiceState('speaking');
-    
-    const utterance = new SpeechSynthesisUtterance(text);
-    
-    let voices = synthesisRef.current.getVoices();
-    if (voices.length === 0) {
-      voices = synthesisRef.current.getVoices();
-    }
-
-    const uzVoice = voices.find(voice => voice.lang.includes('uz'));
-    const ruVoice = voices.find(voice => voice.lang.includes('ru'));
-    const enVoice = voices.find(voice => voice.lang.includes('en'));
-
-    if (uzVoice) {
-      utterance.voice = uzVoice;
-      utterance.lang = 'uz-UZ';
-    } else if (ruVoice) {
-      utterance.voice = ruVoice;
-      utterance.lang = 'ru-RU';
-      setErrorMessage('O\'zbek tili ovozi topilmadi, rus tilidan foydalanilmoqda.');
-    } else if (enVoice) {
-      utterance.voice = enVoice;
-      utterance.lang = 'en-US';
-      setErrorMessage('O\'zbek va rus tillari ovozlari topilmadi, ingliz tilidan foydalanilmoqda.');
-    }
-
-    utterance.rate = 0.9;
-    utterance.pitch = 1;
-
-    utterance.onend = () => {
-      setVoiceState('idle');
-      setTimeout(() => {
-        startListening();
-      }, 500);
-    };
-
-    utterance.onerror = () => {
-      setVoiceState('idle');
-    };
-
-    synthesisRef.current.speak(utterance);
-  };
-
   const handleRetry = async (messageId: string) => {
     const errorIndex = messages.findIndex(m => m.id === messageId);
     if (errorIndex === -1) return;
@@ -222,7 +270,7 @@ export default function VoiceChatPage() {
     setMessages(prev => prev.filter(m => m.id !== messageId));
 
     try {
-      const response = await fetch('/api/mascot', {
+      const response = await fetch('/api/voice-chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -280,9 +328,9 @@ export default function VoiceChatPage() {
       
       <div className="lg:w-1/3 flex flex-col items-center justify-start mt-8 space-y-6">
         <div className="text-center space-y-2">
-          <h1 className="text-3xl font-bold text-slate-900 dark:text-white">Ovozli Suhbat</h1>
+          <h1 className="text-3xl font-bold text-slate-900 dark:text-white">Erkin Suhbat</h1>
           <p className="text-slate-500 dark:text-slate-400 text-sm">
-            AI bilan ovoz orqali gaplashing
+            AI bilan erkin, tabiiy suhbat
           </p>
         </div>
         
@@ -378,30 +426,35 @@ export default function VoiceChatPage() {
               </div>
             )}
             
+            {needsUserInteraction && (
+              <div className="text-xs text-amber-600 text-center bg-amber-50 dark:bg-amber-900/20 px-3 py-2 rounded-lg">
+                Suhbatni boshlash uchun tugmani bosing
+              </div>
+            )}
+            
             <div className="flex items-center gap-3">
-              {voiceState === 'listening' ? (
+              {isConversationActive ? (
                 <button
-                  onClick={stopListening}
+                  onClick={stopConversation}
                   className="w-16 h-16 rounded-full bg-red-500 hover:bg-red-600 text-white flex items-center justify-center transition-colors"
                 >
-                  <RotateCcw size={24} />
+                  <Square size={24} />
                 </button>
               ) : (
                 <button
-                  onClick={startListening}
-                  disabled={voiceState !== 'idle'}
-                  className="w-16 h-16 rounded-full bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center transition-colors disabled:opacity-50 disabled:hover:bg-blue-600"
+                  onClick={resumeConversation}
+                  className="w-16 h-16 rounded-full bg-green-500 hover:bg-green-600 text-white flex items-center justify-center transition-colors"
                 >
-                  <Mic size={24} />
+                  <Play size={24} />
                 </button>
               )}
               
               <div className="text-center">
                 <p className="text-sm font-medium text-slate-700 dark:text-slate-300">
-                  {voiceState === 'idle' ? 'Suhbatni boshlash' : 'To\'xtatish'}
+                  {isConversationActive ? 'Suhbatni tugatish' : 'Suhbatni davom ettirish'}
                 </p>
                 <p className="text-xs text-slate-500 dark:text-slate-400">
-                  {voiceState === 'idle' ? 'Tugmani bosing va gapiring' : 'Yana bosib to\'xtating'}
+                  {isConversationActive ? 'Tugmani bosib to\'xtating' : 'Tugmani bosib davom ettiring'}
                 </p>
               </div>
             </div>
