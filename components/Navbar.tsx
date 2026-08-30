@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Sparkles, Mic, BookOpen, History, Menu, X, PenTool, Headphones, UserPlus, Bot } from 'lucide-react';
+import { Sparkles, Mic, BookOpen, History, Menu, X, PenTool, Headphones, UserPlus, Bot, PhoneCall } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 import LanguageSwitcher from './LanguageSwitcher';
 import Logo from './Logo';
@@ -22,6 +22,7 @@ export default function Navbar() {
     { href: '/speaking', label: t('nav.practice'), icon: Mic },
     { href: '/history', label: t('nav.history'), icon: History },
     { href: '/mascot', label: 'AI Mascot', icon: Bot },
+    { href: '/voice-chat', label: 'Ovozli suhbat', icon: PhoneCall },
     { href: '/register', label: "Ro'yxatdan o'tish", icon: UserPlus },
   ];
 
