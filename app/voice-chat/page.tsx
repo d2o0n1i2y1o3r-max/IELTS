@@ -3,7 +3,7 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import AIMascot from '@/components/AIMascot';
 import { useMascotMood } from '@/hooks/useMascotMood';
-import { User, MessageSquare, Square, Play, Mic, MicOff, Volume2, AlertCircle } from 'lucide-react';
+import { User, MessageSquare, Square, Play, Mic, MicOff, Volume2, AlertCircle, Globe } from 'lucide-react';
 
 declare global {
   interface Window {
@@ -20,6 +20,7 @@ interface Message {
 }
 
 type VoiceState = 'idle' | 'listening' | 'processing' | 'speaking';
+type AppLanguage = 'uz' | 'ru' | 'en';
 
 export default function VoiceChatPage() {
   const { mood, updateMood } = useMascotMood();
@@ -29,6 +30,7 @@ export default function VoiceChatPage() {
   const [errorMessage, setErrorMessage] = useState('');
   const [isConversationActive, setIsConversationActive] = useState(true);
   const [activeTtsVoice, setActiveTtsVoice] = useState<string | null>(null);
+  const [selectedLang, setSelectedLang] = useState<AppLanguage>('uz');
   const endOfMessagesRef = useRef<HTMLDivElement>(null);
 
   const recognitionRef = useRef<any>(null);
@@ -37,6 +39,7 @@ export default function VoiceChatPage() {
   const isSpeakingRef = useRef(false);
   const isProcessingRef = useRef(false);
   const isConversationActiveRef = useRef(true);
+  const selectedLangRef = useRef<AppLanguage>('uz');
   const transcriptRef = useRef('');
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const mediaStreamRef = useRef<MediaStream | null>(null);
@@ -48,6 +51,16 @@ export default function VoiceChatPage() {
   useEffect(() => {
     transcriptRef.current = transcript;
   }, [transcript]);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('voice_chat_language') as AppLanguage | null;
+      if (saved && ['uz', 'ru', 'en'].includes(saved)) {
+        setSelectedLang(saved);
+        selectedLangRef.current = saved;
+      }
+    }
+  }, []);
 
   useEffect(() => {
     endOfMessagesRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -111,7 +124,9 @@ export default function VoiceChatPage() {
     const recognition = new SpeechRecognition();
     recognition.continuous = true;
     recognition.interimResults = true;
-    recognition.lang = 'uz-UZ';
+
+    const currentLang = selectedLangRef.current;
+    recognition.lang = currentLang === 'ru' ? 'ru-RU' : currentLang === 'en' ? 'en-US' : 'uz-UZ';
 
     recognition.onstart = () => {
       isRecognitionRunningRef.current = true;
@@ -222,42 +237,53 @@ export default function VoiceChatPage() {
 
     const applyVoice = () => {
       const voices = synth.getVoices();
-
-      const PRIORITY = [
-        { prefix: 'uz', label: "O'zbekcha ovoz" },
-        { prefix: 'tr', label: "Turkcha talaffuz (o'zbekcha to'liq qo'llab-quvvatlanmaydi)" },
-        { prefix: 'az', label: "Ozarbayjon talaffuzi (o'zbekcha to'liq qo'llab-quvvatlanmaydi)" },
-        { prefix: 'en', label: "Inglizcha talaffuz (fallback)" },
-        { prefix: 'ru', label: "Ruscha talaffuz (fallback)" },
-      ];
+      const currentLang = selectedLangRef.current;
 
       let chosenVoice: SpeechSynthesisVoice | undefined;
       let chosenLabel = '';
 
-      for (const { prefix, label } of PRIORITY) {
-        const found = voices.find(v => v.lang.toLowerCase().startsWith(prefix));
-        if (found) {
-          chosenVoice = found;
-          chosenLabel = label;
-          break;
+      if (currentLang === 'ru') {
+        chosenVoice = voices.find(v => v.lang.toLowerCase().startsWith('ru'));
+        chosenLabel = "Ruscha ovoz (ru-RU)";
+      } else if (currentLang === 'en') {
+        chosenVoice = voices.find(v => v.lang.toLowerCase().startsWith('en'));
+        chosenLabel = "Inglizcha ovoz (en-US)";
+      } else {
+        const PRIORITY = [
+          { prefix: 'uz', label: "O'zbekcha ovoz" },
+          { prefix: 'tr', label: "Turkcha talaffuz (o'zbekcha fallback)" },
+          { prefix: 'az', label: "Ozarbayjon talaffuzi (o'zbekcha fallback)" },
+          { prefix: 'en', label: "Inglizcha talaffuz (fallback)" },
+          { prefix: 'ru', label: "Ruscha talaffuz (fallback)" },
+        ];
+        for (const { prefix, label } of PRIORITY) {
+          const found = voices.find(v => v.lang.toLowerCase().startsWith(prefix));
+          if (found) {
+            chosenVoice = found;
+            chosenLabel = label;
+            break;
+          }
         }
       }
 
       if (chosenVoice) {
         utterance.voice = chosenVoice;
         utterance.lang = chosenVoice.lang;
-        setActiveTtsVoice(chosenLabel);
-        console.log(`[TTS] Browser fallback — voice: ${chosenVoice.name} (${chosenVoice.lang}) — ${chosenLabel}`);
+        if (currentLang === 'uz' && !chosenVoice.lang.toLowerCase().startsWith('uz')) {
+          setActiveTtsVoice(chosenLabel);
+        } else {
+          setActiveTtsVoice(null);
+        }
+        console.log(`[TTS] Browser fallback — voice: ${chosenVoice.name} (${chosenVoice.lang})`);
       } else {
-        utterance.lang = 'uz-UZ';
-        setActiveTtsVoice("Standart ovoz (uz-UZ)");
+        utterance.lang = currentLang === 'ru' ? 'ru-RU' : currentLang === 'en' ? 'en-US' : 'uz-UZ';
+        setActiveTtsVoice(null);
       }
 
       utterance.rate = 0.9;
       utterance.pitch = 1;
 
       const finishSpeech = () => {
-        // 500ms delay after TTS completion before reactivating mic to prevent picking up room echo
         setTimeout(() => {
           isSpeakingRef.current = false;
           setVoiceState('idle');
@@ -312,7 +338,6 @@ export default function VoiceChatPage() {
 
       const handleAudioEnd = () => {
         URL.revokeObjectURL(url);
-        // 500ms room echo buffer before listening again
         setTimeout(() => {
           isSpeakingRef.current = false;
           setVoiceState('idle');
@@ -382,7 +407,8 @@ export default function VoiceChatPage() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          messages: updated.map(m => ({ role: m.role, content: m.content }))
+          messages: updated.map(m => ({ role: m.role, content: m.content })),
+          language: selectedLangRef.current
         })
       }, 1)
         .then(data => {
@@ -400,7 +426,11 @@ export default function VoiceChatPage() {
           console.error('[voice-chat] API fetch error details:', error);
           isProcessingRef.current = false;
 
-          const friendlyFallback = "Kechirasiz, biroz muammo bo'ldi, qaytadan urinib ko'raylik.";
+          const currentLang = selectedLangRef.current;
+          let friendlyFallback = "Kechirasiz, biroz muammo bo'ldi, qaytadan urinib ko'raylik.";
+          if (currentLang === 'ru') friendlyFallback = "Извините, произошла ошибка, давайте попробуем еще раз.";
+          if (currentLang === 'en') friendlyFallback = "Sorry, an error occurred, let's try again.";
+
           setMessages(p => [...p, {
             id: (Date.now() + 1).toString(),
             role: 'assistant',
@@ -408,8 +438,6 @@ export default function VoiceChatPage() {
             error: true
           }]);
           updateMood('agitated');
-
-          // Speak error fallback and restart listening
           speakResponse(friendlyFallback);
         });
 
@@ -417,12 +445,41 @@ export default function VoiceChatPage() {
     });
   }, [stopRecognition, speakResponse, updateMood]);
 
+  const handleLanguageChange = (lang: AppLanguage) => {
+    if (selectedLang === lang) return;
+
+    shouldRestartRef.current = false;
+    isSpeakingRef.current = false;
+    isProcessingRef.current = false;
+    stopRecognition();
+    if (audioRef.current) audioRef.current.pause();
+    window.speechSynthesis?.cancel();
+
+    setSelectedLang(lang);
+    selectedLangRef.current = lang;
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('voice_chat_language', lang);
+    }
+
+    setVoiceState('idle');
+    setTimeout(() => {
+      if (isConversationActiveRef.current) {
+        startListening();
+      }
+    }, 300);
+  };
+
   const initializeConversation = useCallback(() => {
     initEchoCancellationMedia();
+    const currentLang = selectedLangRef.current;
+    let greeting = "Salom! Bugun nima haqida gaplashamiz?";
+    if (currentLang === 'ru') greeting = "Привет! О чем мы поговорим сегодня?";
+    if (currentLang === 'en') greeting = "Hello! What shall we talk about today?";
+
     const welcomeMessage: Message = {
       id: '1',
       role: 'assistant',
-      content: "Salom! Bugun nima haqida gaplashamiz?"
+      content: greeting
     };
     setMessages([welcomeMessage]);
     speakResponse(welcomeMessage.content);
@@ -473,49 +530,6 @@ export default function VoiceChatPage() {
     }
   };
 
-  const handleRetry = async (messageId: string) => {
-    const errorIndex = messages.findIndex(m => m.id === messageId);
-    if (errorIndex === -1) return;
-
-    const messagesBeforeError = messages.slice(0, errorIndex);
-    stopRecognition();
-    isProcessingRef.current = true;
-    setVoiceState('processing');
-    setMessages(prev => prev.filter(m => m.id !== messageId));
-
-    try {
-      const data = await fetchWithRetry('/api/voice-chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          messages: messagesBeforeError.map(m => ({ role: m.role, content: m.content }))
-        })
-      }, 1);
-
-      isProcessingRef.current = false;
-
-      if (data && data.reply) {
-        setMessages(prev => [...prev, { id: (Date.now() + 1).toString(), role: 'assistant', content: data.reply }]);
-        if (data.mood) updateMood(data.mood);
-        speakResponse(data.reply);
-      } else {
-        throw new Error('No reply from AI');
-      }
-    } catch (error) {
-      console.error('[retry] error details:', error);
-      isProcessingRef.current = false;
-      const fallbackText = "Qayta urinish ham muvaffaqiyatsiz bo'ldi. Iltimos, keyinroq qayta urinib ko'ring.";
-      setMessages(prev => [...prev, {
-        id: (Date.now() + 1).toString(),
-        role: 'assistant',
-        content: fallbackText,
-        error: true
-      }]);
-      updateMood('agitated');
-      speakResponse(fallbackText);
-    }
-  };
-
   const getStateText = () => {
     switch (voiceState) {
       case 'listening':
@@ -544,6 +558,27 @@ export default function VoiceChatPage() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-[80vh] max-w-2xl mx-auto px-4 py-8 relative">
+      {/* Language Selector ("Talaffuzni o'zgartirish") */}
+      <div className="flex items-center gap-1.5 bg-white/80 dark:bg-slate-900/80 p-1.5 rounded-full border border-slate-200 dark:border-slate-800 shadow-sm backdrop-blur-sm mb-6">
+        <span className="text-xs font-medium text-slate-500 dark:text-slate-400 pl-3 pr-1 flex items-center gap-1">
+          <Globe size={14} className="text-blue-500" />
+          <span>Talaffuz:</span>
+        </span>
+        {(['uz', 'ru', 'en'] as const).map(lang => (
+          <button
+            key={lang}
+            onClick={() => handleLanguageChange(lang)}
+            className={`px-3.5 py-1 text-xs font-bold rounded-full transition-all duration-200 ${
+              selectedLang === lang
+                ? 'bg-blue-600 text-white shadow-xs scale-105'
+                : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'
+            }`}
+          >
+            {lang.toUpperCase()}
+          </button>
+        ))}
+      </div>
+
       {/* 1. Large Mascot centered in the screen */}
       <div className="flex flex-col items-center justify-center w-full my-auto space-y-8">
         <div className="relative flex items-center justify-center p-8 bg-white/40 dark:bg-slate-900/40 rounded-full shadow-lg border border-slate-200/50 dark:border-slate-800/50 backdrop-blur-sm">

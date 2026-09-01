@@ -26,22 +26,27 @@ async function retryWithBackoff<T>(
 
 export async function POST(request: Request) {
   try {
-    const { messages } = await request.json();
+    const { messages, language = 'uz' } = await request.json();
 
     if (!messages || !Array.isArray(messages)) {
       console.error('Invalid messages format:', messages);
       return NextResponse.json({ error: 'Messages are required' }, { status: 400 });
     }
 
+    let langInstruction = "O'zbek tilida";
+    if (language === 'ru') langInstruction = "Rus tilida";
+    if (language === 'en') langInstruction = "Ingliz tilida";
+
     if (!process.env.MISTRAL_API_KEY) {
       console.error('Missing MISTRAL_API_KEY environment variable');
       const lastMessage = messages[messages.length - 1]?.content || '';
       let mood: 'calm' | 'agitated' = 'calm';
       let reply = "Hozircha AI ulanish sozlanmagan. Iltimos, .env.local faylida MISTRAL_API_KEY o'rnating.";
-      
+      if (language === 'ru') reply = "ИИ пока не настроен. Пожалуйста, установите MISTRAL_API_KEY в .env.local.";
+      if (language === 'en') reply = "AI is not configured yet. Please set MISTRAL_API_KEY in .env.local.";
+
       if (lastMessage.toLowerCase().includes('xato') || lastMessage.toLowerCase().includes('yomon') || lastMessage.toLowerCase().includes('qiyin')) {
          mood = 'agitated';
-         reply = "Xavotir olmang! AI hozircha ishlamayapti. Lekin suhbat davom etishi mumkin.";
       }
 
       return NextResponse.json({ reply, mood });
@@ -51,10 +56,10 @@ export async function POST(request: Request) {
       .slice(-5)
       .map((m: any) => `${m.role === 'user' ? 'User' : 'AI'}: ${m.content}`)
       .join('\n');
-    
+
     const prompt = `Sen foydalanuvchi bilan erkin, tabiiy suhbatlashuvchi do'stsan. Har qanday mavzuda gaplasha olasan — IELTS bilan cheklanma. Qisqa, tabiiy, jonli odamdek javob ber (uzun ma'ruza emas). Foydalanuvchi kundalik hayot, hazil, boshqa mavzular va h.k. haqida gapirsa, shunga mos tabiiy javob ber.
 
-MUHIM: Foydalanuvchi qaysi tilda gapirsa, AYNI shu tilda javob ber. Agar foydalanuvchi o'zbek tilida gapirsa — javob albatta o'zbek tilida bo'lsin. Agar ingliz tilida gapirsa — ingliz tilida javob ber. Rus tilida gapirsa — rus tilida. Hech qachon foydalanuvchi tilidan farqli tilda javob berma.
+MUHIM: Foydalanuvchi bilan STRICTLY ${langInstruction} gaplash! Boshqa tilda javob berma. Javobing albatta va to'liq ${langInstruction} bo'lishi SHART.
 
 Javobing iloji boricha qisqa, tabiiy va suhbatdoshdek bo'lsin. 1-3 gap yetarli.
 
@@ -63,7 +68,7 @@ ${conversation}
 
 Respond STRICTLY with a raw valid JSON object in this format (no extra text, no markdown block, just the JSON):
 {
-  "reply": "<your short, natural conversational response here, in the SAME language as the user>",
+  "reply": "<your short, natural conversational response here, STRICTLY in ${langInstruction}>",
   "mood": "<calm or agitated>"
 }`;
 
