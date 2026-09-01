@@ -52,7 +52,9 @@ export async function POST(request: Request) {
       .map((m: any) => `${m.role === 'user' ? 'User' : 'AI'}: ${m.content}`)
       .join('\n');
     
-    const prompt = `Sen foydalanuvchi bilan erkin, tabiiy suhbatlashuvchi do'stsan. Har qanday mavzuda gaplasha olasan — IELTS bilan cheklanma. Qisqa, tabiiy, jonli odamdek javob ber (uzun ma'ruza emas). Foydalanuvchi kundalik hayot, hazil, boshqa mavzular va h.k. haqida gapirsa, shunga mos tabiiy javob ber. Tilni foydalanuvchi ishlatgan tilga moslang (O'zbek, Rus yoki Ingliz).
+    const prompt = `Sen foydalanuvchi bilan erkin, tabiiy suhbatlashuvchi do'stsan. Har qanday mavzuda gaplasha olasan — IELTS bilan cheklanma. Qisqa, tabiiy, jonli odamdek javob ber (uzun ma'ruza emas). Foydalanuvchi kundalik hayot, hazil, boshqa mavzular va h.k. haqida gapirsa, shunga mos tabiiy javob ber.
+
+MUHIM: Foydalanuvchi qaysi tilda gapirsa, AYNI shu tilda javob ber. Agar foydalanuvchi o'zbek tilida gapirsa — javob albatta o'zbek tilida bo'lsin. Agar ingliz tilida gapirsa — ingliz tilida javob ber. Rus tilida gapirsa — rus tilida. Hech qachon foydalanuvchi tilidan farqli tilda javob berma.
 
 Javobing iloji boricha qisqa, tabiiy va suhbatdoshdek bo'lsin. 1-3 gap yetarli.
 
@@ -61,7 +63,7 @@ ${conversation}
 
 Respond STRICTLY with a raw valid JSON object in this format (no extra text, no markdown block, just the JSON):
 {
-  "reply": "<your short, natural conversational response here>",
+  "reply": "<your short, natural conversational response here, in the SAME language as the user>",
   "mood": "<calm or agitated>"
 }`;
 

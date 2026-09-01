@@ -16,23 +16,23 @@ export default function AIMascot({ mood, isThinking, className }: AIMascotProps)
       {/* Glow effect */}
       <div
         className={clsx(
-          "absolute inset-0 rounded-full blur-2xl opacity-40 transition-colors duration-1000 ease-in-out",
-          mood === 'calm' ? 'bg-blue-400 dark:bg-blue-500' : 'bg-red-400 dark:bg-red-500',
-          isThinking && "animate-pulse opacity-70"
+          "absolute inset-0 rounded-full blur-3xl opacity-30 transition-colors duration-1000 ease-in-out",
+          mood === 'calm' ? 'bg-blue-400' : 'bg-red-400',
+          isThinking && "animate-pulse opacity-50"
         )}
       />
       
       {/* Main body */}
       <div
         className={clsx(
-          "relative w-32 h-32 rounded-[2rem] shadow-xl transition-all duration-1000 ease-in-out flex items-center justify-center overflow-hidden",
+          "relative w-32 h-32 shadow-2xl transition-all duration-1000 ease-in-out flex items-center justify-center overflow-hidden",
           mood === 'calm' 
-            ? 'bg-gradient-to-br from-blue-400 to-blue-600' 
+            ? 'bg-gradient-to-br from-blue-500 to-blue-700' 
             : 'bg-gradient-to-br from-red-500 to-rose-700 scale-105',
           isThinking ? 'animate-[bounce_2s_infinite]' : (mood === 'calm' ? 'animate-[pulse_4s_infinite]' : 'animate-[pulse_1.5s_infinite]')
         )}
         style={{
-          borderRadius: isThinking ? '50%' : (mood === 'calm' ? '40% 60% 70% 30% / 40% 50% 60% 50%' : '30% 70% 40% 60% / 50% 30% 70% 50%'),
+          borderRadius: isThinking ? '50%' : (mood === 'calm' ? '35% 65% 70% 30% / 35% 55% 65% 45%' : '30% 70% 40% 60% / 50% 30% 70% 50%'),
         }}
       >
         <div className="flex flex-col items-center justify-center gap-2 mt-2">
