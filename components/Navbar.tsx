@@ -1,9 +1,9 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Sparkles, Mic, BookOpen, History, Menu, X, PenTool, Headphones, UserPlus, Bot, PhoneCall } from 'lucide-react';
+import { Sparkles, Mic, BookOpen, History, Menu, X, PenTool, Headphones, UserPlus, Bot, PhoneCall, CheckCircle } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 import LanguageSwitcher from './LanguageSwitcher';
 import Logo from './Logo';
@@ -11,8 +11,18 @@ import { useTranslation } from 'react-i18next';
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isRegistered, setIsRegistered] = useState(false);
   const pathname = usePathname();
   const { t } = useTranslation();
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('registered_user');
+      if (saved) {
+        setIsRegistered(true);
+      }
+    }
+  }, [pathname]);
 
   const navLinks = [
     { href: '/', label: t('nav.home'), icon: Sparkles },
@@ -23,8 +33,13 @@ export default function Navbar() {
     { href: '/history', label: t('nav.history'), icon: History },
     { href: '/mascot', label: 'AI Mascot', icon: Bot },
     { href: '/voice-chat', label: 'Ovozli suhbat', icon: PhoneCall },
-    { href: '/register', label: "Ro'yxatdan o'tish", icon: UserPlus },
+    {
+      href: '/register',
+      label: isRegistered ? "Ro'yxatdan o'tildi ✅" : "Ro'yxatdan o'tish",
+      icon: isRegistered ? CheckCircle : UserPlus,
+    },
   ];
+
 
   return (
     <header className="sticky top-0 z-50 backdrop-blur-md bg-white/80 dark:bg-slate-900/80 border-b border-slate-200 dark:border-slate-800 transition-colors">
