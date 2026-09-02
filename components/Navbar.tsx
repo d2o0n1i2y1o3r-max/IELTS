@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Sparkles, Mic, BookOpen, History, Menu, X, PenTool, Headphones, UserPlus, Bot, PhoneCall, CheckCircle } from 'lucide-react';
+import { Sparkles, Mic, BookOpen, History, Menu, X, PenTool, Headphones, UserPlus, Bot, PhoneCall, UserCheck } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 import LanguageSwitcher from './LanguageSwitcher';
 import Logo from './Logo';
@@ -16,13 +16,16 @@ export default function Navbar() {
   const { t } = useTranslation();
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('registered_user');
-      if (saved) {
-        setIsRegistered(true);
+    const checkRegistration = () => {
+      if (typeof window !== 'undefined') {
+        const saved = localStorage.getItem('registered_user');
+        setIsRegistered(!!saved);
       }
-    }
-  }, [pathname]);
+    };
+    checkRegistration();
+    window.addEventListener('storage', checkRegistration);
+    return () => window.removeEventListener('storage', checkRegistration);
+  }, []);
 
   const navLinks = [
     { href: '/', label: t('nav.home'), icon: Sparkles },
@@ -35,11 +38,10 @@ export default function Navbar() {
     { href: '/voice-chat', label: 'Ovozli suhbat', icon: PhoneCall },
     {
       href: '/register',
-      label: isRegistered ? "Ro'yxatdan o'tildi ✅" : "Ro'yxatdan o'tish",
-      icon: isRegistered ? CheckCircle : UserPlus,
+      label: isRegistered ? "Ro'yxatdan o'tildi" : "Ro'yxatdan o'tish",
+      icon: isRegistered ? UserCheck : UserPlus,
     },
   ];
-
 
   return (
     <header className="sticky top-0 z-50 backdrop-blur-md bg-white/80 dark:bg-slate-900/80 border-b border-slate-200 dark:border-slate-800 transition-colors">
@@ -58,6 +60,7 @@ export default function Navbar() {
             {navLinks.map((link) => {
               const Icon = link.icon;
               const isActive = pathname === link.href;
+              const isRegisterLink = link.href === '/register';
               return (
                 <Link
                   key={link.href}
@@ -65,6 +68,8 @@ export default function Navbar() {
                   className={`flex items-center gap-2 px-3.5 py-1.5 text-sm font-medium rounded-xl transition-all ${
                     isActive
                       ? 'bg-white dark:bg-slate-700 text-brand-600 dark:text-white shadow-sm'
+                      : isRegisterLink && isRegistered
+                      ? 'text-emerald-600 dark:text-emerald-400 font-bold bg-emerald-50 dark:bg-emerald-950/40'
                       : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/50 dark:hover:bg-slate-700/50'
                   }`}
                 >
