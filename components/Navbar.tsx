@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Sparkles, Mic, BookOpen, History, Menu, X, PenTool, Headphones, UserPlus, Bot, PhoneCall, UserCheck } from 'lucide-react';
+import { Sparkles, Mic, BookOpen, History, Menu, X, PenTool, Headphones, User, Bot, PhoneCall } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 import LanguageSwitcher from './LanguageSwitcher';
 import Logo from './Logo';
@@ -11,21 +11,8 @@ import { useTranslation } from 'react-i18next';
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [isRegistered, setIsRegistered] = useState(false);
   const pathname = usePathname();
   const { t } = useTranslation();
-
-  useEffect(() => {
-    const checkRegistration = () => {
-      if (typeof window !== 'undefined') {
-        const saved = localStorage.getItem('registered_user');
-        setIsRegistered(!!saved);
-      }
-    };
-    checkRegistration();
-    window.addEventListener('storage', checkRegistration);
-    return () => window.removeEventListener('storage', checkRegistration);
-  }, []);
 
   const navLinks = [
     { href: '/', label: t('nav.home'), icon: Sparkles },
@@ -36,11 +23,7 @@ export default function Navbar() {
     { href: '/history', label: t('nav.history'), icon: History },
     { href: '/mascot', label: 'AI Mascot', icon: Bot },
     { href: '/voice-chat', label: 'Ovozli suhbat', icon: PhoneCall },
-    {
-      href: '/register',
-      label: isRegistered ? "Ro'yxatdan o'tildi" : "Ro'yxatdan o'tish",
-      icon: isRegistered ? UserCheck : UserPlus,
-    },
+    { href: '/auth', label: 'Profil', icon: User },
   ];
 
   return (
@@ -60,7 +43,6 @@ export default function Navbar() {
             {navLinks.map((link) => {
               const Icon = link.icon;
               const isActive = pathname === link.href;
-              const isRegisterLink = link.href === '/register';
               return (
                 <Link
                   key={link.href}
@@ -68,8 +50,6 @@ export default function Navbar() {
                   className={`flex items-center gap-2 px-3.5 py-1.5 text-sm font-medium rounded-xl transition-all ${
                     isActive
                       ? 'bg-white dark:bg-slate-700 text-brand-600 dark:text-white shadow-sm'
-                      : isRegisterLink && isRegistered
-                      ? 'text-emerald-600 dark:text-emerald-400 font-bold bg-emerald-50 dark:bg-emerald-950/40'
                       : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/50 dark:hover:bg-slate-700/50'
                   }`}
                 >

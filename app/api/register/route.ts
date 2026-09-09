@@ -1,5 +1,5 @@
 ﻿import { NextResponse } from 'next/server';
-import { findUserByEmail, saveUser } from '@/lib/db';
+import { findUserByEmail, saveUser, updateUser } from '@/lib/db';
 import { User } from '@/lib/types';
 
 // RFC 5322 asosida sodda email regex
@@ -35,16 +35,24 @@ export async function POST(request: Request) {
     );
   }
 
-  // ─── Dublikat tekshiruvi ───
+  // ─── Mavjud foydalanuvchini tekshirish ───
   const existing = findUserByEmail(email);
+  
   if (existing) {
-    return NextResponse.json(
-      { error: 'Bu email bilan foydalanuvchi allaqachon ro\'yxatdan o\'tgan.' },
-      { status: 409 }
-    );
+    // Agar foydalanuvchi allaqachon mavjud bo'lsa, ma'lumotlarni yangilash
+    try {
+      const updatedUser = updateUser(existing.id, { name, email });
+      return NextResponse.json(
+        { success: true, user: { id: updatedUser.id, name: updatedUser.name, email: updatedUser.email } },
+        { status: 200 }
+      );
+    } catch (err) {
+      console.error('Update error:', err);
+      return NextResponse.json({ error: 'Yangilashda xato yuz berdi. Qayta urinib ko\'ring.' }, { status: 500 });
+    }
   }
 
-  // ─── Saqlash ───
+  // ─── Yangi foydalanuvchi yaratish ───
   const newUser: User = {
     id: `user-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
     name,

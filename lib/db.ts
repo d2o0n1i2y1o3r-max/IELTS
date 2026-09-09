@@ -138,3 +138,26 @@ export function saveUser(user: User): User {
     throw new Error(`Foydalanuvchini saqlashda xato: ${err}`);
   }
 }
+
+export function updateUser(userId: string, updates: Partial<User>): User {
+  try {
+    const users = getUsersData();
+    const userIndex = users.findIndex((u) => u.id === userId);
+    
+    if (userIndex === -1) {
+      throw new Error('Foydalanuvchi topilmadi');
+    }
+
+    const updatedUser = { ...users[userIndex], ...updates };
+    users[userIndex] = updatedUser;
+
+    if (!fs.existsSync(dataDir)) {
+      fs.mkdirSync(dataDir, { recursive: true });
+    }
+
+    fs.writeFileSync(usersPath, JSON.stringify({ users }, null, 2), 'utf8');
+    return updatedUser;
+  } catch (err) {
+    throw new Error(`Foydalanuvchini yangilashda xato: ${err}`);
+  }
+}
