@@ -24,6 +24,7 @@ export default function Navbar() {
     { href: '/mascot', label: 'AI Mascot', icon: Bot },
     { href: '/voice-chat', label: 'Ovozli suhbat', icon: PhoneCall },
     { href: '/auth', label: 'Profil', icon: User },
+    { href: 'https://repititor-ai-1-htufczg17-doniyor.vercel.app/', label: 'AI Repititor', icon: BookOpen },
   ];
 
   return (

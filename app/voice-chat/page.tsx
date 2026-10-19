@@ -225,6 +225,7 @@ export default function VoiceChatPage() {
 
     const synth = window.speechSynthesis;
     if (!synth) {
+      console.error('[TTS] Speech synthesis not available');
       isSpeakingRef.current = false;
       setVoiceState('idle');
       setActiveTtsVoice(null);
@@ -234,6 +235,7 @@ export default function VoiceChatPage() {
 
     synth.cancel();
     const utterance = new SpeechSynthesisUtterance(text);
+    console.log('[TTS] Speaking with browser TTS:', text);
 
     const applyVoice = () => {
       const voices = synth.getVoices();
