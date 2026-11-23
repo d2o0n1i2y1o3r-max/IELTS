@@ -326,7 +326,7 @@ export default function AuthPage() {
         </div>
 
         {/* Goal */}
-        {existingProfile.goal && (
+        {existingProfile.goal && ({Boolean(existingProfile.goal) && (
           <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-5 shadow-sm">
             <h3 className="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">
               Maqsad
