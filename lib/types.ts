@@ -1,5 +1,5 @@
 export type ExamPart = 'part1' | 'part2' | 'part3' | 'cefr';
-export type ModuleType = 'speaking' | 'writing' | 'reading' | 'listening' | 'full-test';
+export type ModuleType = 'speaking' | 'writing' | 'reading' | 'listening' | 'full-test' | 'learn';
 export type WritingTaskType = 'task1' | 'task2';
 
 export interface Question {
@@ -229,4 +229,52 @@ export interface User {
   email: string;
   createdAt: string;
   // passwordHash va boshqa maydonlar keyinchalik qo'shilishi mumkin
+}
+
+// ─── Learn Mode Types ───
+
+export type ExerciseType = 'multiple-choice' | 'fill-blank' | 'match-pairs' | 'error-correction';
+
+export interface Exercise {
+  id: string;
+  type: ExerciseType;
+  question: string;
+  options?: string[];
+  correctAnswer: string;
+  explanation: string;
+  translations?: Record<string, string>;
+}
+
+export interface Lesson {
+  id: string;
+  unitId: string;
+  order: number;
+  title: string;
+  exercises: Exercise[];
+}
+
+export interface Unit {
+  id: string;
+  order: number;
+  topic: string;
+  lessons: string[];
+}
+
+export interface LearnProgress {
+  userId: string;
+  completedLessons: Record<string, { stars: number; completedAt: string }>;
+  xp: number;
+  lastActiveDate: string;
+}
+
+export interface LearnSession {
+  id: string;
+  userId: string;
+  lessonId: string;
+  exercisesCompleted: string[];
+  correctCount: number;
+  totalExercises: number;
+  xpEarned: number;
+  duration: number;
+  completedAt: string;
 }

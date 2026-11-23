@@ -4,7 +4,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAppStore } from '@/lib/store';
 import { ListeningPassage } from '@/lib/types';
-import { Headphones, Clock, Play, Pause, RotateCcw, CheckCircle, XCircle, Sparkles, ArrowRight, Volume2 } from 'lucide-react';
+import { Headphones, Clock, Play, Pause, RotateCcw, CheckCircle, XCircle, Sparkles, ArrowRight, Volume2, AlertCircle } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 export default function ListeningPage() {
@@ -34,6 +34,7 @@ export default function ListeningPage() {
   const [results, setResults] = useState<any>(null);
   const [currentPosition, setCurrentPosition] = useState(0);
   const [speechRate, setSpeechRate] = useState(1);
+  const [evaluationError, setEvaluationError] = useState<string | null>(null);
   const speechRef = useRef<SpeechSynthesisUtterance | null>(null);
 
   useEffect(() => {
@@ -103,6 +104,7 @@ export default function ListeningPage() {
     if (!currentListeningPassage) return;
 
     handleStop();
+    setEvaluationError(null);
     setListeningState('idle');
     try {
       const res = await fetch('/api/evaluate-listening', {
@@ -116,6 +118,11 @@ export default function ListeningPage() {
           duration: elapsedTime
         })
       });
+
+      if (!res.ok) {
+        const errorData = await res.json();
+        throw new Error(errorData.error || 'Evaluation failed');
+      }
 
       const data = await res.json();
       setResults(data);
@@ -134,7 +141,13 @@ export default function ListeningPage() {
       }
     } catch (err) {
       console.error('Error evaluating listening:', err);
+      setEvaluationError('AI baholashda xatolik yuz berdi. Qaytadan urinib ko\'ring.');
     }
+  };
+
+  const handleRetryEvaluation = () => {
+    setEvaluationError(null);
+    handleSubmit();
   };
 
   const handleAnswerChange = (questionId: string, answer: string) => {
@@ -208,6 +221,21 @@ export default function ListeningPage() {
 
     return (
       <div className="max-w-5xl mx-auto space-y-8 pb-12">
+        {evaluationError && (
+          <div className="bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900 rounded-2xl p-4 flex items-start gap-3">
+            <AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
+            <div className="flex-1">
+              <p className="text-sm text-red-600 dark:text-red-400">{evaluationError}</p>
+              <button
+                onClick={handleRetryEvaluation}
+                className="mt-2 text-sm font-semibold text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300"
+              >
+                Qaytadan urinib ko'ring
+              </button>
+            </div>
+          </div>
+        )}
+
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-200 dark:border-slate-800">
           <div>
             <div className="flex items-center gap-2">

@@ -37,13 +37,13 @@ export async function POST(request: Request) {
     if (language === 'ru') langInstruction = "Rus tilida";
     if (language === 'en') langInstruction = "Ingliz tilida";
 
-    if (!process.env.MISTRAL_API_KEY) {
-      console.error('Missing MISTRAL_API_KEY environment variable');
+    if (!process.env.GITHUB_MODELS_TOKEN) {
+      console.error('Missing GITHUB_MODELS_TOKEN environment variable');
       const lastMessage = messages[messages.length - 1]?.content || '';
       let mood: 'calm' | 'agitated' = 'calm';
-      let reply = "Hozircha AI ulanish sozlanmagan. Iltimos, .env.local faylida MISTRAL_API_KEY o'rnating.";
-      if (language === 'ru') reply = "ИИ пока не настроен. Пожалуйста, установите MISTRAL_API_KEY в .env.local.";
-      if (language === 'en') reply = "AI is not configured yet. Please set MISTRAL_API_KEY in .env.local.";
+      let reply = "Hozircha AI ulanish sozlanmagan. Iltimos, .env.local faylida GITHUB_MODELS_TOKEN o'rnating.";
+      if (language === 'ru') reply = "ИИ пока не настроен. Пожалуйста, установите GITHUB_MODELS_TOKEN в .env.local.";
+      if (language === 'en') reply = "AI is not configured yet. Please set GITHUB_MODELS_TOKEN in .env.local.";
 
       if (lastMessage.toLowerCase().includes('xato') || lastMessage.toLowerCase().includes('yomon') || lastMessage.toLowerCase().includes('qiyin')) {
          mood = 'agitated';

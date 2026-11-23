@@ -3,6 +3,7 @@
   "tagline": "IELTS va CEFR uchun AI asosidagi og'zaki nutq mashg'ulotlari",
   "nav": {
     "home": "Bosh sahifa",
+    "learn": "O'rganish",
     "writing": "Yozish",
     "reading": "O'qish",
     "listening": "Tinglash",
@@ -112,5 +113,19 @@
     "search_placeholder": "Savollarni qidirish...",
     "start_this": "Ushbu Savolni Mashq Qilish",
     "all_parts": "Barcha Formatlar"
+  },
+  "learn": {
+    "title": "O'rganish Rejimi",
+    "subtitle": "IELTS lug'ati va grammatikasini bosqichma-bosqich o'zing",
+    "xp": "XP",
+    "check": "Tekshirish",
+    "continue": "Davom etish",
+    "correct": "To'g'ri!",
+    "incorrect": "Noto'g'ri",
+    "correct_answer": "To'g'ri javob",
+    "lesson_complete": "Dars tugadi!",
+    "great_job": "Ajoyib ish! Davom eting!",
+    "xp_earned": "Olingan XP",
+    "continue_learning": "O'rganishni davom ettirish"
   }
 }

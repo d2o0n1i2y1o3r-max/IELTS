@@ -52,17 +52,18 @@ export default function ConversationSidebar({
         <MessageSquare size={20} />
       </button>
 
-      <div className={`fixed inset-y-0 left-0 z-40 w-72 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 transform transition-transform duration-300 ease-in-out ${
+      <div className={`fixed inset-y-0 left-0 z-40 w-72 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 shadow-2xl transform transition-transform duration-300 ease-in-out ${
         isOpen ? 'translate-x-0' : '-translate-x-full'
-      } lg:translate-x-0`}>
+      }`}>
         <div className="flex flex-col h-full">
           <div className="p-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
             <h2 className="font-semibold text-slate-900 dark:text-white">Suhbatlar tarixi</h2>
             <button
               onClick={onToggle}
-              className="lg:hidden p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800"
+              title="Panelni yopish"
+              className="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-white transition-colors"
             >
-              <X size={18} className="text-slate-500 dark:text-slate-400" />
+              <X size={20} />
             </button>
           </div>
 
@@ -140,7 +141,7 @@ export default function ConversationSidebar({
       {isOpen && (
         <div
           onClick={onToggle}
-          className="fixed inset-0 bg-black/50 z-30 lg:hidden"
+          className="fixed inset-0 bg-black/40 backdrop-blur-sm z-30 transition-opacity"
         />
       )}
     </>

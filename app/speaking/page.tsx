@@ -7,7 +7,7 @@ import { Mic, MessageSquare, ArrowLeft } from 'lucide-react';
 import { useAppStore } from '@/lib/store';
 import Timer from '@/components/Timer';
 import AudioRecorder from '@/components/AudioRecorder';
-import { HelpCircle, Sparkles, Play, Pause, RotateCcw, CheckCircle } from 'lucide-react';
+import { HelpCircle, Sparkles, Play, Pause, RotateCcw, CheckCircle, AlertCircle } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 type SpeakingMode = 'practice' | 'free-talk';
@@ -65,9 +65,12 @@ function PracticeMode() {
     };
   }, [currentQuestion, setCurrentQuestion]);
 
+  const [evaluationError, setEvaluationError] = useState<string | null>(null);
+
   React.useEffect(() => {
     if (recordingState === 'evaluating' && currentQuestion) {
       const evaluate = async () => {
+        setEvaluationError(null);
         try {
           const res = await fetch('/api/evaluate', {
             method: 'POST',
@@ -79,6 +82,11 @@ function PracticeMode() {
               topic: currentQuestion?.topic
             })
           });
+
+          if (!res.ok) {
+            const errorData = await res.json();
+            throw new Error(errorData.error || 'Evaluation failed');
+          }
 
           const data = await res.json();
           const evaluation = data.evaluation;
@@ -110,7 +118,9 @@ function PracticeMode() {
             setRecordingState('completed');
             router.push(`/feedback/${sessionObj.id}`);
           }
-        } catch {
+        } catch (error) {
+          console.error('Speaking evaluation error:', error);
+          setEvaluationError('AI baholashda xatolik yuz berdi. Qaytadan urinib ko\'ring.');
           setRecordingState('idle');
         }
       };
@@ -137,8 +147,28 @@ function PracticeMode() {
 
   const isPart2 = currentQuestion.part === 'part2';
 
+  const handleRetryEvaluation = () => {
+    setEvaluationError(null);
+    setRecordingState('evaluating');
+  };
+
   return (
     <div className="max-w-4xl mx-auto space-y-8 pb-12">
+      {evaluationError && (
+        <div className="bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900 rounded-2xl p-4 flex items-start gap-3">
+          <AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
+          <div className="flex-1">
+            <p className="text-sm text-red-600 dark:text-red-400">{evaluationError}</p>
+            <button
+              onClick={handleRetryEvaluation}
+              className="mt-2 text-sm font-semibold text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300"
+            >
+              Qaytadan urinib ko'ring
+            </button>
+          </div>
+        </div>
+      )}
+
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-200 dark:border-slate-800">
         <div>
           <div className="flex items-center gap-2">

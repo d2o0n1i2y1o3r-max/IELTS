@@ -1,0 +1,90 @@
+{
+  "users": [
+    {
+      "id": "user-doniyor-admin",
+      "name": "Doniyor (Admin)",
+      "email": "d2o0n1i2y1o3r@gmail.com",
+      "isDemo": false,
+      "plan": "plus",
+      "activeModel": "chatgpt",
+      "createdAt": "2026-09-02T13:25:22.204Z",
+      "writingEssays": [
+        {
+          "id": "w-1",
+          "taskType": "task2",
+          "topic": "Technology and Education",
+          "essay": "In recent years, artificial intelligence has substantially transformed modern education. Many educators believe that AI can personalize learning experiences, whereas others argue that it might diminish face-to-face communication. In my opinion, integrating digital tools under teacher supervision yields the most effective results.",
+          "band": 7.5,
+          "date": "2026-11-03T14:20:00.000Z"
+        }
+      ],
+      "speakingResponses": [
+        {
+          "id": "s-1",
+          "question": "Describe an unforgettable journey you have taken.",
+          "transcript": "Well, to be honest, I really enjoyed visiting Samarkand last summer. The historic architecture and the Registan square took my breath away. It was truly an enriching cultural experience.",
+          "band": 7.5,
+          "date": "2026-11-04T10:15:00.000Z"
+        }
+      ],
+      "chats": [
+        {
+          "id": "c-1",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Speaking Part 2 ga qanday tayyorlansam bo'ladi?"
+            },
+            {
+              "role": "assistant",
+              "content": "Part 2 da 1 daqiqa tayyorgarlikdan unumli foydalaning va storytelling (hikoya) usulidan foydalanib 2 daqiqa to'xtamay gapiring!"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "user-dilshod-01",
+      "name": "Dilshod Ganiboyev",
+      "email": "dilgan0819@gmail.com",
+      "isDemo": false,
+      "plan": "pro",
+      "activeModel": "claude",
+      "createdAt": "2026-09-01T16:09:00.354Z",
+      "writingEssays": [
+        {
+          "id": "w-2",
+          "taskType": "task2",
+          "topic": "Climate Change and Renewable Energy",
+          "essay": "Global warming represents one of the most critical challenges of our time. Governments must prioritize investing in solar and wind power to curb greenhouse gas emissions and safeguard future generations.",
+          "band": 7,
+          "date": "2026-10-28T09:40:00.000Z"
+        }
+      ],
+      "speakingResponses": [
+        {
+          "id": "s-2",
+          "question": "Do you prefer working alone or in a team?",
+          "transcript": "I personally prefer teamwork because brainstorming with colleagues allows us to find innovative solutions faster.",
+          "band": 6.5,
+          "date": "2026-10-30T16:00:00.000Z"
+        }
+      ],
+      "chats": [
+        {
+          "id": "c-2",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Writing Task 1 da qanday bog'lovchilar ishlatiladi?"
+            },
+            {
+              "role": "assistant",
+              "content": "In contrast, conversely, dramatically increased, reached a plateau kabi so'zlardan foydalaning."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

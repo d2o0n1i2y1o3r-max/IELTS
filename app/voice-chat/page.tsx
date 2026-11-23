@@ -3,6 +3,8 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import AIMascot from '@/components/AIMascot';
 import { useMascotMood } from '@/hooks/useMascotMood';
+import DemoBlockModal from '@/components/DemoBlockModal';
+import { getStoredUser, UserProfile } from '@/lib/userAuth';
 import { User, MessageSquare, Square, Play, Mic, MicOff, Volume2, AlertCircle, Globe } from 'lucide-react';
 
 declare global {
@@ -31,7 +33,17 @@ export default function VoiceChatPage() {
   const [isConversationActive, setIsConversationActive] = useState(true);
   const [activeTtsVoice, setActiveTtsVoice] = useState<string | null>(null);
   const [selectedLang, setSelectedLang] = useState<AppLanguage>('uz');
+  const [currentUser, setCurrentUser] = useState<UserProfile | null>(null);
+  const [showDemoModal, setShowDemoModal] = useState(false);
   const endOfMessagesRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const u = getStoredUser();
+    setCurrentUser(u);
+    if (!u || u.isDemo) {
+      setShowDemoModal(true);
+    }
+  }, []);
 
   const recognitionRef = useRef<any>(null);
   const isRecognitionRunningRef = useRef(false);
@@ -560,6 +572,12 @@ export default function VoiceChatPage() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-[80vh] max-w-2xl mx-auto px-4 py-8 relative">
+      {showDemoModal && (
+        <DemoBlockModal
+          featureName="AI Ovozli Suhbat"
+          onClose={() => setShowDemoModal(false)}
+        />
+      )}
       {/* Language Selector ("Talaffuzni o'zgartirish") */}
       <div className="flex items-center gap-1.5 bg-white/80 dark:bg-slate-900/80 p-1.5 rounded-full border border-slate-200 dark:border-slate-800 shadow-sm backdrop-blur-sm mb-6">
         <span className="text-xs font-medium text-slate-500 dark:text-slate-400 pl-3 pr-1 flex items-center gap-1">

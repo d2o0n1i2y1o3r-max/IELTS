@@ -1,86 +1,46 @@
-﻿/**
- * Mistral AI — umumiy yordamchi funksiya.
- * API kaliti faqat process.env orqali o'qiladi.
- */
+// lib/cf-ai.ts
+// Re-exporting from lib/ai.js for backwards compatibility
 
-const MISTRAL_API_BASE = 'https://api.mistral.ai/v1';
+import { callAI as universalCallAI, parseJSON as universalParseJSON, checkRateLimit } from './ai';
 
-export interface MistralAIOptions {
-  model?: string;
+export interface AIOptions {
   maxTokens?: number;
   temperature?: number;
+  userId?: string;
 }
 
-/**
- * Mistral AI ga so'rov yuboradi va matn javob qaytaradi.
- */
+export async function callAI(
+  system: string,
+  user: string,
+  options: AIOptions = {}
+): Promise<string> {
+  return universalCallAI({
+    system,
+    user,
+    maxTokens: options.maxTokens ?? 800,
+    userId: options.userId ?? 'anonymous'
+  });
+}
+
+export function parseJSON<T>(raw: string): T | null {
+  return universalParseJSON(raw) as T | null;
+}
+
 export async function callCfAI(
   prompt: string,
-  options: MistralAIOptions = {}
+  options: AIOptions = {}
 ): Promise<string> {
-  const apiKey = process.env.MISTRAL_API_KEY;
-
-  if (!apiKey) {
-    throw new Error('MISTRAL_API_KEY .env.local da topilmadi');
-  }
-
-  const model = options.model ?? 'mistral-small-latest';
-  const url = `${MISTRAL_API_BASE}/chat/completions`;
-
-  const body = {
-    model: model,
-    messages: [
-      {
-        role: 'user',
-        content: prompt,
-      },
-    ],
-    max_tokens: options.maxTokens ?? 1024,
-    temperature: options.temperature ?? 0.2,
-  };
-
-  const res = await fetch(url, {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(body),
+  return universalCallAI({
+    system: 'You are a helpful AI assistant.',
+    user: prompt,
+    maxTokens: options.maxTokens ?? 800,
+    userId: options.userId ?? 'anonymous'
   });
-
-  if (!res.ok) {
-    const errText = await res.text().catch(() => res.statusText);
-    throw new Error(`Mistral AI xatosi (${res.status}): ${errText}`);
-  }
-
-  const data = await res.json() as {
-    choices?: Array<{ message?: { content?: string } }>;
-    error?: { message: string };
-  };
-
-  if (data.error) {
-    throw new Error(`Mistral API muvaffaqiyatsiz: ${data.error.message}`);
-  }
-
-  if (!data.choices || !data.choices[0] || !data.choices[0].message?.content) {
-    throw new Error('Bo\'sh javob');
-  }
-
-  return data.choices[0].message.content.trim();
 }
 
-/**
- * Mistral AI javobidan JSON ob'ektini xavfsiz ajratib oladi.
- * Markdown code block larini tozalab JSON parse qiladi.
- */
 export function parseCfAIJson<T>(raw: string): T | null {
-  try {
-    const cleaned = raw
-      .replace(/```json\s*/gi, '')
-      .replace(/```\s*/g, '')
-      .trim();
-    return JSON.parse(cleaned) as T;
-  } catch {
-    return null;
-  }
+  return universalParseJSON(raw) as T | null;
 }
+
+export { checkRateLimit };
+export default { callAI, parseJSON, callCfAI, parseCfAIJson };

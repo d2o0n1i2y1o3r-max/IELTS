@@ -1,0 +1,846 @@
+{
+  "lessons": [
+    {
+      "id": "lesson-1-1",
+      "unitId": "unit-1",
+      "order": 1,
+      "title": "Academic Vocabulary Basics",
+      "exercises": [
+        {
+          "id": "ex-1-1-1",
+          "type": "multiple-choice",
+          "question": "What does 'significant' mean in academic writing?",
+          "options": ["Important", "Small", "Quick", "Rare"],
+          "correctAnswer": "Important",
+          "explanation": "Significant means important or of consequence, commonly used in academic contexts."
+        },
+        {
+          "id": "ex-1-1-2",
+          "type": "fill-blank",
+          "question": "The study produced _____ results that changed our understanding.",
+          "options": ["significant", "significantly", "significance", "signify"],
+          "correctAnswer": "significant",
+          "explanation": "Use adjective form 'significant' to modify the noun 'results'."
+        },
+        {
+          "id": "ex-1-1-3",
+          "type": "multiple-choice",
+          "question": "Which word means 'to examine or investigate'?",
+          "options": ["Analyze", "Create", "Ignore", "Destroy"],
+          "correctAnswer": "Analyze",
+          "explanation": "Analyze means to examine or investigate something in detail."
+        },
+        {
+          "id": "ex-1-1-4",
+          "type": "fill-blank",
+          "question": "Researchers _____ the data carefully before drawing conclusions.",
+          "options": ["analyzed", "analyze", "analyzing", "analysis"],
+          "correctAnswer": "analyzed",
+          "explanation": "Use past tense 'analyzed' as the action happened before drawing conclusions."
+        },
+        {
+          "id": "ex-1-1-5",
+          "type": "error-correction",
+          "question": "Find and fix the error: 'The data shows that students are more motivated than never before.'",
+          "correctAnswer": "The data show that students are more motivated than ever before.",
+          "explanation": "Data is plural, so use 'show'. Also 'never before' should be 'ever before' in this context."
+        },
+        {
+          "id": "ex-1-1-6",
+          "type": "match-pairs",
+          "question": "Match: 'academic' with its meaning",
+          "options": ["Related to school", "Related to sports", "Related to food", "Related to music"],
+          "correctAnswer": "Related to school",
+          "explanation": "Academic relates to education, scholarship, or school."
+        },
+        {
+          "id": "ex-1-1-7",
+          "type": "multiple-choice",
+          "question": "What does 'crucial' mean?",
+          "options": ["Extremely important", "Small", "Simple", "Easy"],
+          "correctAnswer": "Extremely important",
+          "explanation": "Crucial means extremely important or decisive."
+        },
+        {
+          "id": "ex-1-1-8",
+          "type": "fill-blank",
+          "question": "It is _____ to follow the instructions carefully.",
+          "options": ["crucial", "crucially", "cruciate", "cruciation"],
+          "correctAnswer": "crucial",
+          "explanation": "Use adjective 'crucial' after 'it is'."
+        }
+      ]
+    },
+    {
+      "id": "lesson-1-2",
+      "unitId": "unit-1",
+      "order": 2,
+      "title": "Education Collocations",
+      "exercises": [
+        {
+          "id": "ex-1-2-1",
+          "type": "fill-blank",
+          "question": "Students need to _____ a research paper for their final assignment.",
+          "options": ["write", "make", "do", "conduct"],
+          "correctAnswer": "write",
+          "explanation": "The correct collocation is 'write a research paper'."
+        },
+        {
+          "id": "ex-1-2-2",
+          "type": "multiple-choice",
+          "question": "Which collocation is correct?",
+          "options": ["Make a decision", "Do a decision", "Create a decision", "Form a decision"],
+          "correctAnswer": "Make a decision",
+          "explanation": "The correct collocation is 'make a decision'."
+        },
+        {
+          "id": "ex-1-2-3",
+          "type": "fill-blank",
+          "question": "The professor will _____ a lecture on advanced mathematics.",
+          "options": ["give", "make", "do", "provide"],
+          "correctAnswer": "give",
+          "explanation": "The correct collocation is 'give a lecture'."
+        },
+        {
+          "id": "ex-1-2-4",
+          "type": "error-correction",
+          "question": "Fix the error: 'She made her homework last night.'",
+          "correctAnswer": "She did her homework last night.",
+          "explanation": "The correct collocation is 'do homework', not 'make homework'."
+        },
+        {
+          "id": "ex-1-2-5",
+          "type": "multiple-choice",
+          "question": "Which verb goes with 'progress'?",
+          "options": ["Make", "Do", "Take", "Get"],
+          "correctAnswer": "Make",
+          "explanation": "The correct collocation is 'make progress'."
+        },
+        {
+          "id": "ex-1-2-6",
+          "type": "fill-blank",
+          "question": "Students must _____ an exam to pass the course.",
+          "options": ["take", "make", "do", "get"],
+          "correctAnswer": "take",
+          "explanation": "The correct collocation is 'take an exam'."
+        },
+        {
+          "id": "ex-1-2-7",
+          "type": "match-pairs",
+          "question": "Match: 'acquire knowledge' with its meaning",
+          "options": ["Gain understanding", "Lose understanding", "Ignore understanding", "Forget understanding"],
+          "correctAnswer": "Gain understanding",
+          "explanation": "Acquire knowledge means to gain or obtain understanding."
+        },
+        {
+          "id": "ex-1-2-8",
+          "type": "error-correction",
+          "question": "Fix: 'He has a good education background.'",
+          "correctAnswer": "He has a good educational background.",
+          "explanation": "Use adjective form 'educational' to modify 'background'."
+        }
+      ]
+    },
+    {
+      "id": "lesson-1-3",
+      "unitId": "unit-1",
+      "order": 3,
+      "title": "Linking Words in Academic Writing",
+      "exercises": [
+        {
+          "id": "ex-1-3-1",
+          "type": "multiple-choice",
+          "question": "Which word shows contrast?",
+          "options": ["However", "Therefore", "Moreover", "Furthermore"],
+          "correctAnswer": "However",
+          "explanation": "However is used to show contrast between ideas."
+        },
+        {
+          "id": "ex-1-3-2",
+          "type": "fill-blank",
+          "question": "The study was small; _____, the results were significant.",
+          "options": ["however", "therefore", "moreover", "furthermore"],
+          "correctAnswer": "however",
+          "explanation": "Use 'however' to show contrast between small study and significant results."
+        },
+        {
+          "id": "ex-1-3-3",
+          "type": "multiple-choice",
+          "question": "Which word means 'for this reason'?",
+          "options": ["Consequently", "However", "Moreover", "Furthermore"],
+          "correctAnswer": "Consequently",
+          "explanation": "Consequently means 'as a result' or 'for this reason'."
+        },
+        {
+          "id": "ex-1-3-4",
+          "type": "fill-blank",
+          "question": "The data supports the hypothesis; _____, we can accept it.",
+          "options": ["consequently", "however", "moreover", "furthermore"],
+          "correctAnswer": "consequently",
+          "explanation": "Use 'consequently' to show the result."
+        },
+        {
+          "id": "ex-1-3-5",
+          "type": "error-correction",
+          "question": "Fix: 'She studied hard. So she passed the exam.'",
+          "correctAnswer": "She studied hard; therefore, she passed the exam.",
+          "explanation": "Use 'therefore' for academic writing instead of 'so'."
+        },
+        {
+          "id": "ex-1-3-6",
+          "type": "match-pairs",
+          "question": "Match: 'on the other hand' with its meaning",
+          "options": ["Conversely", "Similarly", "Therefore", "Moreover"],
+          "correctAnswer": "Conversely",
+          "explanation": "On the other hand means conversely or from a different perspective."
+        },
+        {
+          "id": "ex-1-3-7",
+          "type": "error-correction",
+          "question": "Fix: 'Furthermore, the study failed.'",
+          "correctAnswer": "However, the study failed.",
+          "explanation": "Use 'however' for negative or contrasting information, not 'furthermore'."
+        },
+        {
+          "id": "ex-1-3-8",
+          "type": "multiple-choice",
+          "question": "Which adds information?",
+          "options": ["Moreover", "However", "Therefore", "Consequently"],
+          "correctAnswer": "Moreover",
+          "explanation": "Moreover is used to add more information."
+        }
+      ]
+    },
+    {
+      "id": "lesson-1-4",
+      "unitId": "unit-1",
+      "order": 4,
+      "title": "Common Grammar Mistakes",
+      "exercises": [
+        {
+          "id": "ex-1-4-1",
+          "type": "error-correction",
+          "question": "Fix: 'A large amount of students are absent.'",
+          "correctAnswer": "A large number of students are absent.",
+          "explanation": "Use 'number' for countable nouns like students, not 'amount'."
+        },
+        {
+          "id": "ex-1-4-2",
+          "type": "fill-blank",
+          "question": "There _____ a lot of information available online.",
+          "options": ["is", "are", "were", "have"],
+          "correctAnswer": "is",
+          "explanation": "Information is uncountable, so use singular 'is'."
+        },
+        {
+          "id": "ex-1-4-3",
+          "type": "multiple-choice",
+          "question": "Which is correct?",
+          "options": ["The news is surprising", "The news are surprising", "The news be surprising", "The news were surprising"],
+          "correctAnswer": "The news is surprising",
+          "explanation": "News is uncountable and always singular."
+        },
+        {
+          "id": "ex-1-4-4",
+          "type": "error-correction",
+          "question": "Fix: 'She don't like studying.'",
+          "correctAnswer": "She doesn't like studying.",
+          "explanation": "Use 'doesn't' for third person singular, not 'don't'."
+        },
+        {
+          "id": "ex-1-4-5",
+          "type": "fill-blank",
+          "question": "The professor _____ in the office yesterday.",
+          "options": ["was", "were", "is", "are"],
+          "correctAnswer": "was",
+          "explanation": "Professor is singular, so use 'was' for past tense."
+        },
+        {
+          "id": "ex-1-4-6",
+          "type": "error-correction",
+          "question": "Fix: 'I advice him to study more.'",
+          "correctAnswer": "I advise him to study more.",
+          "explanation": "Use 'advise' (verb) not 'advice' (noun) here."
+        },
+        {
+          "id": "ex-1-4-7",
+          "type": "multiple-choice",
+          "question": "Which is correct?",
+          "options": ["She gave me advice", "She gave me advise", "She advice me", "She advised me an advice"],
+          "correctAnswer": "She gave me advice",
+          "explanation": "Advice is a noun, so use 'gave me advice'."
+        },
+        {
+          "id": "ex-1-4-8",
+          "type": "fill-blank",
+          "question": "Each student _____ submit their assignment on time.",
+          "options": ["must", "musts", "must to", "musting"],
+          "correctAnswer": "must",
+          "explanation": "Modal verbs like 'must' don't change form."
+        }
+      ]
+    },
+    {
+      "id": "lesson-2-1",
+      "unitId": "unit-2",
+      "order": 1,
+      "title": "Work & Career Vocabulary",
+      "exercises": [
+        {
+          "id": "ex-2-1-1",
+          "type": "multiple-choice",
+          "question": "What does 'collaborate' mean?",
+          "options": ["Work together", "Work alone", "Ignore others", "Compete"],
+          "correctAnswer": "Work together",
+          "explanation": "Collaborate means to work jointly with others."
+        },
+        {
+          "id": "ex-2-1-2",
+          "type": "fill-blank",
+          "question": "The team _____ on the project for three months.",
+          "options": ["collaborated", "collaborating", "collaborate", "collaboration"],
+          "correctAnswer": "collaborated",
+          "explanation": "Use past tense 'collaborated' for an action completed in the past."
+        },
+        {
+          "id": "ex-2-1-3",
+          "type": "multiple-choice",
+          "question": "What does 'responsibility' mean?",
+          "options": ["Duty or obligation", "Freedom", "Option", "Choice"],
+          "correctAnswer": "Duty or obligation",
+          "explanation": "Responsibility means the state or fact of having a duty to deal with something."
+        },
+        {
+          "id": "ex-2-1-4",
+          "type": "fill-blank",
+          "question": "She has many _____ at work.",
+          "options": ["responsibilities", "responsibility", "responsible", "responsibly"],
+          "correctAnswer": "responsibilities",
+          "explanation": "Use plural form 'responsibilities' with 'many'."
+        },
+        {
+          "id": "ex-2-1-5",
+          "type": "error-correction",
+          "question": "Fix: 'He got a promote at work.'",
+          "correctAnswer": "He got a promotion at work.",
+          "explanation": "Use noun 'promotion' not verb 'promote'."
+        },
+        {
+          "id": "ex-2-1-6",
+          "type": "match-pairs",
+          "question": "Match: 'deadline' with its meaning",
+          "options": ["Latest time by which something must be done", "Start time", "Meeting time", "Break time"],
+          "correctAnswer": "Latest time by which something must be done",
+          "explanation": "Deadline is the latest time or date by which something should be completed."
+        },
+        {
+          "id": "ex-2-1-7",
+          "type": "multiple-choice",
+          "question": "What does 'efficient' mean?",
+          "options": ["Working well without wasting time", "Working slowly", "Making mistakes", "Being lazy"],
+          "correctAnswer": "Working well without wasting time",
+          "explanation": "Efficient means achieving maximum productivity with minimum wasted effort."
+        },
+        {
+          "id": "ex-2-1-8",
+          "type": "fill-blank",
+          "question": "The new system is more _____ than the old one.",
+          "options": ["efficient", "efficiency", "efficiently", "efficacy"],
+          "correctAnswer": "efficient",
+          "explanation": "Use adjective 'efficient' to describe the system."
+        }
+      ]
+    },
+    {
+      "id": "lesson-2-2",
+      "unitId": "unit-2",
+      "order": 2,
+      "title": "Workplace Collocations",
+      "exercises": [
+        {
+          "id": "ex-2-2-1",
+          "type": "fill-blank",
+          "question": "She wants to _____ a career in marketing.",
+          "options": ["pursue", "chase", "follow", "catch"],
+          "correctAnswer": "pursue",
+          "explanation": "The correct collocation is 'pursue a career'."
+        },
+        {
+          "id": "ex-2-2-2",
+          "type": "multiple-choice",
+          "question": "Which collocation is correct?",
+          "options": ["Make a meeting", "Do a meeting", "Have a meeting", "Take a meeting"],
+          "correctAnswer": "Have a meeting",
+          "explanation": "The correct collocation is 'have a meeting'."
+        },
+        {
+          "id": "ex-2-2-3",
+          "type": "fill-blank",
+          "question": "They _____ a job interview tomorrow.",
+          "options": ["have", "make", "do", "take"],
+          "correctAnswer": "have",
+          "explanation": "The correct collocation is 'have a job interview'."
+        },
+        {
+          "id": "ex-2-2-4",
+          "type": "error-correction",
+          "question": "Fix: 'He made a salary last year.'",
+          "correctAnswer": "He earned a salary last year.",
+          "explanation": "Use 'earn a salary' not 'make a salary'."
+        },
+        {
+          "id": "ex-2-2-5",
+          "type": "multiple-choice",
+          "question": "Which verb goes with 'experience'?",
+          "options": ["Gain", "Make", "Do", "Take"],
+          "correctAnswer": "Gain",
+          "explanation": "The correct collocation is 'gain experience'."
+        },
+        {
+          "id": "ex-2-2-6",
+          "type": "fill-blank",
+          "question": "She _____ valuable experience during her internship.",
+          "options": ["gained", "gain", "gaining", "gains"],
+          "correctAnswer": "gained",
+          "explanation": "Use past tense 'gained' for experience already obtained."
+        },
+        {
+          "id": "ex-2-2-7",
+          "type": "match-pairs",
+          "question": "Match: 'apply for' with its meaning",
+          "options": ["Request formally", "Reject", "Ignore", "Cancel"],
+          "correctAnswer": "Request formally",
+          "explanation": "Apply for means to make a formal request or application."
+        },
+        {
+          "id": "ex-2-2-8",
+          "type": "error-correction",
+          "question": "Fix: 'She applied at the job.'",
+          "correctAnswer": "She applied for the job.",
+          "explanation": "Use 'apply for' not 'apply at'."
+        }
+      ]
+    },
+    {
+      "id": "lesson-2-3",
+      "unitId": "unit-2",
+      "order": 3,
+      "title": "Professional Communication",
+      "exercises": [
+        {
+          "id": "ex-2-3-1",
+          "type": "multiple-choice",
+          "question": "What does 'professional' mean?",
+          "options": ["Relating to a profession", "Unskilled", "Amateur", "Informal"],
+          "correctAnswer": "Relating to a profession",
+          "explanation": "Professional means relating to a profession or showing competence."
+        },
+        {
+          "id": "ex-2-3-2",
+          "type": "fill-blank",
+          "question": "She maintains a _____ attitude at work.",
+          "options": ["professional", "profession", "professionally", "professor"],
+          "correctAnswer": "professional",
+          "explanation": "Use adjective 'professional' to describe the attitude."
+        },
+        {
+          "id": "ex-2-3-3",
+          "type": "multiple-choice",
+          "question": "What does 'negotiate' mean?",
+          "options": ["Discuss to reach agreement", "Refuse", "Ignore", "Accept immediately"],
+          "correctAnswer": "Discuss to reach agreement",
+          "explanation": "Negotiate means to try to reach an agreement through discussion."
+        },
+        {
+          "id": "ex-2-3-4",
+          "type": "fill-blank",
+          "question": "They _____ the contract terms successfully.",
+          "options": ["negotiated", "negotiate", "negotiating", "negotiation"],
+          "correctAnswer": "negotiated",
+          "explanation": "Use past tense 'negotiated' for completed action."
+        },
+        {
+          "id": "ex-2-3-5",
+          "type": "error-correction",
+          "question": "Fix: 'She gave a presentation at the meeting.'",
+          "correctAnswer": "She gave a presentation at the meeting.",
+          "explanation": "This is actually correct! No error to fix."
+        },
+        {
+          "id": "ex-2-3-6",
+          "type": "match-pairs",
+          "question": "Match: 'resume' with its meaning",
+          "options": ["Document listing qualifications", "Continue doing something", "Stop work", "Take a break"],
+          "correctAnswer": "Document listing qualifications",
+          "explanation": "A resume is a document listing a person's qualifications and experience."
+        },
+        {
+          "id": "ex-2-3-7",
+          "type": "error-correction",
+          "question": "Fix: 'He resigned from the job yesterday.'",
+          "correctAnswer": "He resigned from the job yesterday.",
+          "explanation": "This is correct! No error to fix."
+        },
+        {
+          "id": "ex-2-3-8",
+          "type": "multiple-choice",
+          "question": "What does 'delegate' mean?",
+          "options": ["Assign responsibility to others", "Do everything yourself", "Ignore tasks", "Cancel tasks"],
+          "correctAnswer": "Assign responsibility to others",
+          "explanation": "Delegate means to entrust a task or responsibility to another person."
+        }
+      ]
+    },
+    {
+      "id": "lesson-2-4",
+      "unitId": "unit-2",
+      "order": 4,
+      "title": "Business Documents",
+      "exercises": [
+        {
+          "id": "ex-2-4-1",
+          "type": "error-correction",
+          "question": "Fix: 'She wrote a report to the manager.'",
+          "correctAnswer": "She wrote a report to the manager.",
+          "explanation": "This is correct! No error to fix."
+        },
+        {
+          "id": "ex-2-4-2",
+          "type": "fill-blank",
+          "question": "The manager _____ the proposal yesterday.",
+          "options": ["approved", "approve", "approving", "approval"],
+          "correctAnswer": "approved",
+          "explanation": "Use past tense 'approved' for completed action."
+        },
+        {
+          "id": "ex-2-4-3",
+          "type": "multiple-choice",
+          "question": "Which is correct?",
+          "options": ["Submit a report", "Send a report", "Give a report", "All are correct"],
+          "correctAnswer": "All are correct",
+          "explanation": "All three collocations are acceptable in different contexts."
+        },
+        {
+          "id": "ex-2-4-4",
+          "type": "error-correction",
+          "question": "Fix: 'She signed in the contract.'",
+          "correctAnswer": "She signed the contract.",
+          "explanation": "Use 'sign the contract' not 'sign in'."
+        },
+        {
+          "id": "ex-2-4-5",
+          "type": "fill-blank",
+          "question": "They _____ the agreement last week.",
+          "options": ["signed", "sign", "signing", "signature"],
+          "correctAnswer": "signed",
+          "explanation": "Use past tense 'signed' for completed action."
+        },
+        {
+          "id": "ex-2-4-6",
+          "type": "multiple-choice",
+          "question": "What does 'mandatory' mean?",
+          "options": ["Required", "Optional", "Suggested", "Recommended"],
+          "correctAnswer": "Required",
+          "explanation": "Mandatory means required by law or rule; compulsory."
+        },
+        {
+          "id": "ex-2-4-7",
+          "type": "match-pairs",
+          "question": "Match: 'agenda' with its meaning",
+          "options": ["List of items to be discussed", "List of completed items", "Personal goals", "Future plans"],
+          "correctAnswer": "List of items to be discussed",
+          "explanation": "An agenda is a list of items to be discussed at a meeting."
+        },
+        {
+          "id": "ex-2-4-8",
+          "type": "fill-blank",
+          "question": "The meeting _____ was quite long.",
+          "options": ["agenda", "agendas", "agend", "agendum"],
+          "correctAnswer": "agenda",
+          "explanation": "Use 'agenda' as a noun to describe the meeting plan."
+        }
+      ]
+    },
+    {
+      "id": "lesson-3-1",
+      "unitId": "unit-3",
+      "order": 1,
+      "title": "Environmental Vocabulary",
+      "exercises": [
+        {
+          "id": "ex-3-1-1",
+          "type": "multiple-choice",
+          "question": "What does 'sustainable' mean?",
+          "options": ["Able to be maintained", "Temporary", "Harmful", "Wasteful"],
+          "correctAnswer": "Able to be maintained",
+          "explanation": "Sustainable means able to be maintained at a certain rate or level."
+        },
+        {
+          "id": "ex-3-1-2",
+          "type": "fill-blank",
+          "question": "We need _____ energy sources.",
+          "options": ["sustainable", "sustain", "sustainability", "sustaining"],
+          "correctAnswer": "sustainable",
+          "explanation": "Use adjective 'sustainable' to describe energy sources."
+        },
+        {
+          "id": "ex-3-1-3",
+          "type": "multiple-choice",
+          "question": "What does 'pollution' mean?",
+          "options": ["Contamination of environment", "Clean air", "Healthy environment", "Natural state"],
+          "correctAnswer": "Contamination of environment",
+          "explanation": "Pollution is the introduction of harmful materials into the environment."
+        },
+        {
+          "id": "ex-3-1-4",
+          "type": "fill-blank",
+          "question": "Air _____ is a serious problem in many cities.",
+          "options": ["pollution", "pollute", "polluting", "pollutant"],
+          "correctAnswer": "pollution",
+          "explanation": "Use noun 'pollution' to describe the problem."
+        },
+        {
+          "id": "ex-3-1-5",
+          "type": "error-correction",
+          "question": "Fix: 'The environment is damages by plastic waste.'",
+          "correctAnswer": "The environment is damaged by plastic waste.",
+          "explanation": "Use passive voice 'is damaged' not 'is damages'."
+        },
+        {
+          "id": "ex-3-1-6",
+          "type": "match-pairs",
+          "question": "Match: 'renewable' with its meaning",
+          "options": ["Can be replenished", "Cannot be replaced", "Permanent", "Finite"],
+          "correctAnswer": "Can be replenished",
+          "explanation": "Renewable means capable of being replaced naturally."
+        },
+        {
+          "id": "ex-3-1-7",
+          "type": "multiple-choice",
+          "question": "What does 'conservation' mean?",
+          "options": ["Protection from harm", "Destruction", "Waste", "Pollution"],
+          "correctAnswer": "Protection from harm",
+          "explanation": "Conservation means the protection of something from harm or loss."
+        },
+        {
+          "id": "ex-3-1-8",
+          "type": "fill-blank",
+          "question": "Water _____ is important for everyone.",
+          "options": ["conservation", "conserve", "conserving", "conserved"],
+          "correctAnswer": "conservation",
+          "explanation": "Use noun 'conservation' to describe the practice."
+        }
+      ]
+    },
+    {
+      "id": "lesson-3-2",
+      "unitId": "unit-3",
+      "order": 2,
+      "title": "Environmental Issues",
+      "exercises": [
+        {
+          "id": "ex-3-2-1",
+          "type": "fill-blank",
+          "question": "Global _____ is a major concern.",
+          "options": ["warming", "warm", "warmingly", "warmed"],
+          "correctAnswer": "warming",
+          "explanation": "Use noun 'warming' in 'global warming'."
+        },
+        {
+          "id": "ex-3-2-2",
+          "type": "multiple-choice",
+          "question": "Which collocation is correct?",
+          "options": ["Climate change", "Climate changing", "Climate changes", "Climate changed"],
+          "correctAnswer": "Climate change",
+          "explanation": "The correct collocation is 'climate change'."
+        },
+        {
+          "id": "ex-3-2-3",
+          "type": "fill-blank",
+          "question": "We must reduce carbon _____.",
+          "options": ["emissions", "emission", "emitting", "emitted"],
+          "correctAnswer": "emissions",
+          "explanation": "Use plural 'emissions' for carbon output."
+        },
+        {
+          "id": "ex-3-2-4",
+          "type": "error-correction",
+          "question": "Fix: 'We should protect the nature.'",
+          "correctAnswer": "We should protect nature.",
+          "explanation": "Don't use 'the' before 'nature' when referring to the natural world in general."
+        },
+        {
+          "id": "ex-3-2-5",
+          "type": "multiple-choice",
+          "question": "What does 'biodiversity' mean?",
+          "options": ["Variety of life", "Single species", "Extinction", "Pollution"],
+          "correctAnswer": "Variety of life",
+          "explanation": "Biodiversity is the variety of plant and animal life in a particular habitat."
+        },
+        {
+          "id": "ex-3-2-6",
+          "type": "fill-blank",
+          "question": "The rainforest has high _____.",
+          "options": ["biodiversity", "biodiverse", "biodiversities", "biodiversify"],
+          "correctAnswer": "biodiversity",
+          "explanation": "Use noun 'biodiversity' to describe the variety."
+        },
+        {
+          "id": "ex-3-2-7",
+          "type": "match-pairs",
+          "question": "Match: 'deforestation' with its meaning",
+          "options": ["Clearing of forests", "Planting trees", "Growing forests", "Protecting forests"],
+          "correctAnswer": "Clearing of forests",
+          "explanation": "Deforestation is the action of clearing a wide area of trees."
+        },
+        {
+          "id": "ex-3-2-8",
+          "type": "error-correction",
+          "question": "Fix: 'Many animals is endangered.'",
+          "correctAnswer": "Many animals are endangered.",
+          "explanation": "Use 'are' for plural subject 'animals'."
+        }
+      ]
+    },
+    {
+      "id": "lesson-3-3",
+      "unitId": "unit-3",
+      "order": 3,
+      "title": "Environmental Solutions",
+      "exercises": [
+        {
+          "id": "ex-3-3-1",
+          "type": "multiple-choice",
+          "question": "What does 'recycle' mean?",
+          "options": ["Convert waste into reusable material", "Throw away", "Burn", "Ignore"],
+          "correctAnswer": "Convert waste into reusable material",
+          "explanation": "Recycle means to convert waste into reusable material."
+        },
+        {
+          "id": "ex-3-3-2",
+          "type": "fill-blank",
+          "question": "We should _____ plastic bottles.",
+          "options": ["recycle", "recycling", "recyclable", "recycled"],
+          "correctAnswer": "recycle",
+          "explanation": "Use verb 'recycle' for the action."
+        },
+        {
+          "id": "ex-3-3-3",
+          "type": "multiple-choice",
+          "question": "What does 'reduce' mean?",
+          "options": ["Make less", "Make more", "Keep same", "Increase"],
+          "correctAnswer": "Make less",
+          "explanation": "Reduce means to make smaller or less in amount."
+        },
+        {
+          "id": "ex-3-3-4",
+          "type": "fill-blank",
+          "question": "We must _____ our energy consumption.",
+          "options": ["reduce", "reduction", "reducing", "reduced"],
+          "correctAnswer": "reduce",
+          "explanation": "Use verb 'reduce' for the action."
+        },
+        {
+          "id": "ex-3-3-5",
+          "type": "error-correction",
+          "question": "Fix: 'We need to reuse and recycling.'",
+          "correctAnswer": "We need to reuse and recycle.",
+          "explanation": "Use verb 'recycle' not noun 'recycling'."
+        },
+        {
+          "id": "ex-3-3-6",
+          "type": "match-pairs",
+          "question": "Match: 'eco-friendly' with its meaning",
+          options": ["Not harmful to environment", "Harmful to environment", "Expensive", "Cheap"],
+          "correctAnswer": "Not harmful to environment",
+          "explanation": "Eco-friendly means not harmful to the environment."
+        },
+        {
+          "id": "ex-3-3-7",
+          "type": "error-correction",
+          "question": "Fix: 'Solar energy are renewable.'",
+          "correctAnswer": "Solar energy is renewable.",
+          "explanation": "Use 'is' for singular subject 'energy'."
+        },
+        {
+          "id": "ex-3-3-8",
+          "type": "multiple-choice",
+          "question": "What does 'preserve' mean?",
+          "options": ["Maintain in original state", "Change", "Destroy", "Damage"],
+          "correctAnswer": "Maintain in original state",
+          "explanation": "Preserve means to maintain something in its original or existing state."
+        }
+      ]
+    },
+    {
+      "id": "lesson-3-4",
+      "unitId": "unit-3",
+      "order": 4,
+      "title": "Climate Change Impact",
+      "exercises": [
+        {
+          "id": "ex-3-4-1",
+          "type": "error-correction",
+          "question": "Fix: 'The ice caps is melting.'",
+          "correctAnswer": "The ice caps are melting.",
+          "explanation": "Use 'are' for plural subject 'caps'."
+        },
+        {
+          "id": "ex-3-4-2",
+          "type": "fill-blank",
+          "question": "Sea levels _____ rising.",
+          "options": ["are", "is", "were", "be"],
+          "correctAnswer": "are",
+          "explanation": "Use 'are' for plural subject 'levels'."
+        },
+        {
+          "id": "ex-3-4-3",
+          "type": "multiple-choice",
+          "question": "Which is correct?",
+          "options": ["Extreme weather events", "Extreme weathers", "Extreme weather event", "Extreme weathers event"],
+          "correctAnswer": "Extreme weather events",
+          "explanation": "Use plural 'events' with 'extreme weather'."
+        },
+        {
+          "id": "ex-3-4-4",
+          "type": "error-correction",
+          "question": "Fix: 'Climate change causing problems.'",
+          "correctAnswer": "Climate change causes problems.",
+          "explanation": "Use present tense 'causes' for a general fact."
+        },
+        {
+          "id": "ex-3-4-5",
+          "type": "fill-blank",
+          "question": "Temperature _____ increased significantly.",
+          "options": ["has", "have", "had", "having"],
+          "correctAnswer": "has",
+          "explanation": "Use 'has' with singular subject 'temperature'."
+        },
+        {
+          "id": "ex-3-4-6",
+          "type": "multiple-choice",
+          "question": "What does 'adapt' mean?",
+          "options": ["Adjust to new conditions", "Stay the same", "Refuse to change", "Ignore change"],
+          "correctAnswer": "Adjust to new conditions",
+          "explanation": "Adapt means to adjust or modify to new conditions."
+        },
+        {
+          "id": "ex-3-4-7",
+          "type": "match-pairs",
+          "question": "Match: 'mitigate' with its meaning",
+          "options": ["Make less severe", "Make worse", "Ignore", "Increase"],
+          "correctAnswer": "Make less severe",
+          "explanation": "Mitigate means to make something less severe or serious."
+        },
+        {
+          "id": "ex-3-4-8",
+          "type": "fill-blank",
+          "question": "We must _____ the effects of climate change.",
+          "options": ["mitigate", "mitigation", "mitigating", "mitigated"],
+          "correctAnswer": "mitigate",
+          "explanation": "Use verb 'mitigate' for the action."
+        }
+      ]
+    }
+  ]
+}

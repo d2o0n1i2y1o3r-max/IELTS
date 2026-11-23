@@ -11,7 +11,8 @@ const moduleIcons: Record<ModuleType, any> = {
   reading: BookOpen,
   writing: PenTool,
   speaking: Mic,
-  'full-test': Trophy
+  'full-test': Trophy,
+  learn: Trophy
 };
 
 const moduleNames: Record<ModuleType, string> = {
@@ -19,7 +20,8 @@ const moduleNames: Record<ModuleType, string> = {
   reading: 'Reading',
   writing: 'Writing',
   speaking: 'Speaking',
-  'full-test': 'Full Test'
+  'full-test': 'Full Test',
+  learn: 'Learn'
 };
 
 const moduleColors: Record<ModuleType, string> = {
@@ -27,7 +29,8 @@ const moduleColors: Record<ModuleType, string> = {
   reading: 'bg-emerald-50 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400',
   writing: 'bg-blue-50 dark:bg-blue-950 text-blue-600 dark:text-blue-400',
   speaking: 'bg-brand-50 dark:bg-brand-950 text-brand-600 dark:text-brand-400',
-  'full-test': 'bg-amber-50 dark:bg-amber-950 text-amber-600 dark:text-amber-400'
+  'full-test': 'bg-amber-50 dark:bg-amber-950 text-amber-600 dark:text-amber-400',
+  learn: 'bg-pink-50 dark:bg-pink-950 text-pink-600 dark:text-pink-400'
 };
 
 export default function FullTestResultsPage() {

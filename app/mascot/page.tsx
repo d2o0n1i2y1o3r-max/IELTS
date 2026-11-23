@@ -5,7 +5,9 @@ import AIMascot from '@/components/AIMascot';
 import { useMascotMood } from '@/hooks/useMascotMood';
 import { useConversationStorage } from '@/hooks/useConversationStorage';
 import ConversationSidebar from '@/components/ConversationSidebar';
-import { Send, User, Menu } from 'lucide-react';
+import DemoBlockModal from '@/components/DemoBlockModal';
+import { getStoredUser, UserProfile } from '@/lib/userAuth';
+import { Send, User, Menu, Sparkles, Cpu } from 'lucide-react';
 
 interface Message {
   id: string;
@@ -36,7 +38,13 @@ export default function MascotChatPage() {
   const [input, setInput] = useState('');
   const [isThinking, setIsThinking] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [currentUser, setCurrentUser] = useState<UserProfile | null>(null);
+  const [showDemoModal, setShowDemoModal] = useState(false);
   const endOfMessagesRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setCurrentUser(getStoredUser());
+  }, []);
 
   useEffect(() => {
     endOfMessagesRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -61,6 +69,10 @@ export default function MascotChatPage() {
 
   const handleSend = async (e?: React.FormEvent) => {
     e?.preventDefault();
+    if (!currentUser || currentUser.isDemo) {
+      setShowDemoModal(true);
+      return;
+    }
     if (!input.trim() || isThinking) return;
 
     const userMessage: Message = { id: Date.now().toString(), role: 'user', content: input.trim() };
@@ -184,6 +196,13 @@ export default function MascotChatPage() {
 
   return (
     <div className="flex min-h-screen">
+      {showDemoModal && (
+        <DemoBlockModal
+          featureName="AI Buddy Jonli Suhbat"
+          onClose={() => setShowDemoModal(false)}
+        />
+      )}
+
       <ConversationSidebar
         conversations={conversations}
         currentConversationId={currentConversationId}
@@ -195,12 +214,16 @@ export default function MascotChatPage() {
       />
 
       <div className="flex-1 flex flex-col lg:flex-row gap-8 max-w-5xl mx-auto min-h-[75vh] p-4 lg:p-8">
-        <button
-          onClick={() => setSidebarOpen(true)}
-          className="lg:hidden mb-4 p-2 rounded-lg bg-slate-100 dark:bg-slate-800"
-        >
-          <Menu size={20} className="text-slate-600 dark:text-slate-400" />
-        </button>
+        {/* Toggle sidebar button for small screens */}
+        <div className="lg:hidden flex items-center justify-between mb-2">
+          <button
+            onClick={() => setSidebarOpen(true)}
+            className="flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-sm font-medium"
+          >
+            <Menu size={18} />
+            <span>Suhbatlar</span>
+          </button>
+        </div>
 
         <div className="lg:w-1/3 flex flex-col items-center justify-start space-y-6">
           <div className="text-center space-y-2">
@@ -226,7 +249,30 @@ export default function MascotChatPage() {
 
         <div className="lg:w-2/3 flex flex-col bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl shadow-sm overflow-hidden h-[600px]">
           <div className="px-6 py-4 border-b border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50 flex justify-between items-center">
-            <h2 className="font-semibold text-slate-800 dark:text-slate-200">Suhbat</h2>
+            <div className="flex items-center gap-3">
+              <button
+                type="button"
+                onClick={() => setSidebarOpen(!sidebarOpen)}
+                title={sidebarOpen ? "Suhbatlar tarixini yashirish" : "Suhbatlar tarixini ochish"}
+                className="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition-colors flex items-center gap-1.5 text-xs font-semibold"
+              >
+                <Menu size={16} />
+                <span>Suhbatlar</span>
+              </button>
+              <h2 className="font-semibold text-slate-800 dark:text-slate-200">Suhbat</h2>
+            </div>
+
+            {currentUser && !currentUser.isDemo && (
+              <div className="flex items-center gap-1.5 px-3 py-1 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-xs font-bold">
+                <Cpu className="w-3.5 h-3.5" />
+                <span className="capitalize">{currentUser.activeModel || 'Gemini'}</span>
+                {currentUser.plan !== 'free' && (
+                  <span className="text-[10px] bg-blue-600 text-white px-1.5 py-0.2 rounded font-black uppercase">
+                    {currentUser.plan}
+                  </span>
+                )}
+              </div>
+            )}
           </div>
 
           <div className="flex-1 overflow-y-auto p-6 space-y-6">
@@ -279,6 +325,18 @@ export default function MascotChatPage() {
           </div>
 
           <div className="p-4 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+            {currentUser?.isDemo && (
+              <div className="mb-3 p-2.5 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900 text-xs text-amber-800 dark:text-amber-300 flex items-center justify-between">
+                <span>⚠️ Demo versiyada AI suhbat cheklangan.</span>
+                <button
+                  type="button"
+                  onClick={() => setShowDemoModal(true)}
+                  className="font-bold underline hover:text-amber-900"
+                >
+                  Google orqali ochish
+                </button>
+              </div>
+            )}
             <form onSubmit={handleSend} className="flex items-center gap-2 relative">
               <input
                 type="text"

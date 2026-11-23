@@ -46,6 +46,13 @@ interface AppState {
   fullTestResults: Record<ModuleType, any>;
   fullTestCompleted: boolean;
 
+  // Learn mode
+  currentLesson: any;
+  currentExerciseIndex: number;
+  exerciseResults: Record<string, boolean>;
+  learnProgress: any;
+  soundEnabled: boolean;
+
   setSelectedPart: (part: ExamPart) => void;
   setSelectedTopic: (topic: string) => void;
   setCurrentQuestion: (q: Question | null) => void;
@@ -87,6 +94,14 @@ interface AppState {
   setFullTestResult: (module: ModuleType, result: any) => void;
   completeFullTest: () => void;
   resetFullTest: () => void;
+
+  // Learn mode actions
+  setLearnProgress: (progress: any) => void;
+  setCurrentLesson: (lesson: any) => void;
+  setCurrentExerciseIndex: (index: number) => void;
+  addExerciseResult: (exerciseId: string, correct: boolean) => void;
+  resetExerciseResults: () => void;
+  toggleSound: () => void;
 }
 
 export const useAppStore = create<AppState>((set, get) => ({
@@ -151,6 +166,13 @@ export const useAppStore = create<AppState>((set, get) => ({
   currentModuleInSequence: null,
   fullTestResults: {} as Record<ModuleType, any>,
   fullTestCompleted: false,
+
+  // Learn mode
+  learnProgress: null,
+  currentLesson: null,
+  currentExerciseIndex: 0,
+  exerciseResults: {},
+  soundEnabled: true,
 
   setSelectedPart: (selectedPart) => set({ selectedPart }),
   setSelectedTopic: (selectedTopic) => set({ selectedTopic }),
@@ -242,5 +264,19 @@ export const useAppStore = create<AppState>((set, get) => ({
     currentModuleInSequence: null,
     fullTestResults: {} as Record<ModuleType, any>,
     fullTestCompleted: false
-  })
+  }),
+
+  // Learn mode actions
+  setLearnProgress: (learnProgress) => set({ learnProgress }),
+  setCurrentLesson: (currentLesson) => set({
+    currentLesson,
+    currentExerciseIndex: 0,
+    exerciseResults: {}
+  }),
+  setCurrentExerciseIndex: (currentExerciseIndex) => set({ currentExerciseIndex }),
+  addExerciseResult: (exerciseId, correct) => set((state) => ({
+    exerciseResults: { ...state.exerciseResults, [exerciseId]: correct }
+  })),
+  resetExerciseResults: () => set({ exerciseResults: {} }),
+  toggleSound: () => set((state) => ({ soundEnabled: !state.soundEnabled }))
 }));

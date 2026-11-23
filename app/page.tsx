@@ -18,6 +18,19 @@ export default function HomePage() {
   const [selectedCategory, setSelectedCategory] = useState<string>('All Topics');
 
   useEffect(() => {
+    // Agar foydalanuvchi hali ro'yxatdan o'tmagan bo'lsa, ro'yxatdan o'tish sahifasiga yo'naltirish
+    if (typeof window !== 'undefined') {
+      try {
+        const savedProfile = localStorage.getItem('ielts_user_profile');
+        if (!savedProfile) {
+          router.replace('/auth');
+          return;
+        }
+      } catch (e) {
+        console.warn('Profile check error:', e);
+      }
+    }
+
     async function loadData() {
       try {
         const [qRes, hRes] = await Promise.all([

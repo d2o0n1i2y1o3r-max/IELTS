@@ -3,6 +3,7 @@
   "tagline": "AI-Powered Speaking Practice for IELTS & CEFR",
   "nav": {
     "home": "Home",
+    "learn": "Learn",
     "writing": "Writing",
     "reading": "Reading",
     "listening": "Listening",
@@ -112,5 +113,19 @@
     "search_placeholder": "Search prompts...",
     "start_this": "Practice This Prompt",
     "all_parts": "All Exam Formats"
+  },
+  "learn": {
+    "title": "Learn Mode",
+    "subtitle": "Master IELTS vocabulary and grammar step by step",
+    "xp": "XP",
+    "check": "Check",
+    "continue": "Continue",
+    "correct": "Correct!",
+    "incorrect": "Incorrect",
+    "correct_answer": "Correct answer",
+    "lesson_complete": "Lesson Complete!",
+    "great_job": "Great job! Keep it up!",
+    "xp_earned": "XP Earned",
+    "continue_learning": "Continue Learning"
   }
 }

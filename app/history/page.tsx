@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useAppStore } from '@/lib/store';
 import { PracticeSession, ModuleType, FullTestSession } from '@/lib/types';
 import HistoryChart from '@/components/HistoryChart';
-import { History, Award, Trash2, ChevronRight, Mic, Calendar, Clock, PenTool, BookOpen, Headphones, Trophy } from 'lucide-react';
+import { History, Award, Trash2, ChevronRight, Mic, Calendar, Clock, PenTool, BookOpen, Headphones, Trophy, FileText } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 const moduleIcons: Record<ModuleType, any> = {
@@ -13,7 +13,8 @@ const moduleIcons: Record<ModuleType, any> = {
   writing: PenTool,
   reading: BookOpen,
   listening: Headphones,
-  'full-test': Trophy
+  'full-test': Trophy,
+  learn: FileText
 };
 
 const moduleColors: Record<ModuleType, string> = {
@@ -21,7 +22,8 @@ const moduleColors: Record<ModuleType, string> = {
   writing: 'bg-blue-50 dark:bg-blue-950 text-blue-600 dark:text-blue-400',
   reading: 'bg-emerald-50 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400',
   listening: 'bg-purple-50 dark:bg-purple-950 text-purple-600 dark:text-purple-400',
-  'full-test': 'bg-amber-50 dark:bg-amber-950 text-amber-600 dark:text-amber-400'
+  'full-test': 'bg-amber-50 dark:bg-amber-950 text-amber-600 dark:text-amber-400',
+  learn: 'bg-pink-50 dark:bg-pink-950 text-pink-600 dark:text-pink-400'
 };
 
 export default function HistoryPage() {
@@ -61,7 +63,8 @@ export default function HistoryPage() {
       writing: 'Writing',
       reading: 'Reading',
       listening: 'Listening',
-      'full-test': 'Full Test'
+      'full-test': 'Full Test',
+      learn: 'Learn'
     };
     return labels[module];
   };
@@ -143,7 +146,7 @@ export default function HistoryPage() {
         >
           All Modules
         </button>
-        {(['speaking', 'writing', 'reading', 'listening', 'full-test'] as ModuleType[]).map((module) => {
+        {(['speaking', 'writing', 'reading', 'listening', 'full-test', 'learn'] as ModuleType[]).map((module) => {
           const Icon = moduleIcons[module];
           return (
             <button

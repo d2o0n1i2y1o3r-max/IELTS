@@ -12,7 +12,8 @@ const moduleNames: Record<ModuleType, string> = {
   reading: 'Reading',
   writing: 'Writing',
   speaking: 'Speaking',
-  'full-test': 'Full Test'
+  'full-test': 'Full Test',
+  learn: 'Learn'
 };
 
 export default function FullTestPage() {

@@ -1,3 +1,181 @@
 {
-  "sessions": []
+  "sessions": [
+    {
+      "id": "sess-1795437214462",
+      "module": "speaking",
+      "createdAt": "2026-11-23T12:33:34.462Z",
+      "questionId": "q1",
+      "part": "part1",
+      "topic": "Hometown & Neighborhood",
+      "questionText": "Can you describe the town or city where you grew up?",
+      "transcript": "Audio response provided.",
+      "duration": 3,
+      "evaluation": {
+        "band": 5,
+        "overallBand": 5,
+        "fluency": 5,
+        "lexical": 5,
+        "grammar": 5,
+        "pronunciation": 5,
+        "pronunciationNote": "Text-based estimate based on sentence flow and structure",
+        "feedback": "IELTS Speaking Evaluation (Band: 5):\n\n• Fluency & Coherence (5): Your speech flows smoothly with clear progression of ideas. You addressed the prompt directly.\n• Lexical Resource (5): Good range of context-appropriate vocabulary across 7 words.\n• Grammatical Range & Accuracy (5): Solid control of basic and intermediate sentence patterns.\n• Pronunciation Estimate (5): Rhythm, sentence pacing, and cadence are natural.\n\nTip for Improvement: To achieve Band 7.5+, incorporate more complex discourse markers and specific anecdotal evidence.",
+        "modelAnswer": "Well, that is quite an interesting question. In relation to can you describe the town or city where you grew up, I would argue that it plays a fundamental role in modern life. From my own perspective, striking a healthy balance allows individuals to stay motivated while consistently expanding their knowledge base."
+      }
+    },
+    {
+      "id": "speaking-1795437214451",
+      "module": "speaking",
+      "createdAt": "2026-11-23T12:33:34.451Z",
+      "questionText": "Can you describe the town or city where you grew up?",
+      "topic": "Hometown & Neighborhood",
+      "part": "part1",
+      "transcript": "The candidate provided a short audio response.",
+      "duration": 45,
+      "evaluation": {
+        "overallBand": 5,
+        "cefrLevel": "B1",
+        "criteriaScores": {
+          "fluencyCoherence": 5,
+          "lexicalResource": 5,
+          "grammaticalAccuracy": 5,
+          "pronunciation": 5
+        },
+        "strengths": [
+          "Addressed the topic directly",
+          "Coherent thought progression"
+        ],
+        "weaknesses": [
+          "Could use more topic-specific collocations"
+        ],
+        "improvedSample": "Well, that is quite an interesting question. In relation to can you describe the town or city where you grew up, I would argue that it plays a fundamental role in modern life. From my own perspective, striking a healthy balance allows individuals to stay motivated while consistently expanding their knowledge base.",
+        "detailedFeedback": "IELTS Speaking Evaluation (Band: 5):\n\n• Fluency & Coherence (5): Your speech flows smoothly with clear progression of ideas. You addressed the prompt directly.\n• Lexical Resource (5): Good range of context-appropriate vocabulary across 7 words.\n• Grammatical Range & Accuracy (5): Solid control of basic and intermediate sentence patterns.\n• Pronunciation Estimate (5): Rhythm, sentence pacing, and cadence are natural.\n\nTip for Improvement: To achieve Band 7.5+, incorporate more complex discourse markers and specific anecdotal evidence."
+      }
+    },
+    {
+      "id": "sess-1795363110163",
+      "module": "speaking",
+      "createdAt": "2026-11-22T15:58:30.163Z",
+      "questionId": "q4",
+      "part": "part1",
+      "topic": "Work & Education",
+      "questionText": "What skill would you like to learn in the future for your career or studies?",
+      "transcript": "good morning my name is Daniel",
+      "duration": 8,
+      "evaluation": {
+        "band": 5,
+        "overallBand": 5,
+        "fluency": 5,
+        "lexical": 5,
+        "grammar": 5,
+        "pronunciation": 5,
+        "pronunciationNote": "Text-based estimate based on sentence flow and structure",
+        "feedback": "IELTS Speaking Evaluation (Band: 5):\n\n• Fluency & Coherence (5): Your speech flows smoothly with clear progression of ideas. You addressed the prompt directly.\n• Lexical Resource (5): Good range of context-appropriate vocabulary across 6 words.\n• Grammatical Range & Accuracy (5): Solid control of basic and intermediate sentence patterns.\n• Pronunciation Estimate (5): Rhythm, sentence pacing, and cadence are natural.\n\nTip for Improvement: To achieve Band 7.5+, incorporate more complex discourse markers and specific anecdotal evidence.",
+        "modelAnswer": "Well, that is quite an interesting question. In relation to what skill would you like to learn in the future for your career or studies, I would argue that it plays a fundamental role in modern life. From my own perspective, striking a healthy balance allows individuals to stay motivated while consistently expanding their knowledge base."
+      }
+    },
+    {
+      "id": "speaking-1795363110154",
+      "module": "speaking",
+      "createdAt": "2026-11-22T15:58:30.154Z",
+      "questionText": "What skill would you like to learn in the future for your career or studies?",
+      "topic": "Work & Education",
+      "part": "part1",
+      "transcript": "good morning my name is Daniel",
+      "duration": 45,
+      "evaluation": {
+        "overallBand": 5,
+        "cefrLevel": "B1",
+        "criteriaScores": {
+          "fluencyCoherence": 5,
+          "lexicalResource": 5,
+          "grammaticalAccuracy": 5,
+          "pronunciation": 5
+        },
+        "strengths": [
+          "Addressed the topic directly",
+          "Coherent thought progression"
+        ],
+        "weaknesses": [
+          "Could use more topic-specific collocations"
+        ],
+        "improvedSample": "Well, that is quite an interesting question. In relation to what skill would you like to learn in the future for your career or studies, I would argue that it plays a fundamental role in modern life. From my own perspective, striking a healthy balance allows individuals to stay motivated while consistently expanding their knowledge base.",
+        "detailedFeedback": "IELTS Speaking Evaluation (Band: 5):\n\n• Fluency & Coherence (5): Your speech flows smoothly with clear progression of ideas. You addressed the prompt directly.\n• Lexical Resource (5): Good range of context-appropriate vocabulary across 6 words.\n• Grammatical Range & Accuracy (5): Solid control of basic and intermediate sentence patterns.\n• Pronunciation Estimate (5): Rhythm, sentence pacing, and cadence are natural.\n\nTip for Improvement: To achieve Band 7.5+, incorporate more complex discourse markers and specific anecdotal evidence."
+      }
+    },
+    {
+      "id": "sess-1795323532699",
+      "module": "speaking",
+      "createdAt": "2026-11-22T04:58:52.699Z",
+      "questionId": "q2",
+      "part": "part1",
+      "topic": "Hometown & Neighborhood",
+      "questionText": "What is your favorite place in your hometown, and why?",
+      "transcript": "hi my name is Daniel  I am  20 years old",
+      "duration": 11
+    },
+    {
+      "id": "sess-1793798946080",
+      "module": "speaking",
+      "createdAt": "2026-11-04T13:29:06.080Z",
+      "questionId": "q1",
+      "part": "part1",
+      "topic": "Hometown & Neighborhood",
+      "questionText": "Can you describe the town or city where you grew up?",
+      "transcript": "Audio response provided.",
+      "duration": 45,
+      "evaluation": {
+        "overallBand": 5,
+        "cefrLevel": "B1",
+        "criteriaScores": {
+          "fluencyCoherence": 5,
+          "lexicalResource": 5,
+          "grammaticalAccuracy": 5,
+          "pronunciation": 5
+        },
+        "strengths": [
+          "Attempts to answer the prompt directly",
+          "Basic communicative intent is achieved"
+        ],
+        "weaknesses": [
+          "The response provided is extremely brief and lacks adequate length to demonstrate full proficiency",
+          "Limited development of ideas beyond a simple statement"
+        ],
+        "improvedSample": "I grew up in a medium-sized town located in the northern part of my country. It is quite a historic place, famous for its old architecture and friendly community. Over the years, it has developed quite a lot with new shopping centers and parks, but it still maintains its traditional charm.",
+        "detailedFeedback": "The candidate's response was too minimal ('The candidate provided a short audio response') to properly assess full IELTS criteria, leading to a conservative band 5.0 assessment. To achieve a higher band score in Part 1, candidates need to expand their answers with relevant details, reasons, and examples rather than just giving a one-sentence reply."
+      }
+    },
+    {
+      "id": "sess-1793798940725",
+      "module": "speaking",
+      "createdAt": "2026-11-04T13:29:00.725Z",
+      "questionId": "q1",
+      "part": "part1",
+      "topic": "Hometown & Neighborhood",
+      "questionText": "Can you describe the town or city where you grew up?",
+      "transcript": "Audio response provided.",
+      "duration": 45,
+      "evaluation": {
+        "overallBand": 6.5,
+        "cefrLevel": "B2",
+        "criteriaScores": {
+          "fluencyCoherence": 6.5,
+          "lexicalResource": 6.5,
+          "grammaticalAccuracy": 6.5,
+          "pronunciation": 6.5
+        },
+        "strengths": [
+          "Responded to the prompt directly with a concise statement",
+          "Language is appropriate for a standard Part 1 question",
+          "Attempted to engage with the speaking task"
+        ],
+        "weaknesses": [
+          "Response length is extremely limited, providing minimal evidence of sustained speech",
+          "Lacks elaboration, detail, and extended discourse",
+          "Does not demonstrate a wide range of grammatical structures due to brevity"
+        ],
+        "improvedSample": "I grew up in a medium-sized coastal town situated in the northern part of the country. It is mostly known for its picturesque beaches and a quiet, relaxed atmosphere. Over the years, it has developed quite a bit with new shopping centers, but it still retains its traditional charm.",
+        "detailedFeedback": "The candidate provided a very brief meta-statement indicating the nature of the response rather than actual spoken content. To achieve a higher band score in IELTS Speaking Part 1, candidates must speak for 2-3 sentences per question, providing descriptive details, reasons, or personal feelings about the topic to showcase fluency, vocabulary, and grammatical range."
+      }
+    }
+  ]
 }

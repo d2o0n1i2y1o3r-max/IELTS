@@ -11,7 +11,8 @@ const moduleIcons: Record<ModuleType, any> = {
   reading: BookOpen,
   writing: PenTool,
   speaking: Mic,
-  'full-test': Trophy
+  'full-test': Trophy,
+  learn: BookOpen
 };
 
 const moduleNames: Record<ModuleType, string> = {
@@ -19,7 +20,8 @@ const moduleNames: Record<ModuleType, string> = {
   reading: 'Reading',
   writing: 'Writing',
   speaking: 'Speaking',
-  'full-test': 'Full Test'
+  'full-test': 'Full Test',
+  learn: 'Learn'
 };
 
 const moduleSequence: ModuleType[] = ['listening', 'reading', 'writing', 'speaking'];

@@ -1,28 +1,6 @@
 import { NextResponse } from 'next/server';
-import { callCfAI, parseCfAIJson } from '@/lib/cf-ai';
-
-async function retryWithBackoff<T>(
-  fn: () => Promise<T>,
-  maxRetries = 2,
-  delay = 1000
-): Promise<T> {
-  let lastError: Error;
-  
-  for (let i = 0; i <= maxRetries; i++) {
-    try {
-      return await fn();
-    } catch (error) {
-      lastError = error as Error;
-      console.error(`Attempt ${i + 1}/${maxRetries + 1} failed:`, error);
-      
-      if (i < maxRetries) {
-        await new Promise(resolve => setTimeout(resolve, delay * (i + 1)));
-      }
-    }
-  }
-  
-  throw lastError!;
-}
+import { callGemini } from '@/lib/gemini';
+import { callAI, parseJSON } from '@/lib/cf-ai';
 
 export async function POST(request: Request) {
   try {
@@ -33,83 +11,77 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Messages are required' }, { status: 400 });
     }
 
-    if (!process.env.MISTRAL_API_KEY) {
-      console.error('Missing MISTRAL_API_KEY environment variable');
-      const lastMessage = messages[messages.length - 1]?.content || '';
-      let mood: 'calm' | 'agitated' = 'calm';
-      let reply = "Hozircha AI ulanish sozlanmagan. Iltimos, .env.local faylida MISTRAL_API_KEY o'rnating. Shunga qaramay, IELTS bo'yicha umumiy maslahat bera olaman!";
-      
-      if (lastMessage.toLowerCase().includes('xato') || lastMessage.toLowerCase().includes('yomon') || lastMessage.toLowerCase().includes('qiyin')) {
-         mood = 'agitated';
-         reply = "Xavotir olmang! AI hozircha ishlamayapti, lekin IELTS bo'yicha asosiy maslahatlar bera olaman. Qaysi qismida qiynalyapsiz?";
-      }
-
-      return NextResponse.json({ reply, mood });
-    }
-
     const conversation = messages
-      .slice(-5)
-      .map((m: any) => `${m.role === 'user' ? 'User' : 'AI'}: ${m.content}`)
+      .slice(-6)
+      .map((m: any) => `${m.role === 'user' ? 'Foydalanuvchi' : 'AI Mascot'}: ${m.content}`)
       .join('\n');
     
-    const prompt = `You are a friendly, conversational IELTS coach AI mascot.
+    const systemPrompt = `You are a friendly, encouraging and highly knowledgeable IELTS coach AI mascot.
 Analyze the user's latest message in the context of the conversation.
-Reply in the language the user used (Uzbek, Russian, or English).
-Provide explanations, grammar corrections, band score tips, vocabulary suggestions, and examples as needed.
+Reply naturally in the exact language the user used (Uzbek, Russian, or English).
+Provide clear explanations, IELTS tips, grammar help, vocabulary suggestions, and examples.
+Keep your response conversational, friendly, and structured.
 
-Your mood should be "calm" for normal conversations, and "agitated" if the user makes many errors, asks a very confusing/difficult question, or if the conversation is tense.
+Determine your facial expression mood:
+- "calm": for normal helpful conversation, congratulations, answering questions.
+- "agitated": if the user expresses frustration, complains about difficulty, makes repeated mistakes, or seems worried.
 
-Conversation history:
-${conversation}
-
-Respond STRICTLY with a raw valid JSON object in this format (no extra text, no markdown block, just the JSON):
+Respond STRICTLY with a valid JSON object (no markdown formatting, no code fences):
 {
   "reply": "<your detailed conversational response here>",
-  "mood": "<calm or agitated>"
+  "mood": "calm" or "agitated"
 }`;
 
-    let raw: string;
+    const prompt = `Conversation history:
+${conversation}
+
+Respond with JSON:`;
+
+    // 1. Try Google Gemini first
     try {
-      raw = await retryWithBackoff(() => callCfAI(prompt, { maxTokens: 1024, temperature: 0.6 }));
-    } catch (apiError) {
-      console.error('Mistral AI API call failed after retries:', apiError);
-      const lastMessage = messages[messages.length - 1].content.toLowerCase();
-      let mood: 'calm' | 'agitated' = 'calm';
-      let reply = "AI serveriga ulanishda xatolik yuz berdi. Iltimos, qaytadan urinib ko'ring yoki keyinroq qayta boring.";
-      
-      if (lastMessage.includes('xato') || lastMessage.includes('yomon') || lastMessage.includes('qiyin')) {
-         mood = 'agitated';
-         reply = "Ulanishda muammo bor! Lekin xavotir olmang, IELTS tayyorgarligida sizga yordam bera olaman. Qaysi mavzuda qiynalyapsiz?";
+      const raw = await callGemini(prompt, systemPrompt, {
+        temperature: 0.7,
+        maxTokens: 1200,
+        jsonMode: true,
+      });
+
+      const cleanJson = raw.replace(/```json/g, '').replace(/```/g, '').trim();
+      const parsed = JSON.parse(cleanJson);
+
+      if (parsed.reply) {
+        return NextResponse.json({
+          reply: parsed.reply,
+          mood: parsed.mood === 'agitated' ? 'agitated' : 'calm',
+        });
       }
-
-      return NextResponse.json({ reply, mood, error: 'API_CONNECTION_FAILED' });
+    } catch (geminiError) {
+      console.warn('Gemini failed, trying fallback:', geminiError);
     }
 
-    const data = parseCfAIJson<{ reply: string; mood: 'calm' | 'agitated' }>(raw);
-
-    if (data && data.reply && data.mood) {
-      return NextResponse.json(data);
+    // 2. Fallback to GitHub Models / CF AI if Gemini fails
+    if (process.env.GITHUB_MODELS_TOKEN) {
+      try {
+        const raw = await callAI(systemPrompt, prompt, { maxTokens: 1024, temperature: 0.6 });
+        const data = parseJSON<{ reply: string; mood: 'calm' | 'agitated' }>(raw);
+        if (data && data.reply) {
+          return NextResponse.json(data);
+        }
+      } catch (fbError) {
+        console.error('Fallback AI also failed:', fbError);
+      }
     }
 
-    console.error('JSON parsing failed for CF AI response:', raw);
-    const cleanRaw = raw.replace(/```json/g, '').replace(/```/g, '').trim();
+    // 3. Fallback answer if everything fails
     return NextResponse.json({
-      reply: cleanRaw || "Kechirasiz, javobni shakllantirishda xatolik yuz berdi. Iltimos qaytadan urinib ko'ring.",
+      reply: "Salom! Men sizning IELTS bo'yicha yordamchingizman. Savolingizni bering, sizga yordam berishdan xursand bo'laman!",
       mood: 'calm',
-      error: 'JSON_PARSE_FAILED'
     });
 
   } catch (error: any) {
-    console.error('Mascot API unexpected error:', {
-      message: error.message,
-      stack: error.stack,
-      name: error.name
-    });
-    
+    console.error('Mascot API error:', error);
     return NextResponse.json({
-      reply: "Kechirasiz, tizimda kutilmagan xatolik yuz berdi. Iltimos qaytadan urinib ko'ring.",
-      mood: 'agitated',
-      error: 'UNEXPECTED_ERROR'
+      reply: "Kechirasiz, javob berishda xatolik yuz berdi. Iltimos qaytadan yozing.",
+      mood: 'calm',
     }, { status: 500 });
   }
 }
