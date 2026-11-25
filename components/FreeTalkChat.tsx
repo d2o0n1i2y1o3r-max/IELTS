@@ -2,6 +2,8 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { Send, User, MessageSquare } from 'lucide-react';
+import ModelSelector from './ModelSelector';
+import { getStoredUser, UserProfile } from '@/lib/userAuth';
 
 interface Message {
   id: string;
@@ -20,7 +22,15 @@ export default function FreeTalkChat() {
   ]);
   const [input, setInput] = useState('');
   const [isThinking, setIsThinking] = useState(false);
+  const [currentUser, setCurrentUser] = useState<UserProfile | null>(null);
   const endOfMessagesRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const syncUser = () => setCurrentUser(getStoredUser());
+    syncUser();
+    window.addEventListener('ielts_auth_changed', syncUser);
+    return () => window.removeEventListener('ielts_auth_changed', syncUser);
+  }, []);
 
   useEffect(() => {
     endOfMessagesRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -173,6 +183,16 @@ export default function FreeTalkChat() {
         </div>
 
         <div className="p-4 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+          <div className="flex items-center justify-between mb-2.5 px-1">
+            <ModelSelector
+              currentUser={currentUser}
+              onModelChange={() => setCurrentUser(getStoredUser())}
+            />
+            <span className="text-[11px] text-slate-400 font-medium">
+              Speaking sherik
+            </span>
+          </div>
+
           <form onSubmit={handleSend} className="flex items-center gap-2 relative">
             <input
               type="text"

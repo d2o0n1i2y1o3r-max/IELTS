@@ -6,6 +6,7 @@ import { useMascotMood } from '@/hooks/useMascotMood';
 import { useConversationStorage } from '@/hooks/useConversationStorage';
 import ConversationSidebar from '@/components/ConversationSidebar';
 import DemoBlockModal from '@/components/DemoBlockModal';
+import ModelSelector from '@/components/ModelSelector';
 import { getStoredUser, UserProfile } from '@/lib/userAuth';
 import { Send, User, Menu, Sparkles, Cpu } from 'lucide-react';
 
@@ -44,6 +45,9 @@ export default function MascotChatPage() {
 
   useEffect(() => {
     setCurrentUser(getStoredUser());
+    const onAuth = () => setCurrentUser(getStoredUser());
+    window.addEventListener('ielts_auth_changed', onAuth);
+    return () => window.removeEventListener('ielts_auth_changed', onAuth);
   }, []);
 
   useEffect(() => {
@@ -92,7 +96,8 @@ export default function MascotChatPage() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          messages: updatedMessages.map(m => ({ role: m.role, content: m.content }))
+          messages: updatedMessages.map(m => ({ role: m.role, content: m.content })),
+          model: currentUser?.activeModel || 'gemini',
         })
       });
 
@@ -337,6 +342,20 @@ export default function MascotChatPage() {
                 </button>
               </div>
             )}
+
+            {/* Model Selector Bar */}
+            <div className="flex items-center justify-between mb-2.5 px-1">
+              <ModelSelector
+                currentUser={currentUser}
+                onModelChange={() => {
+                  setCurrentUser(getStoredUser());
+                }}
+              />
+              <span className="text-[11px] text-slate-400 font-medium">
+                {currentUser?.plan === 'pro' || currentUser?.plan === 'pro_yearly' ? '⭐ PRO Faol' : 'Free rejim'}
+              </span>
+            </div>
+
             <form onSubmit={handleSend} className="flex items-center gap-2 relative">
               <input
                 type="text"

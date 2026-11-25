@@ -286,7 +286,7 @@ export default function AdminPage() {
           <div className="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xs space-y-2">
             <div className="flex items-center justify-between text-blue-600">
               <span className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
-                Pro (12,000 so'm)
+                PRO (10,000 / 90,000 so'm)
               </span>
               <Zap className="w-5 h-5" />
             </div>
@@ -294,7 +294,7 @@ export default function AdminPage() {
               {stats.proUsers}
             </div>
             <div className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">
-              Claude & Gemini ({stats.proRevenue.toLocaleString()} so'm)
+              Claude 3.5 Sonnet ({stats.proRevenue.toLocaleString()} so'm)
             </div>
           </div>
 

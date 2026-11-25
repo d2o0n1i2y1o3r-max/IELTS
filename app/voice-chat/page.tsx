@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect, useCallback } from 'react';
 import AIMascot from '@/components/AIMascot';
 import { useMascotMood } from '@/hooks/useMascotMood';
 import DemoBlockModal from '@/components/DemoBlockModal';
+import ModelSelector from '@/components/ModelSelector';
 import { getStoredUser, UserProfile } from '@/lib/userAuth';
 import { User, MessageSquare, Square, Play, Mic, MicOff, Volume2, AlertCircle, Globe } from 'lucide-react';
 
@@ -38,11 +39,16 @@ export default function VoiceChatPage() {
   const endOfMessagesRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const u = getStoredUser();
-    setCurrentUser(u);
-    if (!u || u.isDemo) {
-      setShowDemoModal(true);
-    }
+    const syncUser = () => {
+      const u = getStoredUser();
+      setCurrentUser(u);
+      if (!u || u.isDemo) {
+        setShowDemoModal(true);
+      }
+    };
+    syncUser();
+    window.addEventListener('ielts_auth_changed', syncUser);
+    return () => window.removeEventListener('ielts_auth_changed', syncUser);
   }, []);
 
   const recognitionRef = useRef<any>(null);
@@ -578,25 +584,33 @@ export default function VoiceChatPage() {
           onClose={() => setShowDemoModal(false)}
         />
       )}
-      {/* Language Selector ("Talaffuzni o'zgartirish") */}
-      <div className="flex items-center gap-1.5 bg-white/80 dark:bg-slate-900/80 p-1.5 rounded-full border border-slate-200 dark:border-slate-800 shadow-sm backdrop-blur-sm mb-6">
-        <span className="text-xs font-medium text-slate-500 dark:text-slate-400 pl-3 pr-1 flex items-center gap-1">
-          <Globe size={14} className="text-blue-500" />
-          <span>Talaffuz:</span>
-        </span>
-        {(['uz', 'ru', 'en'] as const).map(lang => (
-          <button
-            key={lang}
-            onClick={() => handleLanguageChange(lang)}
-            className={`px-3.5 py-1 text-xs font-bold rounded-full transition-all duration-200 ${
-              selectedLang === lang
-                ? 'bg-blue-600 text-white shadow-xs scale-105'
-                : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'
-            }`}
-          >
-            {lang.toUpperCase()}
-          </button>
-        ))}
+      {/* Controls Bar: Model Selector & Language */}
+      <div className="flex flex-wrap items-center justify-center gap-3 mb-6 z-20">
+        <ModelSelector
+          currentUser={currentUser}
+          onModelChange={() => setCurrentUser(getStoredUser())}
+        />
+
+        {/* Language Selector ("Talaffuzni o'zgartirish") */}
+        <div className="flex items-center gap-1.5 bg-white/80 dark:bg-slate-900/80 p-1.5 rounded-full border border-slate-200 dark:border-slate-800 shadow-sm backdrop-blur-sm">
+          <span className="text-xs font-medium text-slate-500 dark:text-slate-400 pl-3 pr-1 flex items-center gap-1">
+            <Globe size={14} className="text-blue-500" />
+            <span>Talaffuz:</span>
+          </span>
+          {(['uz', 'ru', 'en'] as const).map(lang => (
+            <button
+              key={lang}
+              onClick={() => handleLanguageChange(lang)}
+              className={`px-3.5 py-1 text-xs font-bold rounded-full transition-all duration-200 ${
+                selectedLang === lang
+                  ? 'bg-blue-600 text-white shadow-xs scale-105'
+                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'
+              }`}
+            >
+              {lang.toUpperCase()}
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* 1. Large Mascot centered in the screen */}

@@ -86,11 +86,13 @@ export async function GET() {
     const totalUsers = users.length;
     const demoUsers = 0; // Faqat haqiqiy foydalanuvchilar
     const googleUsers = users.length;
-    const proUsers = users.filter((u: any) => u.plan === 'pro').length;
+    const proMonthlyUsers = users.filter((u: any) => u.plan === 'pro').length;
+    const proYearlyUsers = users.filter((u: any) => u.plan === 'pro_yearly').length;
+    const proUsers = proMonthlyUsers + proYearlyUsers;
     const plusUsers = users.filter((u: any) => u.plan === 'plus').length;
     const freeUsers = users.filter((u: any) => u.plan === 'free' || (!u.plan)).length;
 
-    const proRevenue = proUsers * 12000;
+    const proRevenue = (proMonthlyUsers * 10000) + (proYearlyUsers * 90000);
     const plusRevenue = plusUsers * 20000;
     const totalRevenue = proRevenue + plusRevenue;
 
