@@ -1,6 +1,57 @@
 {
   "sessions": [
     {
+      "id": "sess-1795612958321",
+      "module": "speaking",
+      "createdAt": "2026-11-25T13:22:38.321Z",
+      "questionId": "q1",
+      "part": "part1",
+      "topic": "Hometown & Neighborhood",
+      "questionText": "Can you describe the town or city where you grew up?",
+      "transcript": "Salam Beach",
+      "duration": 4,
+      "evaluation": {
+        "band": 5,
+        "overallBand": 5,
+        "fluency": 5,
+        "lexical": 5,
+        "grammar": 5,
+        "pronunciation": 5,
+        "pronunciationNote": "Text-based estimate based on sentence flow and structure",
+        "feedback": "IELTS Speaking Evaluation (Band: 5):\n\n• Fluency & Coherence (5): Your speech flows smoothly with clear progression of ideas. You addressed the prompt directly.\n• Lexical Resource (5): Good range of context-appropriate vocabulary across 2 words.\n• Grammatical Range & Accuracy (5): Solid control of basic and intermediate sentence patterns.\n• Pronunciation Estimate (5): Rhythm, sentence pacing, and cadence are natural.\n\nTip for Improvement: To achieve Band 7.5+, incorporate more complex discourse markers and specific anecdotal evidence.",
+        "modelAnswer": "Well, that is quite an interesting question. In relation to can you describe the town or city where you grew up, I would argue that it plays a fundamental role in modern life. From my own perspective, striking a healthy balance allows individuals to stay motivated while consistently expanding their knowledge base."
+      }
+    },
+    {
+      "id": "speaking-1795612958310",
+      "module": "speaking",
+      "createdAt": "2026-11-25T13:22:38.310Z",
+      "questionText": "Can you describe the town or city where you grew up?",
+      "topic": "Hometown & Neighborhood",
+      "part": "part1",
+      "transcript": "Salam Beach",
+      "duration": 45,
+      "evaluation": {
+        "overallBand": 5,
+        "cefrLevel": "B1",
+        "criteriaScores": {
+          "fluencyCoherence": 5,
+          "lexicalResource": 5,
+          "grammaticalAccuracy": 5,
+          "pronunciation": 5
+        },
+        "strengths": [
+          "Addressed the topic directly",
+          "Coherent thought progression"
+        ],
+        "weaknesses": [
+          "Could use more topic-specific collocations"
+        ],
+        "improvedSample": "Well, that is quite an interesting question. In relation to can you describe the town or city where you grew up, I would argue that it plays a fundamental role in modern life. From my own perspective, striking a healthy balance allows individuals to stay motivated while consistently expanding their knowledge base.",
+        "detailedFeedback": "IELTS Speaking Evaluation (Band: 5):\n\n• Fluency & Coherence (5): Your speech flows smoothly with clear progression of ideas. You addressed the prompt directly.\n• Lexical Resource (5): Good range of context-appropriate vocabulary across 2 words.\n• Grammatical Range & Accuracy (5): Solid control of basic and intermediate sentence patterns.\n• Pronunciation Estimate (5): Rhythm, sentence pacing, and cadence are natural.\n\nTip for Improvement: To achieve Band 7.5+, incorporate more complex discourse markers and specific anecdotal evidence."
+      }
+    },
+    {
       "id": "sess-1795437214462",
       "module": "speaking",
       "createdAt": "2026-11-23T12:33:34.462Z",

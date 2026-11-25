@@ -15,6 +15,9 @@ import {
   Trophy,
   User,
   Pencil,
+  Clock,
+  Target,
+  Calendar,
 } from 'lucide-react';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
@@ -30,17 +33,11 @@ interface LevelOption {
   border: string;
 }
 
-interface SkillRating {
-  skill: string;
-  icon: React.ReactNode;
-  level: Level | null;
-}
-
 // ─── Constants ───────────────────────────────────────────────────────────────
 const LEVELS: LevelOption[] = [
   {
     value: 'beginner',
-    label: 'Boshlang\'ich',
+    label: "Boshlang'ich",
     band: 'Band 1–3',
     desc: 'IELTS bilan endigina tanishyapman',
     color: 'text-red-600 dark:text-red-400',
@@ -51,14 +48,14 @@ const LEVELS: LevelOption[] = [
     value: 'elementary',
     label: 'Asosiy',
     band: 'Band 3.5–4.5',
-    desc: 'Ba\'zi grammatika va so\'zlarni bilaman',
+    desc: "Ba'zi grammatika va so'zlarni bilaman",
     color: 'text-orange-600 dark:text-orange-400',
     bg: 'bg-orange-50 dark:bg-orange-950/40',
     border: 'border-orange-300 dark:border-orange-800',
   },
   {
     value: 'intermediate',
-    label: 'O\'rta',
+    label: "O'rta",
     band: 'Band 5–5.5',
     desc: 'Ingliz tilida muloqot qila olaman',
     color: 'text-yellow-600 dark:text-yellow-400',
@@ -67,16 +64,16 @@ const LEVELS: LevelOption[] = [
   },
   {
     value: 'upper',
-    label: 'Yuqori o\'rta',
+    label: "Yuqori o'rta",
     band: 'Band 6–7',
-    desc: 'Ingliz tilida erkin so\'zlasha olaman',
+    desc: "Ingliz tilida erkin so'zlasha olaman",
     color: 'text-blue-600 dark:text-blue-400',
     bg: 'bg-blue-50 dark:bg-blue-950/40',
     border: 'border-blue-300 dark:border-blue-800',
   },
   {
     value: 'advanced',
-    label: 'Ilg\'or',
+    label: "Ilg'or",
     band: 'Band 7.5–9',
     desc: 'Ingliz tilini yaxshi bilaman',
     color: 'text-emerald-600 dark:text-emerald-400',
@@ -85,25 +82,42 @@ const LEVELS: LevelOption[] = [
   },
 ];
 
-const SKILLS = [
-  { skill: 'Speaking', icon: <Mic className="w-5 h-5" /> },
-  { skill: 'Writing', icon: <PenTool className="w-5 h-5" /> },
-  { skill: "O'qish (Reading)", icon: <BookOpen className="w-5 h-5" /> },
-  { skill: 'Tinglash (Listening)', icon: <Headphones className="w-5 h-5" /> },
+const TARGET_BANDS = [
+  { value: '6.0', label: 'Band 6.0', desc: "Universitet yoki kollej talabi", emoji: '🎯' },
+  { value: '6.5', label: 'Band 6.5', desc: "Xalqaro standart va viza talablari", emoji: '🚀' },
+  { value: '7.0', label: 'Band 7.0', desc: "Top universitetlar va to'liq grantlar", emoji: '⭐' },
+  { value: '7.5', label: 'Band 7.5', desc: "Magistratura va xalqaro stipendiyalar", emoji: '🔥' },
+  { value: '8.0+', label: 'Band 8.0 - 9.0', desc: "Eng yuqori ekspert darajasi", emoji: '👑' },
 ];
 
 const GOALS = [
-  { value: 'study_abroad', label: '🎓 Chet elda o\'qish', desc: 'Universitet uchun IELTS' },
-  { value: 'work_abroad', label: '💼 Xorijda ishlash', desc: 'Ish uchun IELTS' },
-  { value: 'immigration', label: '✈️ Immigratsiya', desc: 'Doimiy turar joy' },
-  { value: 'general', label: '📚 Bilimni oshirish', desc: 'O\'z rivojlanishim uchun' },
+  { value: 'study_abroad', label: "🎓 Chet elda o'qish", desc: 'Xalqaro universitetlar uchun IELTS' },
+  { value: 'work_abroad', label: '💼 Xorijda ishlash', desc: 'Xalqaro kompaniyalarda karyera' },
+  { value: 'immigration', label: '✈️ Immigratsiya', desc: "Doimiy yashash va ko'chib o'tish" },
+  { value: 'local_degree', label: "🏛️ O'zbekistonda magistratura / ish", desc: 'Davlat granti yoki ish talabi' },
+  { value: 'general', label: '📚 Shaxsiy rivojlanish', desc: 'Ingliz tili darajasini oshirish' },
 ];
 
-const WEEKLY_GOALS = [
-  { value: 5, label: '5 daqiqa / kun', desc: 'Yengil (Hafta 35 daqiqa)', emoji: '🌱' },
-  { value: 15, label: '15 daqiqa / kun', desc: 'O\'rtacha (Hafta 105 daqiqa)', emoji: '⚡' },
-  { value: 30, label: '30 daqiqa / kun', desc: 'Jiddiy (Hafta 210 daqiqa)', emoji: '🔥' },
-  { value: 60, label: '1 soat / kun', desc: 'Intensiv (Hafta 7 soat)', emoji: '🏆' },
+const SKILL_EVAL_OPTIONS = [
+  { value: 'low', label: "Boshlang'ich (Band 4.0 - 5.0)", desc: "Qiyinchilik bilan so'z topaman, tez toliqaman", emoji: '🔴' },
+  { value: 'mid', label: "O'rta (Band 5.5 - 6.0)", desc: "Oddiy mavzularda tushunaman va fikrimni yetkaza olaman", emoji: '🟡' },
+  { value: 'high', label: "Yaxshi (Band 6.5 - 7.0)", desc: "Erkin va deyarli xatolarsiz bajara olaman", emoji: '🟢' },
+  { value: 'pro', label: "A'lo (Band 7.5+)", desc: "Murakkab mavzularda ham bemalol fikr yurita olaman", emoji: '🌟' },
+];
+
+const TIMELINES = [
+  { value: '1_month', label: '⚡ 1 oy ichida', desc: 'Tezkor intensiv tayyorgarlik' },
+  { value: '3_months', label: '📅 2-3 oy ichida', desc: "O'rtacha va tizimli tayyorgarlik" },
+  { value: '6_months', label: '🗓️ 6 oy ichida', desc: "Har tomonlama chuqur o'rganish" },
+  { value: '1_year', label: '🎓 1 yil ichida', desc: "Boshlang'ichdan yuqori darajagacha" },
+  { value: 'not_set', label: '🤔 Hali aniq emas', desc: 'Shunchaki bilimimni sinash uchun' },
+];
+
+const DAILY_TIMES = [
+  { value: 15, label: '15 daqiqa / kun', desc: 'Yengil rejim (Haftasiga ~1.5 soat)', emoji: '🌱' },
+  { value: 30, label: '30 daqiqa / kun', desc: 'Optimal rejim (Haftasiga ~3.5 soat)', emoji: '⚡' },
+  { value: 45, label: '45 daqiqa / kun', desc: 'Intensiv rejim (Haftasiga ~5.5 soat)', emoji: '🔥' },
+  { value: 60, label: '1 soat+ / kun', desc: 'Maksimal rejim (Haftasiga 7+ soat)', emoji: '🏆' },
 ];
 
 // ─── Storage helpers ──────────────────────────────────────────────────────────
@@ -127,25 +141,26 @@ function loadProfile(): Record<string, unknown> | null {
 // ─── Main Component ───────────────────────────────────────────────────────────
 export default function AuthPage() {
   const router = useRouter();
-  const [step, setStep] = useState<number>(0); // 0=existing check, 1=name, 2=overall, 3=skills, 4=goal, 5=weeklyGoal, 6=done
+  const [step, setStep] = useState<number>(0);
   const [nickname, setNickname] = useState('');
   const [overallLevel, setOverallLevel] = useState<Level | null>(null);
-  const [skillLevels, setSkillLevels] = useState<Record<string, Level | null>>({
-    Speaking: null,
-    Writing: null,
-    "O'qish (Reading)": null,
-    'Tinglash (Listening)': null,
-  });
+  const [targetBand, setTargetBand] = useState<string | null>(null);
   const [goal, setGoal] = useState<string | null>(null);
+  const [speakingLevel, setSpeakingLevel] = useState<string | null>(null);
+  const [writingLevel, setWritingLevel] = useState<string | null>(null);
+  const [listeningLevel, setListeningLevel] = useState<string | null>(null);
+  const [readingLevel, setReadingLevel] = useState<string | null>(null);
+  const [examTimeline, setExamTimeline] = useState<string | null>(null);
   const [weeklyGoal, setWeeklyGoal] = useState<number | null>(null);
+
   const [existingProfile, setExistingProfile] = useState<Record<string, unknown> | null>(null);
-  const [editMode, setEditMode] = useState(false);
+  const [editMode, setEditMode] = useState<boolean>(false);
 
   useEffect(() => {
-    const isRegisterMode = typeof window !== 'undefined' && (
-      window.location.search.includes('register') || 
-      window.location.search.includes('mode=new')
-    );
+    const isRegisterMode =
+      typeof window !== 'undefined' &&
+      (window.location.search.includes('register') || window.location.search.includes('mode=new'));
+
     const profile = loadProfile();
     if (profile && !isRegisterMode) {
       setExistingProfile(profile);
@@ -155,78 +170,128 @@ export default function AuthPage() {
   }, []);
 
   // ── Step helpers ────────────────────────────────────────────────────────────
-  const totalSteps = 5; // name, overall, skills, goal, weeklyGoal
-  const currentStepNum = step - 1; // 1-based steps start at step index 1
+  const totalSteps = 10; // Exactly 10 questions
+  const currentStepNum = step; // 1-based questions start at step 1
 
   const canProceed = () => {
     if (step === 1) return nickname.trim().length >= 2;
     if (step === 2) return overallLevel !== null;
-    if (step === 3) return Object.values(skillLevels).every((v) => v !== null);
+    if (step === 3) return targetBand !== null;
     if (step === 4) return goal !== null;
-    if (step === 5) return weeklyGoal !== null;
+    if (step === 5) return speakingLevel !== null;
+    if (step === 6) return writingLevel !== null;
+    if (step === 7) return listeningLevel !== null;
+    if (step === 8) return readingLevel !== null;
+    if (step === 9) return examTimeline !== null;
+    if (step === 10) return weeklyGoal !== null;
     return true;
   };
 
   const handleNext = () => {
     if (!canProceed()) return;
-    if (step < 5) {
+
+    if (step < 10) {
       setStep(step + 1);
     } else {
-      // Save and finish
+      // Step 10 finished -> Save profile and go to completion step 11
       const profile = {
-        nickname: nickname.trim() || `Guest-${Math.floor(1000 + Math.random() * 9000)}`,
+        id: `user-${Date.now()}`,
+        name: nickname.trim(),
+        nickname: nickname.trim(),
+        email: `${nickname.trim().toLowerCase().replace(/\s+/g, '')}@ieltsprep.uz`,
         overallLevel,
-        skillLevels,
+        targetBand,
         goal,
+        skillLevels: {
+          Speaking: speakingLevel,
+          Writing: writingLevel,
+          "Tinglash (Listening)": listeningLevel,
+          "O'qish (Reading)": readingLevel,
+        },
+        examTimeline,
         weeklyGoalMinutes: weeklyGoal,
         createdAt: new Date().toISOString(),
         xp: 0,
-        streak: 0,
+        streak: 1,
+        isDemo: false,
+        plan: 'free',
       };
+
       saveProfile(profile);
       setExistingProfile(profile);
-      setStep(6);
+      setEditMode(false);
+      setStep(11);
+
+      // Async sync to server
+      try {
+        fetch('/api/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name: profile.name, email: profile.email }),
+        }).catch(() => {});
+      } catch {}
     }
   };
 
   const handleBack = () => {
-    if (step > 1) setStep(step - 1);
+    if (step > 1) {
+      setStep(step - 1);
+    }
   };
 
   const handleStartEdit = () => {
     if (existingProfile) {
-      setNickname((existingProfile.nickname as string) || '');
+      setNickname((existingProfile.nickname as string) || (existingProfile.name as string) || '');
       setOverallLevel((existingProfile.overallLevel as Level) || null);
-      setSkillLevels(
-        (existingProfile.skillLevels as Record<string, Level | null>) || {
-          Speaking: null,
-          Writing: null,
-          "O'qish (Reading)": null,
-          'Tinglash (Listening)': null,
-        }
-      );
+      setTargetBand((existingProfile.targetBand as string) || null);
       setGoal((existingProfile.goal as string) || null);
+
+      const skills = (existingProfile.skillLevels as Record<string, string>) || {};
+      setSpeakingLevel(skills['Speaking'] || null);
+      setWritingLevel(skills['Writing'] || null);
+      setListeningLevel(skills['Tinglash (Listening)'] || null);
+      setReadingLevel(skills["O'qish (Reading)"] || null);
+
+      setExamTimeline((existingProfile.examTimeline as string) || null);
       setWeeklyGoal((existingProfile.weeklyGoalMinutes as number) || null);
+
       setEditMode(true);
       setStep(1);
     }
   };
 
-  // ── Render: Existing Profile Dashboard ──────────────────────────────────────
+  const handleStartFresh = () => {
+    setNickname('');
+    setOverallLevel(null);
+    setTargetBand(null);
+    setGoal(null);
+    setSpeakingLevel(null);
+    setWritingLevel(null);
+    setListeningLevel(null);
+    setReadingLevel(null);
+    setExamTimeline(null);
+    setWeeklyGoal(null);
+    setEditMode(false);
+    setStep(1);
+  };
+
+  // ── Render: Existing Profile Dashboard (Step 0) ───────────────────────────
   if (existingProfile && step === 0) {
     const lvl = LEVELS.find((l) => l.value === existingProfile.overallLevel);
+    const displayName = (existingProfile.nickname as string) || (existingProfile.name as string) || 'Foydalanuvchi';
+
     return (
       <div className="max-w-2xl mx-auto space-y-6 py-4">
         {/* Profile Card */}
         <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm">
-          <div className="flex items-center justify-between mb-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
             <div className="flex items-center gap-4">
               <div className="w-14 h-14 rounded-2xl bg-brand-500/10 dark:bg-brand-500/20 flex items-center justify-center text-2xl font-black text-brand-600 dark:text-brand-400">
-                {(existingProfile.nickname as string)?.[0]?.toUpperCase() || 'G'}
+                {displayName[0]?.toUpperCase() || 'U'}
               </div>
               <div>
                 <h2 className="text-xl font-black text-slate-900 dark:text-white">
-                  {existingProfile.nickname as string}
+                  {displayName}
                 </h2>
                 {lvl && (
                   <span
@@ -237,8 +302,10 @@ export default function AuthPage() {
                 )}
               </div>
             </div>
+
             <div className="flex items-center gap-2">
               <button
+                type="button"
                 onClick={handleStartEdit}
                 className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-sm font-semibold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
               >
@@ -246,20 +313,8 @@ export default function AuthPage() {
                 Tahrirlash
               </button>
               <button
-                onClick={() => {
-                  setNickname('');
-                  setOverallLevel(null);
-                  setSkillLevels({
-                    Speaking: null,
-                    Writing: null,
-                    "O'qish (Reading)": null,
-                    'Tinglash (Listening)': null,
-                  });
-                  setGoal(null);
-                  setWeeklyGoal(null);
-                  setEditMode(false);
-                  setStep(1);
-                }}
+                type="button"
+                onClick={handleStartFresh}
                 className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-sm font-semibold text-brand-600 dark:text-brand-400 bg-brand-50 dark:bg-brand-950/40 hover:bg-brand-100 dark:hover:bg-brand-900/40 transition"
               >
                 <User className="w-4 h-4" />
@@ -272,10 +327,10 @@ export default function AuthPage() {
           <div className="grid grid-cols-3 gap-3">
             {[
               { label: 'XP', value: (existingProfile.xp as number) || 0, icon: <Zap className="w-4 h-4" /> },
-              { label: 'Seriya', value: (existingProfile.streak as number) || 0, icon: '🔥' },
+              { label: 'Seriya', value: (existingProfile.streak as number) || 1, icon: '🔥' },
               {
                 label: 'Maqsad',
-                value: `${existingProfile.weeklyGoalMinutes} daq`,
+                value: `${existingProfile.weeklyGoalMinutes || 30} daq`,
                 icon: <Star className="w-4 h-4" />,
               },
             ].map((stat) => (
@@ -297,104 +352,43 @@ export default function AuthPage() {
           </div>
         </div>
 
-        {/* Skill Levels */}
-        <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm">
-          <h3 className="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-4">
-            Ko'nikmalar darajasi
-          </h3>
-          <div className="space-y-3">
-            {SKILLS.map(({ skill, icon }) => {
-              const skillLevel = (existingProfile.skillLevels as Record<string, Level>)?.[skill];
-              const lvlInfo = LEVELS.find((l) => l.value === skillLevel);
-              return (
-                <div key={skill} className="flex items-center justify-between gap-3">
-                  <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400 text-sm font-medium">
-                    <span className="text-brand-500">{icon}</span>
-                    {skill}
-                  </div>
-                  {lvlInfo && (
-                    <span
-                      className={`px-2.5 py-0.5 rounded-full text-xs font-bold ${lvlInfo.bg} ${lvlInfo.color} border ${lvlInfo.border}`}
-                    >
-                      {lvlInfo.label}
-                    </span>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Goal */}
-        {existingProfile.goal && ({Boolean(existingProfile.goal) && (
+        {/* Target Band & Goal */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-5 shadow-sm">
-            <h3 className="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">
-              Maqsad
+            <h3 className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">
+              Maqsadli IELTS Balli
             </h3>
-            <p className="font-semibold text-slate-800 dark:text-slate-200">
-              {GOALS.find((g) => g.value === existingProfile.goal)?.label}
+            <p className="text-lg font-black text-brand-600 dark:text-brand-400">
+              Band {(existingProfile.targetBand as string) || '7.0'}
             </p>
           </div>
-        )}
+
+          <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-5 shadow-sm">
+            <h3 className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">
+              Asosiy Maqsad
+            </h3>
+            <p className="font-semibold text-slate-800 dark:text-slate-200">
+              {GOALS.find((g) => g.value === existingProfile.goal)?.label || "Chet elda o'qish"}
+            </p>
+          </div>
+        </div>
 
         {/* CTA */}
-        <button
-          onClick={() => router.push('/learn')}
-          className="w-full py-4 bg-gradient-to-r from-brand-500 to-blue-600 hover:from-brand-600 hover:to-blue-700 text-white font-bold rounded-2xl shadow-lg shadow-brand-500/25 hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2"
-        >
-          <Trophy className="w-5 h-5" />
-          O'rganishni davom ettirish
-          <ArrowRight className="w-5 h-5" />
-        </button>
-      </div>
-    );
-  }
-
-  // ── Render: Done Screen ──────────────────────────────────────────────────────
-  if (step === 6) {
-    const lvl = LEVELS.find((l) => l.value === overallLevel);
-    return (
-      <div className="max-w-md mx-auto text-center py-8 space-y-6">
-        <div className="w-24 h-24 rounded-full bg-gradient-to-br from-brand-500 to-blue-600 flex items-center justify-center mx-auto shadow-2xl shadow-brand-500/30">
-          <Trophy className="w-12 h-12 text-white" />
-        </div>
-        <div>
-          <h1 className="text-3xl font-black text-slate-900 dark:text-white">Tabriklaymiz! 🎉</h1>
-          <p className="text-slate-500 dark:text-slate-400 mt-2">
-            Profil muvaffaqiyatli yaratildi
-          </p>
-        </div>
-        {lvl && (
-          <div className={`inline-block px-4 py-2 rounded-2xl text-sm font-bold ${lvl.bg} ${lvl.color} border ${lvl.border}`}>
-            Sizning darajangiz: {lvl.label} · {lvl.band}
-          </div>
-        )}
-        <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-5 text-left space-y-2">
-          <p className="text-xs font-bold uppercase tracking-wider text-slate-400">
-            Shaxsiy o'quv rejangiz tayyorlandi
-          </p>
-          <p className="text-sm text-slate-700 dark:text-slate-300">
-            🎯 Kun bo'yi <strong>{weeklyGoal} daqiqa</strong> o'rganish maqsadi
-          </p>
-          <p className="text-sm text-slate-700 dark:text-slate-300">
-            📚 Zaif ko'nikmalardan boshlash tavsiya etiladi
-          </p>
-          <p className="text-sm text-slate-700 dark:text-slate-300">
-            🔥 Seriya saqlash uchun har kuni kiring
-          </p>
-        </div>
         <div className="flex flex-col sm:flex-row gap-3">
           <button
-            onClick={() => { setStep(0); router.push('/'); }}
+            type="button"
+            onClick={() => router.push('/')}
             className="flex-1 py-4 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-bold rounded-2xl transition-all flex items-center justify-center gap-2"
           >
             Bosh sahifaga o'tish
           </button>
           <button
-            onClick={() => { setStep(0); router.push('/learn'); }}
-            className="flex-1 py-4 bg-gradient-to-r from-brand-500 to-blue-600 hover:from-brand-600 hover:to-blue-700 text-white font-bold rounded-2xl shadow-lg shadow-brand-500/25 hover:scale-[1.01] transition-all flex items-center justify-center gap-2"
+            type="button"
+            onClick={() => router.push('/speaking')}
+            className="flex-1 py-4 bg-gradient-to-r from-brand-500 to-blue-600 hover:from-brand-600 hover:to-blue-700 text-white font-bold rounded-2xl shadow-lg shadow-brand-500/25 hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2"
           >
-            O'rganishni boshlash
+            <Trophy className="w-5 h-5" />
+            Mashqni boshlash
             <ArrowRight className="w-5 h-5" />
           </button>
         </div>
@@ -402,13 +396,70 @@ export default function AuthPage() {
     );
   }
 
-  // ── Render: Steps ─────────────────────────────────────────────────────────
+  // ── Render: Done Screen (Step 11) ──────────────────────────────────────────
+  if (step === 11) {
+    const lvl = LEVELS.find((l) => l.value === overallLevel);
+    return (
+      <div className="max-w-md mx-auto text-center py-8 space-y-6">
+        <div className="w-24 h-24 rounded-full bg-gradient-to-br from-brand-500 to-blue-600 flex items-center justify-center mx-auto shadow-2xl shadow-brand-500/30">
+          <Trophy className="w-12 h-12 text-white" />
+        </div>
+        <div>
+          <h1 className="text-3xl font-black text-slate-900 dark:text-white">Tabriklaymiz, {nickname}! 🎉</h1>
+          <p className="text-slate-500 dark:text-slate-400 mt-2">
+            10 ta savol yakunlandi. Shaxsiy IELTS o'quv rejangiz tayyorlandi!
+          </p>
+        </div>
+
+        {lvl && (
+          <div className={`inline-block px-4 py-2 rounded-2xl text-sm font-bold ${lvl.bg} ${lvl.color} border ${lvl.border}`}>
+            Boshlang'ich darajangiz: {lvl.label} ({lvl.band}) → Maqsad: Band {targetBand}
+          </div>
+        )}
+
+        <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-5 text-left space-y-2">
+          <p className="text-xs font-bold uppercase tracking-wider text-slate-400">
+            Sizning tayyorgarlik parametrlaringiz:
+          </p>
+          <p className="text-sm text-slate-700 dark:text-slate-300">
+            🎯 <strong>Kunlik vaqt:</strong> {weeklyGoal} daqiqa
+          </p>
+          <p className="text-sm text-slate-700 dark:text-slate-300">
+            📅 <strong>Imtihon muddati:</strong> {TIMELINES.find((t) => t.value === examTimeline)?.label}
+          </p>
+          <p className="text-sm text-slate-700 dark:text-slate-300">
+            ✨ Barcha IELTS modullari (Speaking, Writing, Reading, Listening) ochildi!
+          </p>
+        </div>
+
+        <div className="flex flex-col sm:flex-row gap-3">
+          <button
+            type="button"
+            onClick={() => { setStep(0); router.push('/'); }}
+            className="flex-1 py-4 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-bold rounded-2xl transition-all flex items-center justify-center gap-2"
+          >
+            Bosh sahifaga o'tish
+          </button>
+          <button
+            type="button"
+            onClick={() => { setStep(0); router.push('/speaking'); }}
+            className="flex-1 py-4 bg-gradient-to-r from-brand-500 to-blue-600 hover:from-brand-600 hover:to-blue-700 text-white font-bold rounded-2xl shadow-lg shadow-brand-500/25 hover:scale-[1.01] transition-all flex items-center justify-center gap-2"
+          >
+            Mashqni boshlash
+            <ArrowRight className="w-5 h-5" />
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  // ── Render: 10 Questions Steps (Step 1 to 10) ─────────────────────────────
   return (
     <div className="max-w-xl mx-auto py-4 space-y-6">
       {/* Progress Bar */}
       <div className="space-y-2">
         <div className="flex justify-between text-xs text-slate-500 dark:text-slate-400">
-          <span>Qadam {currentStepNum} / {totalSteps}</span>
+          <span>Savol {currentStepNum} / {totalSteps}</span>
           <span>{Math.round((currentStepNum / totalSteps) * 100)}%</span>
         </div>
         <div className="h-2 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
@@ -419,7 +470,7 @@ export default function AuthPage() {
         </div>
       </div>
 
-      {/* ── Step 1: Nickname ─────────────────────────────────────────────── */}
+      {/* ── 1-savol: Ism / Nickname ─────────────────────────────────────── */}
       {step === 1 && (
         <div className="space-y-6">
           <div className="text-center space-y-2">
@@ -427,10 +478,10 @@ export default function AuthPage() {
               <User className="w-8 h-8 text-brand-500" />
             </div>
             <h1 className="text-2xl font-black text-slate-900 dark:text-white">
-              Ismingizni kiriting
+              1-savol: Ismingiz nima?
             </h1>
             <p className="text-sm text-slate-500 dark:text-slate-400">
-              Email yoki parol kerak emas — shunchaki ism yozing
+              Platformada sizga murojaat qilishimiz uchun ismingizni yozing
             </p>
           </div>
 
@@ -438,43 +489,24 @@ export default function AuthPage() {
             <input
               type="text"
               autoFocus
-              placeholder="Masalan: Doniyor, Kamola, Ali..."
+              placeholder="Masalan: Doniyor, Kamola, Jasur..."
               value={nickname}
               onChange={(e) => setNickname(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && canProceed() && handleNext()}
-              maxLength={20}
+              maxLength={25}
               minLength={2}
               className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white text-lg font-semibold focus:outline-none focus:border-brand-500 dark:focus:border-brand-400 transition"
             />
-            <p className="text-xs text-slate-400 text-right">{nickname.length}/20 belgi</p>
+            <p className="text-xs text-slate-400 text-right">{nickname.length}/25 belgi</p>
           </div>
 
           <div className="p-4 bg-blue-50 dark:bg-blue-950/30 rounded-2xl border border-blue-200 dark:border-blue-800 text-xs text-blue-700 dark:text-blue-300">
-            💡 Hech qanday shaxsiy ma'lumot saqlanmaydi. Faqat ismingiz ko'rsatiladi.
-          </div>
-
-          <div className="flex justify-between items-center pt-2">
-            <button
-              type="button"
-              onClick={() => router.push('/')}
-              className="text-xs text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 transition"
-            >
-              ← Bosh sahifaga o'tish
-            </button>
-            {existingProfile && (
-              <button
-                type="button"
-                onClick={() => setStep(0)}
-                className="text-xs text-brand-600 dark:text-brand-400 font-semibold hover:underline"
-              >
-                Mavjud profilni ko'rish →
-              </button>
-            )}
+            🔒 Ro'yxatdan o'tgach barcha IELTS mashqlari va AI baholash xizmatlari ochiladi.
           </div>
         </div>
       )}
 
-      {/* ── Step 2: Overall Level ────────────────────────────────────────── */}
+      {/* ── 2-savol: Hozirgi umumiy daraja ────────────────────────────────── */}
       {step === 2 && (
         <div className="space-y-6">
           <div className="text-center space-y-2">
@@ -482,10 +514,10 @@ export default function AuthPage() {
               <Star className="w-8 h-8 text-brand-500" />
             </div>
             <h1 className="text-2xl font-black text-slate-900 dark:text-white">
-              Hozirgi ingliz til darajangiz?
+              2-savol: Hozirgi ingliz tili darajangiz qanday?
             </h1>
             <p className="text-sm text-slate-500 dark:text-slate-400">
-              To'g'ri darajani tanlang — bu sizga mos o'quv rejasini tuzishga yordam beradi
+              Taxminiy darajangizni tanlang — savollar shunga moslashtiriladi
             </p>
           </div>
 
@@ -493,6 +525,7 @@ export default function AuthPage() {
             {LEVELS.map((lvl) => (
               <button
                 key={lvl.value}
+                type="button"
                 onClick={() => setOverallLevel(lvl.value)}
                 className={`w-full text-left p-4 rounded-2xl border-2 transition-all flex items-center justify-between gap-4 ${
                   overallLevel === lvl.value
@@ -520,59 +553,52 @@ export default function AuthPage() {
         </div>
       )}
 
-      {/* ── Step 3: Skill Levels ─────────────────────────────────────────── */}
+      {/* ── 3-savol: Maqsadli IELTS balli ───────────────────────────────── */}
       {step === 3 && (
         <div className="space-y-6">
           <div className="text-center space-y-2">
             <div className="w-16 h-16 rounded-2xl bg-brand-500/10 dark:bg-brand-500/20 flex items-center justify-center mx-auto">
-              <Zap className="w-8 h-8 text-brand-500" />
+              <Target className="w-8 h-8 text-brand-500" />
             </div>
             <h1 className="text-2xl font-black text-slate-900 dark:text-white">
-              Ko'nikmalar darajangi belgilang
+              3-savol: Qanday IELTS ballini maqsad qilgansiz?
             </h1>
             <p className="text-sm text-slate-500 dark:text-slate-400">
-              Har bir ko'nikma uchun o'z darajangizni tanlang
+              Siz erishmoqchi bo'lgan maqsadli ball
             </p>
           </div>
 
-          <div className="space-y-5">
-            {SKILLS.map(({ skill, icon }) => (
-              <div key={skill} className="space-y-2">
-                <div className="flex items-center gap-2 text-sm font-bold text-slate-700 dark:text-slate-300">
-                  <span className="text-brand-500">{icon}</span>
-                  {skill}
+          <div className="space-y-3">
+            {TARGET_BANDS.map((tb) => (
+              <button
+                key={tb.value}
+                type="button"
+                onClick={() => setTargetBand(tb.value)}
+                className={`w-full text-left p-4 rounded-2xl border-2 transition-all flex items-center justify-between gap-4 ${
+                  targetBand === tb.value
+                    ? 'border-brand-500 bg-brand-50 dark:bg-brand-950/30 shadow-sm'
+                    : 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-slate-300'
+                }`}
+              >
+                <div className="flex items-center gap-3">
+                  <span className="text-2xl">{tb.emoji}</span>
+                  <div>
+                    <div className={`font-bold ${targetBand === tb.value ? 'text-brand-600 dark:text-brand-400' : 'text-slate-800 dark:text-slate-200'}`}>
+                      {tb.label}
+                    </div>
+                    <div className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">{tb.desc}</div>
+                  </div>
                 </div>
-                <div className="grid grid-cols-5 gap-1.5">
-                  {LEVELS.map((lvl) => (
-                    <button
-                      key={lvl.value}
-                      onClick={() =>
-                        setSkillLevels((prev) => ({ ...prev, [skill]: lvl.value }))
-                      }
-                      title={`${lvl.label} (${lvl.band})`}
-                      className={`py-2 rounded-xl text-[11px] font-bold transition-all border-2 ${
-                        skillLevels[skill] === lvl.value
-                          ? `${lvl.bg} ${lvl.color} ${lvl.border} shadow-sm scale-105`
-                          : 'border-slate-200 dark:border-slate-700 text-slate-500 dark:text-slate-400 hover:border-slate-300'
-                      }`}
-                    >
-                      {lvl.label.split(' ')[0]}
-                    </button>
-                  ))}
-                </div>
-                {skillLevels[skill] && (
-                  <p className="text-xs text-slate-500 dark:text-slate-400 pl-1">
-                    ✓ {LEVELS.find((l) => l.value === skillLevels[skill])?.label} ·{' '}
-                    {LEVELS.find((l) => l.value === skillLevels[skill])?.band}
-                  </p>
+                {targetBand === tb.value && (
+                  <CheckCircle className="w-5 h-5 text-brand-500 flex-shrink-0" />
                 )}
-              </div>
+              </button>
             ))}
           </div>
         </div>
       )}
 
-      {/* ── Step 4: Goal ─────────────────────────────────────────────────── */}
+      {/* ── 4-savol: Asosiy maqsad ───────────────────────────────────────── */}
       {step === 4 && (
         <div className="space-y-6">
           <div className="text-center space-y-2">
@@ -580,17 +606,18 @@ export default function AuthPage() {
               <Trophy className="w-8 h-8 text-brand-500" />
             </div>
             <h1 className="text-2xl font-black text-slate-900 dark:text-white">
-              IELTS ni nima uchun o'rganasiz?
+              4-savol: IELTS sizga nima uchun kerak?
             </h1>
             <p className="text-sm text-slate-500 dark:text-slate-400">
-              Maqsadingizga mos mazmun taqdim etamiz
+              Asosiy motivatsiyangizni belgilang
             </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-3">
+          <div className="space-y-3">
             {GOALS.map((g) => (
               <button
                 key={g.value}
+                type="button"
                 onClick={() => setGoal(g.value)}
                 className={`w-full text-left p-4 rounded-2xl border-2 transition-all flex items-center justify-between ${
                   goal === g.value
@@ -611,40 +638,253 @@ export default function AuthPage() {
         </div>
       )}
 
-      {/* ── Step 5: Weekly Goal ──────────────────────────────────────────── */}
+      {/* ── 5-savol: Speaking ko'nikmasi ─────────────────────────────────── */}
       {step === 5 && (
         <div className="space-y-6">
           <div className="text-center space-y-2">
-            <div className="w-16 h-16 rounded-2xl bg-brand-500/10 dark:bg-brand-500/20 flex items-center justify-center mx-auto text-3xl">
-              🎯
+            <div className="w-16 h-16 rounded-2xl bg-brand-500/10 dark:bg-brand-500/20 flex items-center justify-center mx-auto">
+              <Mic className="w-8 h-8 text-brand-500" />
             </div>
             <h1 className="text-2xl font-black text-slate-900 dark:text-white">
-              Kunlik o'rganish maqsadi
+              5-savol: Speaking (Gapirish) darajangiz qanday?
             </h1>
             <p className="text-sm text-slate-500 dark:text-slate-400">
-              Qancha ko'p o'rgansangiz, shuncha tez o'sasiz
+              Ingliz tilida gapirish bo'yicha o'zingizni baholang
             </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-3">
-            {WEEKLY_GOALS.map((wg) => (
+          <div className="space-y-3">
+            {SKILL_EVAL_OPTIONS.map((opt) => (
               <button
-                key={wg.value}
-                onClick={() => setWeeklyGoal(wg.value)}
-                className={`w-full text-left p-4 rounded-2xl border-2 transition-all flex items-center gap-4 ${
-                  weeklyGoal === wg.value
+                key={opt.value}
+                type="button"
+                onClick={() => setSpeakingLevel(opt.value)}
+                className={`w-full text-left p-4 rounded-2xl border-2 transition-all flex items-center justify-between ${
+                  speakingLevel === opt.value
                     ? 'border-brand-500 bg-brand-50 dark:bg-brand-950/30 shadow-sm'
                     : 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-slate-300'
                 }`}
               >
-                <span className="text-2xl">{wg.emoji}</span>
-                <div className="flex-1">
-                  <div className={`font-bold text-sm ${weeklyGoal === wg.value ? 'text-brand-600 dark:text-brand-400' : 'text-slate-800 dark:text-slate-200'}`}>
-                    {wg.label}
+                <div className="flex items-center gap-3">
+                  <span className="text-xl">{opt.emoji}</span>
+                  <div>
+                    <div className={`font-bold text-sm ${speakingLevel === opt.value ? 'text-brand-600 dark:text-brand-400' : 'text-slate-800 dark:text-slate-200'}`}>
+                      {opt.label}
+                    </div>
+                    <div className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">{opt.desc}</div>
                   </div>
-                  <div className="text-xs text-slate-500 dark:text-slate-400">{wg.desc}</div>
                 </div>
-                {weeklyGoal === wg.value && (
+                {speakingLevel === opt.value && <CheckCircle className="w-5 h-5 text-brand-500 flex-shrink-0" />}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* ── 6-savol: Writing ko'nikmasi ──────────────────────────────────── */}
+      {step === 6 && (
+        <div className="space-y-6">
+          <div className="text-center space-y-2">
+            <div className="w-16 h-16 rounded-2xl bg-brand-500/10 dark:bg-brand-500/20 flex items-center justify-center mx-auto">
+              <PenTool className="w-8 h-8 text-brand-500" />
+            </div>
+            <h1 className="text-2xl font-black text-slate-900 dark:text-white">
+              6-savol: Writing (Insho va xat) darajangiz qanday?
+            </h1>
+            <p className="text-sm text-slate-500 dark:text-slate-400">
+              Yozma fikr bildirish ko'nikmangizni baholang
+            </p>
+          </div>
+
+          <div className="space-y-3">
+            {SKILL_EVAL_OPTIONS.map((opt) => (
+              <button
+                key={opt.value}
+                type="button"
+                onClick={() => setWritingLevel(opt.value)}
+                className={`w-full text-left p-4 rounded-2xl border-2 transition-all flex items-center justify-between ${
+                  writingLevel === opt.value
+                    ? 'border-brand-500 bg-brand-50 dark:bg-brand-950/30 shadow-sm'
+                    : 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-slate-300'
+                }`}
+              >
+                <div className="flex items-center gap-3">
+                  <span className="text-xl">{opt.emoji}</span>
+                  <div>
+                    <div className={`font-bold text-sm ${writingLevel === opt.value ? 'text-brand-600 dark:text-brand-400' : 'text-slate-800 dark:text-slate-200'}`}>
+                      {opt.label}
+                    </div>
+                    <div className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">{opt.desc}</div>
+                  </div>
+                </div>
+                {writingLevel === opt.value && <CheckCircle className="w-5 h-5 text-brand-500 flex-shrink-0" />}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* ── 7-savol: Listening ko'nikmasi ────────────────────────────────── */}
+      {step === 7 && (
+        <div className="space-y-6">
+          <div className="text-center space-y-2">
+            <div className="w-16 h-16 rounded-2xl bg-brand-500/10 dark:bg-brand-500/20 flex items-center justify-center mx-auto">
+              <Headphones className="w-8 h-8 text-brand-500" />
+            </div>
+            <h1 className="text-2xl font-black text-slate-900 dark:text-white">
+              7-savol: Listening (Tinglab tushunish) darajangiz?
+            </h1>
+            <p className="text-sm text-slate-500 dark:text-slate-400">
+              Ingliz tilidagi audio va nutqlarni tushunish darajangiz
+            </p>
+          </div>
+
+          <div className="space-y-3">
+            {SKILL_EVAL_OPTIONS.map((opt) => (
+              <button
+                key={opt.value}
+                type="button"
+                onClick={() => setListeningLevel(opt.value)}
+                className={`w-full text-left p-4 rounded-2xl border-2 transition-all flex items-center justify-between ${
+                  listeningLevel === opt.value
+                    ? 'border-brand-500 bg-brand-50 dark:bg-brand-950/30 shadow-sm'
+                    : 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-slate-300'
+                }`}
+              >
+                <div className="flex items-center gap-3">
+                  <span className="text-xl">{opt.emoji}</span>
+                  <div>
+                    <div className={`font-bold text-sm ${listeningLevel === opt.value ? 'text-brand-600 dark:text-brand-400' : 'text-slate-800 dark:text-slate-200'}`}>
+                      {opt.label}
+                    </div>
+                    <div className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">{opt.desc}</div>
+                  </div>
+                </div>
+                {listeningLevel === opt.value && <CheckCircle className="w-5 h-5 text-brand-500 flex-shrink-0" />}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* ── 8-savol: Reading ko'nikmasi ──────────────────────────────────── */}
+      {step === 8 && (
+        <div className="space-y-6">
+          <div className="text-center space-y-2">
+            <div className="w-16 h-16 rounded-2xl bg-brand-500/10 dark:bg-brand-500/20 flex items-center justify-center mx-auto">
+              <BookOpen className="w-8 h-8 text-brand-500" />
+            </div>
+            <h1 className="text-2xl font-black text-slate-900 dark:text-white">
+              8-savol: Reading (Matn o'qish) darajangiz qanday?
+            </h1>
+            <p className="text-sm text-slate-500 dark:text-slate-400">
+              Ingliz tilidagi ilmiy va badiiy matnlarni tushunish darajangiz
+            </p>
+          </div>
+
+          <div className="space-y-3">
+            {SKILL_EVAL_OPTIONS.map((opt) => (
+              <button
+                key={opt.value}
+                type="button"
+                onClick={() => setReadingLevel(opt.value)}
+                className={`w-full text-left p-4 rounded-2xl border-2 transition-all flex items-center justify-between ${
+                  readingLevel === opt.value
+                    ? 'border-brand-500 bg-brand-50 dark:bg-brand-950/30 shadow-sm'
+                    : 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-slate-300'
+                }`}
+              >
+                <div className="flex items-center gap-3">
+                  <span className="text-xl">{opt.emoji}</span>
+                  <div>
+                    <div className={`font-bold text-sm ${readingLevel === opt.value ? 'text-brand-600 dark:text-brand-400' : 'text-slate-800 dark:text-slate-200'}`}>
+                      {opt.label}
+                    </div>
+                    <div className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">{opt.desc}</div>
+                  </div>
+                </div>
+                {readingLevel === opt.value && <CheckCircle className="w-5 h-5 text-brand-500 flex-shrink-0" />}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* ── 9-savol: Imtihon topshirish vaqti ────────────────────────────── */}
+      {step === 9 && (
+        <div className="space-y-6">
+          <div className="text-center space-y-2">
+            <div className="w-16 h-16 rounded-2xl bg-brand-500/10 dark:bg-brand-500/20 flex items-center justify-center mx-auto">
+              <Calendar className="w-8 h-8 text-brand-500" />
+            </div>
+            <h1 className="text-2xl font-black text-slate-900 dark:text-white">
+              9-savol: Imtihonni qachon topshirmoqchisiz?
+            </h1>
+            <p className="text-sm text-slate-500 dark:text-slate-400">
+              Tayyorgarlik sur'atini belgilash uchun muhim
+            </p>
+          </div>
+
+          <div className="space-y-3">
+            {TIMELINES.map((tm) => (
+              <button
+                key={tm.value}
+                type="button"
+                onClick={() => setExamTimeline(tm.value)}
+                className={`w-full text-left p-4 rounded-2xl border-2 transition-all flex items-center justify-between ${
+                  examTimeline === tm.value
+                    ? 'border-brand-500 bg-brand-50 dark:bg-brand-950/30 shadow-sm'
+                    : 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-slate-300'
+                }`}
+              >
+                <div>
+                  <div className={`font-bold text-sm ${examTimeline === tm.value ? 'text-brand-600 dark:text-brand-400' : 'text-slate-800 dark:text-slate-200'}`}>
+                    {tm.label}
+                  </div>
+                  <div className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">{tm.desc}</div>
+                </div>
+                {examTimeline === tm.value && <CheckCircle className="w-5 h-5 text-brand-500 flex-shrink-0" />}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* ── 10-savol: Kunlik o'rganish vaqti ─────────────────────────────── */}
+      {step === 10 && (
+        <div className="space-y-6">
+          <div className="text-center space-y-2">
+            <div className="w-16 h-16 rounded-2xl bg-brand-500/10 dark:bg-brand-500/20 flex items-center justify-center mx-auto">
+              <Clock className="w-8 h-8 text-brand-500" />
+            </div>
+            <h1 className="text-2xl font-black text-slate-900 dark:text-white">
+              10-savol: Kuniga qancha vaqt ajrata olasiz?
+            </h1>
+            <p className="text-sm text-slate-500 dark:text-slate-400">
+              Kunlik o'rganish maqsadingizni belgilang
+            </p>
+          </div>
+
+          <div className="space-y-3">
+            {DAILY_TIMES.map((dt) => (
+              <button
+                key={dt.value}
+                type="button"
+                onClick={() => setWeeklyGoal(dt.value)}
+                className={`w-full text-left p-4 rounded-2xl border-2 transition-all flex items-center gap-4 ${
+                  weeklyGoal === dt.value
+                    ? 'border-brand-500 bg-brand-50 dark:bg-brand-950/30 shadow-sm'
+                    : 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-slate-300'
+                }`}
+              >
+                <span className="text-2xl">{dt.emoji}</span>
+                <div className="flex-1">
+                  <div className={`font-bold text-sm ${weeklyGoal === dt.value ? 'text-brand-600 dark:text-brand-400' : 'text-slate-800 dark:text-slate-200'}`}>
+                    {dt.label}
+                  </div>
+                  <div className="text-xs text-slate-500 dark:text-slate-400">{dt.desc}</div>
+                </div>
+                {weeklyGoal === dt.value && (
                   <CheckCircle className="w-5 h-5 text-brand-500 flex-shrink-0" />
                 )}
               </button>
@@ -657,6 +897,7 @@ export default function AuthPage() {
       <div className="flex gap-3 pt-2">
         {step > 1 && (
           <button
+            type="button"
             onClick={handleBack}
             className="flex items-center gap-2 px-5 py-3.5 rounded-2xl border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 font-bold text-sm hover:bg-slate-100 dark:hover:bg-slate-800 transition"
           >
@@ -665,6 +906,7 @@ export default function AuthPage() {
           </button>
         )}
         <button
+          type="button"
           onClick={handleNext}
           disabled={!canProceed()}
           className={`flex-1 flex items-center justify-center gap-2 py-3.5 rounded-2xl font-bold text-sm transition-all ${
@@ -673,14 +915,14 @@ export default function AuthPage() {
               : 'bg-slate-200 dark:bg-slate-800 text-slate-400 dark:text-slate-600 cursor-not-allowed'
           }`}
         >
-          {step === 5 ? (
+          {step === 10 ? (
             <>
               <Trophy className="w-4 h-4" />
-              Profil yaratish
+              Profil yaratish va Boshlash
             </>
           ) : (
             <>
-              Davom etish
+              Keyingi savol
               <ArrowRight className="w-4 h-4" />
             </>
           )}

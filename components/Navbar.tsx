@@ -91,10 +91,15 @@ export default function Navbar() {
               const isActive = pathname === item.href;
               const isExternal = 'external' in item && item.external;
 
+              const isAuthPrompt = !userProfile && item.href === '/auth';
+              const targetHref = (!userProfile && !item.href.startsWith('/admin')) ? '/auth' : item.href;
+
               const content = (
                 <div
                   className={`flex items-center justify-between px-3.5 py-2.5 text-sm font-medium rounded-xl transition-all ${
-                    isActive
+                    isAuthPrompt
+                      ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold shadow-md shadow-blue-500/25 ring-2 ring-blue-400/50 hover:brightness-110'
+                      : isActive
                       ? 'bg-brand-500/10 text-brand-600 dark:text-brand-400 font-semibold border-l-4 border-brand-500 pl-3'
                       : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/60'
                   }`}
@@ -102,11 +107,27 @@ export default function Navbar() {
                   <div className="flex items-center gap-3 min-w-0">
                     <Icon
                       className={`w-4 h-4 flex-shrink-0 ${
-                        isActive ? 'text-brand-600 dark:text-brand-400' : 'text-slate-500 dark:text-slate-400'
+                        isAuthPrompt
+                          ? 'text-white'
+                          : isActive
+                          ? 'text-brand-600 dark:text-brand-400'
+                          : 'text-slate-500 dark:text-slate-400'
                       }`}
                     />
                     <span className="truncate">{item.label}</span>
                   </div>
+
+                  {isAuthPrompt && (
+                    <span className="text-[10px] px-2 py-0.5 rounded-full font-bold bg-white text-blue-700 uppercase tracking-wider flex-shrink-0 ml-2 animate-pulse">
+                      1-Qadam
+                    </span>
+                  )}
+
+                  {!userProfile && item.href !== '/auth' && !item.href.startsWith('/admin') && (
+                    <span className="text-[10px] px-1.5 py-0.5 rounded-full font-bold bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-400">
+                      🔒
+                    </span>
+                  )}
 
                   {item.href === '/auth' && userProfile && (
                     <span
@@ -142,7 +163,7 @@ export default function Navbar() {
               }
 
               return (
-                <Link key={item.href} href={item.href} onClick={onItemClick} className="block">
+                <Link key={item.href} href={targetHref} onClick={onItemClick} className="block">
                   {content}
                 </Link>
               );
