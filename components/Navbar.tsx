@@ -17,13 +17,14 @@ import {
   PhoneCall,
   FileText,
   ShieldCheck,
-  ExternalLink
+  ExternalLink,
+  LogOut,
 } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 import LanguageSwitcher from './LanguageSwitcher';
 import Logo from './Logo';
 import { useTranslation } from 'react-i18next';
-import { getStoredUser, UserProfile } from '@/lib/userAuth';
+import { getStoredUser, logoutUser, UserProfile } from '@/lib/userAuth';
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -37,6 +38,14 @@ export default function Navbar() {
     window.addEventListener('ielts_auth_changed', onAuth);
     return () => window.removeEventListener('ielts_auth_changed', onAuth);
   }, []);
+
+  const handleLogout = () => {
+    if (confirm("Hisobingizdan chiqmoqchimisiz?")) {
+      logoutUser();
+      setMobileMenuOpen(false);
+      window.location.href = '/auth';
+    }
+  };
 
   const navSections = [
     {
@@ -205,18 +214,28 @@ export default function Navbar() {
             <ThemeToggle />
           </div>
           {userProfile && (
-            <div className="flex items-center gap-2.5 px-3 py-2 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700">
-              <div className="w-8 h-8 rounded-lg bg-brand-500/10 dark:bg-brand-500/20 flex items-center justify-center text-brand-600 dark:text-brand-400 font-bold text-xs uppercase">
-                {userProfile.email?.substring(0, 2) || 'GU'}
+            <div className="flex items-center justify-between gap-2 p-2 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-xs">
+              <div className="flex items-center gap-2.5 min-w-0">
+                <div className="w-8 h-8 rounded-lg bg-brand-500/10 dark:bg-brand-500/20 flex items-center justify-center text-brand-600 dark:text-brand-400 font-bold text-xs uppercase flex-shrink-0">
+                  {userProfile.email?.substring(0, 2) || 'GU'}
+                </div>
+                <div className="min-w-0">
+                  <p className="text-xs font-semibold text-slate-800 dark:text-slate-200 truncate max-w-[115px]">
+                    {userProfile.email || 'Foydalanuvchi'}
+                  </p>
+                  <p className="text-[10px] text-slate-500 capitalize">
+                    {userProfile.isDemo ? 'Demo Mode' : userProfile.plan || 'Free'}
+                  </p>
+                </div>
               </div>
-              <div className="flex-1 min-w-0">
-                <p className="text-xs font-semibold text-slate-800 dark:text-slate-200 truncate">
-                  {userProfile.email || 'Guest User'}
-                </p>
-                <p className="text-[10px] text-slate-500 capitalize">
-                  {userProfile.isDemo ? 'Demo Mode' : userProfile.plan || 'Free'}
-                </p>
-              </div>
+              <button
+                type="button"
+                onClick={handleLogout}
+                title="Hisobdan chiqish"
+                className="p-1.5 text-slate-400 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-950/40 rounded-lg transition"
+              >
+                <LogOut className="w-4 h-4" />
+              </button>
             </div>
           )}
         </div>
@@ -286,6 +305,31 @@ export default function Navbar() {
                 <LanguageSwitcher />
                 <ThemeToggle />
               </div>
+              {userProfile && (
+                <div className="flex items-center justify-between gap-2 p-2 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-xs">
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <div className="w-8 h-8 rounded-lg bg-brand-500/10 dark:bg-brand-500/20 flex items-center justify-center text-brand-600 dark:text-brand-400 font-bold text-xs uppercase flex-shrink-0">
+                      {userProfile.email?.substring(0, 2) || 'GU'}
+                    </div>
+                    <div className="min-w-0">
+                      <p className="text-xs font-semibold text-slate-800 dark:text-slate-200 truncate max-w-[130px]">
+                        {userProfile.email || 'Foydalanuvchi'}
+                      </p>
+                      <p className="text-[10px] text-slate-500 capitalize">
+                        {userProfile.isDemo ? 'Demo Mode' : userProfile.plan || 'Free'}
+                      </p>
+                    </div>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={handleLogout}
+                    title="Hisobdan chiqish"
+                    className="p-1.5 text-slate-400 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-950/40 rounded-lg transition"
+                  >
+                    <LogOut className="w-4 h-4" />
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         </div>

@@ -18,6 +18,7 @@ import {
   Clock,
   Target,
   Calendar,
+  LogOut,
 } from 'lucide-react';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
@@ -260,6 +261,18 @@ export default function AuthPage() {
     }
   };
 
+  const handleLogout = () => {
+    if (confirm("Hisobingizdan chiqmoqchimisiz?")) {
+      if (typeof window !== 'undefined') {
+        localStorage.removeItem('ielts_user_profile');
+        window.dispatchEvent(new Event('ielts_auth_changed'));
+      }
+      setExistingProfile(null);
+      setEditMode(false);
+      setStep(1);
+    }
+  };
+
   const handleStartFresh = () => {
     setNickname('');
     setOverallLevel(null);
@@ -303,7 +316,7 @@ export default function AuthPage() {
               </div>
             </div>
 
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2">
               <button
                 type="button"
                 onClick={handleStartEdit}
@@ -318,7 +331,15 @@ export default function AuthPage() {
                 className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-sm font-semibold text-brand-600 dark:text-brand-400 bg-brand-50 dark:bg-brand-950/40 hover:bg-brand-100 dark:hover:bg-brand-900/40 transition"
               >
                 <User className="w-4 h-4" />
-                Yangi ro'yxatdan o'tish
+                Qayta o'tish
+              </button>
+              <button
+                type="button"
+                onClick={handleLogout}
+                className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-sm font-semibold text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-950/30 hover:bg-red-100 dark:hover:bg-red-900/50 transition border border-red-200 dark:border-red-900/50"
+              >
+                <LogOut className="w-4 h-4" />
+                Chiqish
               </button>
             </div>
           </div>
