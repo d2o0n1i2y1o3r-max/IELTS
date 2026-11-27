@@ -32,17 +32,19 @@ export default function LessonPlayerPage() {
   useEffect(() => {
     async function loadData() {
       try {
-        const userId = typeof window !== 'undefined' ? localStorage.getItem('registered_user')?.replace(/"/g, '').replace(/'/g, '') : null;
-        const userData = userId ? JSON.parse(userId) : null;
-
-        if (!userData?.id) {
-          router.push('/auth');
-          return;
+        let userData: any = null;
+        if (typeof window !== 'undefined') {
+          const raw = localStorage.getItem('ielts_user_profile') || localStorage.getItem('registered_user');
+          try {
+            userData = raw ? JSON.parse(raw) : null;
+          } catch {}
         }
+
+        const effectiveUserId = userData?.id || 'user-default';
 
         const [lessonsRes, progressRes] = await Promise.all([
           fetch('/api/learn/lessons'),
-          fetch(`/api/learn/progress?userId=${userData.id}`),
+          fetch(`/api/learn/progress?userId=${effectiveUserId}`),
         ]);
 
         const lessonsData = await lessonsRes.json();

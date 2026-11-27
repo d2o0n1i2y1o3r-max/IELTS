@@ -1,6 +1,462 @@
 {
   "lessons": [
     {
+      "id": "lesson-adv-3",
+      "unitId": "unit-adv-1",
+      "order": 3,
+      "level": "advanced",
+      "title": "Writing Task 1 & 2 Nuances and Abstract Reasoning",
+      "exercises": [
+        {
+          "id": "ex-adv-3-1",
+          "type": "multiple-choice",
+          "question": "Which word is the most precise synonym for 'drastic change' in Task 1?",
+          "options": [
+            "Dramatic shift",
+            "Small move",
+            "Little difference",
+            "Normal step"
+          ],
+          "correctAnswer": "Dramatic shift",
+          "explanation": "'Dramatic shift' akademik tilda keskin o'zgarishni eng aniq ifodalaydi."
+        }
+      ]
+    },
+    {
+      "id": "lesson-adv-2",
+      "unitId": "unit-adv-1",
+      "order": 2,
+      "level": "advanced",
+      "title": "Inversion & Complex Sentence Structures",
+      "exercises": [
+        {
+          "id": "ex-adv-2-1",
+          "type": "multiple-choice",
+          "question": "Seldom _____ such dramatic climate shifts been recorded in human history.",
+          "options": [
+            "have",
+            "has",
+            "did",
+            "were"
+          ],
+          "correctAnswer": "have",
+          "explanation": "Inversion: Seldom / Rarely bilan boshlanganda yordamchi fe'l egadan oldinga o'tadi."
+        }
+      ]
+    },
+    {
+      "id": "lesson-adv-1",
+      "unitId": "unit-adv-1",
+      "order": 1,
+      "level": "advanced",
+      "title": "Advanced Idiomatic Expressions & C1 Lexis",
+      "exercises": [
+        {
+          "id": "ex-adv-1-1",
+          "type": "multiple-choice",
+          "question": "What does 'a double-edged sword' mean in IELTS essays?",
+          "options": [
+            "Something that has both advantages and disadvantages",
+            "A very dangerous weapon",
+            "An impossible problem",
+            "A fast solution"
+          ],
+          "correctAnswer": "Something that has both advantages and disadvantages",
+          "explanation": "'Double-edged sword' - ham ijobiy, ham salbiy tomonlari bor hodisa."
+        }
+      ]
+    },
+    {
+      "id": "lesson-up-3",
+      "unitId": "unit-up-1",
+      "order": 3,
+      "level": "upper",
+      "title": "Task 2 Collocations & Cohesive Devices",
+      "exercises": [
+        {
+          "id": "ex-up-3-1",
+          "type": "multiple-choice",
+          "question": "Which cohesive device is best for contrasting two viewpoints?",
+          "options": [
+            "Conversely",
+            "Furthermore",
+            "Moreover",
+            "In addition"
+          ],
+          "correctAnswer": "Conversely",
+          "explanation": "'Conversely' yoki 'In contrast' qarama-qarshi fikrlarni bog'laydi."
+        }
+      ]
+    },
+    {
+      "id": "lesson-up-2",
+      "unitId": "unit-up-1",
+      "order": 2,
+      "level": "upper",
+      "title": "Conditionals (Shart ergash gaplar 1, 2, 3)",
+      "exercises": [
+        {
+          "id": "ex-up-2-1",
+          "type": "multiple-choice",
+          "question": "If governments invested more in green energy, pollution levels _____ decrease.",
+          "options": [
+            "would",
+            "will",
+            "shall",
+            "can"
+          ],
+          "correctAnswer": "would",
+          "explanation": "Second Conditional (nohaqiqiy hozirgi zamon): If + Past Simple, would + V1."
+        }
+      ]
+    },
+    {
+      "id": "lesson-up-1",
+      "unitId": "unit-up-1",
+      "order": 1,
+      "level": "upper",
+      "title": "Passive Voice in Academic Writing",
+      "exercises": [
+        {
+          "id": "ex-up-1-1",
+          "type": "multiple-choice",
+          "question": "The survey _____ (conduct) by researchers last year.",
+          "options": [
+            "was conducted",
+            "conducted",
+            "is conducted",
+            "has conducted"
+          ],
+          "correctAnswer": "was conducted",
+          "explanation": "Majhul nisbat (Past Simple Passive): was/were + V3."
+        },
+        {
+          "id": "ex-up-1-2",
+          "type": "error-correction",
+          "question": "Fix the error: 'A significant amount of energy was consume by factories.'",
+          "correctAnswer": "A significant amount of energy was consumed by factories.",
+          "explanation": "Passive voice shaklida fe'l o'tgan zamon sifatdoshi (V3 - consumed) bo'lishi kerak."
+        }
+      ]
+    },
+    {
+      "id": "lesson-elem-3",
+      "unitId": "unit-elem-1",
+      "order": 3,
+      "level": "elementary",
+      "title": "Joy va vaqt predloglari (in, on, at)",
+      "exercises": [
+        {
+          "id": "ex-elem-3-1",
+          "type": "multiple-choice",
+          "question": "My IELTS exam is _____ Monday morning.",
+          "options": [
+            "on",
+            "in",
+            "at",
+            "by"
+          ],
+          "correctAnswer": "on",
+          "explanation": "Hafta kunlari oldidan har doim 'on' predlogi ishlatiladi."
+        },
+        {
+          "id": "ex-elem-3-2",
+          "type": "fill-blank",
+          "question": "The lesson starts _____ 9:00 AM.",
+          "options": [
+            "at",
+            "in",
+            "on",
+            "to"
+          ],
+          "correctAnswer": "at",
+          "explanation": "Aniq vaqtlar (soatlar) bilan 'at' qo'yiladi."
+        }
+      ]
+    },
+    {
+      "id": "lesson-elem-2",
+      "unitId": "unit-elem-1",
+      "order": 2,
+      "level": "elementary",
+      "title": "Sifatlar va qiyoslash (Comparative & Superlative)",
+      "exercises": [
+        {
+          "id": "ex-elem-2-1",
+          "type": "multiple-choice",
+          "question": "English is _____ than history for my career.",
+          "options": [
+            "more important",
+            "important",
+            "most important",
+            "importanter"
+          ],
+          "correctAnswer": "more important",
+          "explanation": "Ko'p bo'g'inli sifatlarni taqqoslashda 'more' qo'yiladi."
+        },
+        {
+          "id": "ex-elem-2-2",
+          "type": "fill-blank",
+          "question": "This is the _____ book I have ever read.",
+          "options": [
+            "best",
+            "good",
+            "better",
+            "goodest"
+          ],
+          "correctAnswer": "best",
+          "explanation": "'Good' sifatining orttirma darajasi 'the best' hisoblanadi."
+        }
+      ]
+    },
+    {
+      "id": "lesson-elem-1",
+      "unitId": "unit-elem-1",
+      "order": 1,
+      "level": "elementary",
+      "title": "Past Simple: O'tgan zamon hikoyalari (was/were, -ed)",
+      "exercises": [
+        {
+          "id": "ex-elem-1-1",
+          "type": "multiple-choice",
+          "question": "Yesterday, I _____ (visit) my grandparents.",
+          "options": [
+            "visited",
+            "visit",
+            "visiting",
+            "visits"
+          ],
+          "correctAnswer": "visited",
+          "explanation": "'Yesterday' o'tgan zamon bo'lgani uchun to'g'ri fe'lga -ed qo'shiladi."
+        },
+        {
+          "id": "ex-elem-1-2",
+          "type": "fill-blank",
+          "question": "They _____ at home last night.",
+          "options": [
+            "were",
+            "was",
+            "are",
+            "is"
+          ],
+          "correctAnswer": "were",
+          "explanation": "'They' ko'plikdagi o'tgan zamon uchun 'were' talab qiladi."
+        }
+      ]
+    },
+    {
+      "id": "lesson-beg-4",
+      "unitId": "unit-beg-1",
+      "order": 4,
+      "level": "beginner",
+      "title": "Savol tuzish qoidalari (Wh- questions)",
+      "exercises": [
+        {
+          "id": "ex-beg-4-1",
+          "type": "multiple-choice",
+          "question": "_____ do you live? - I live in Tashkent.",
+          "options": [
+            "Where",
+            "What",
+            "When",
+            "Why"
+          ],
+          "correctAnswer": "Where",
+          "explanation": "Joy va manzilni so'rashda 'Where' (qayerda) ishlatiladi."
+        },
+        {
+          "id": "ex-beg-4-2",
+          "type": "multiple-choice",
+          "question": "_____ is your target IELTS score?",
+          "options": [
+            "What",
+            "Who",
+            "Where",
+            "When"
+          ],
+          "correctAnswer": "What",
+          "explanation": "Narsa va ball haqida so'rashda 'What' qo'llaniladi."
+        }
+      ]
+    },
+    {
+      "id": "lesson-beg-3",
+      "unitId": "unit-beg-1",
+      "order": 3,
+      "level": "beginner",
+      "title": "IELTS Boshlang'ich Lug'ati (Family & Education)",
+      "exercises": [
+        {
+          "id": "ex-beg-3-1",
+          "type": "multiple-choice",
+          "question": "Which word means 'maktab yoki universitetda ta'lim oluvchi shaxs'?",
+          "options": [
+            "Student",
+            "Teacher",
+            "Doctor",
+            "Driver"
+          ],
+          "correctAnswer": "Student",
+          "explanation": "'Student' - talaba yoki o'quvchi."
+        },
+        {
+          "id": "ex-beg-3-2",
+          "type": "match-pairs",
+          "question": "'Improve' so'zining ma'nosi qaysi?",
+          "options": [
+            "Yaxshilamoq / Rivojlantirmoq",
+            "Buzmoq",
+            "Kutmoq",
+            "Qo'rqmoq"
+          ],
+          "correctAnswer": "Yaxshilamoq / Rivojlantirmoq",
+          "explanation": "'To improve' - mahorat yoki darajani oshirish degani."
+        },
+        {
+          "id": "ex-beg-3-3",
+          "type": "fill-blank",
+          "question": "I want to _____ my English speaking skills.",
+          "options": [
+            "improve",
+            "improves",
+            "improving",
+            "improvement"
+          ],
+          "correctAnswer": "improve",
+          "explanation": "'Want to' dan keyin fe'lning boshlang'ich shakli (infinitive) keladi."
+        }
+      ]
+    },
+    {
+      "id": "lesson-beg-2",
+      "unitId": "unit-beg-1",
+      "order": 2,
+      "level": "beginner",
+      "title": "Present Simple: Kundalik Odatlar va Rejim",
+      "exercises": [
+        {
+          "id": "ex-beg-2-1",
+          "type": "multiple-choice",
+          "question": "He _____ (learn) 10 new words every morning.",
+          "options": [
+            "learns",
+            "learn",
+            "learning",
+            "learned"
+          ],
+          "correctAnswer": "learns",
+          "explanation": "Present Simple zamonida he/she/it fe'liga -s/-es qo'shimchasi qo'shiladi."
+        },
+        {
+          "id": "ex-beg-2-2",
+          "type": "fill-blank",
+          "question": "We _____ not speak Russian in our English club.",
+          "options": [
+            "do",
+            "does",
+            "are",
+            "is"
+          ],
+          "correctAnswer": "do",
+          "explanation": "'We' bilan inkor shaklida 'do not' (don't) qo'llaniladi."
+        },
+        {
+          "id": "ex-beg-2-3",
+          "type": "multiple-choice",
+          "question": "_____ you practice IELTS Speaking every day?",
+          "options": [
+            "Do",
+            "Does",
+            "Are",
+            "Is"
+          ],
+          "correctAnswer": "Do",
+          "explanation": "'You' olmoshiga so'roq gapda 'Do' yordamchi fe'li qo'yiladi."
+        },
+        {
+          "id": "ex-beg-2-4",
+          "type": "match-pairs",
+          "question": "'Always' so'zining ma'nosi nima?",
+          "options": [
+            "Har doim",
+            "Hech qachon",
+            "Ba'zan",
+            "Kamdan-kam"
+          ],
+          "correctAnswer": "Har doim",
+          "explanation": "'Always' - 100% har doim sodir bo'ladigan holatlar uchun."
+        }
+      ]
+    },
+    {
+      "id": "lesson-beg-1",
+      "unitId": "unit-beg-1",
+      "order": 1,
+      "level": "beginner",
+      "title": "To Be fe'li (am, is, are) va shaxs olmoshlari",
+      "exercises": [
+        {
+          "id": "ex-beg-1-1",
+          "type": "multiple-choice",
+          "question": "Bo'sh joyni to'ldiring: I _____ a student preparing for IELTS.",
+          "options": [
+            "am",
+            "is",
+            "are",
+            "be"
+          ],
+          "correctAnswer": "am",
+          "explanation": "'I' olmoshi bilan 'am' ishlatiladi (I am a student)."
+        },
+        {
+          "id": "ex-beg-1-2",
+          "type": "fill-blank",
+          "question": "She _____ studying English every single day.",
+          "options": [
+            "is",
+            "are",
+            "am",
+            "be"
+          ],
+          "correctAnswer": "is",
+          "explanation": "Uchinchi shaxs birlikda (he/she/it) 'is' qo'llanadi."
+        },
+        {
+          "id": "ex-beg-1-3",
+          "type": "multiple-choice",
+          "question": "They _____ from Uzbekistan.",
+          "options": [
+            "are",
+            "is",
+            "am",
+            "be"
+          ],
+          "correctAnswer": "are",
+          "explanation": "Ko'plikdagi 'They' bilan 'are' shakli ishlatiladi."
+        },
+        {
+          "id": "ex-beg-1-4",
+          "type": "match-pairs",
+          "question": "'We' olmoshining ma'nosi qaysi?",
+          "options": [
+            "Biz",
+            "Ular",
+            "Siz",
+            "U (erkak)"
+          ],
+          "correctAnswer": "Biz",
+          "explanation": "'We' o'zbek tilida 'Biz' degan ma'noni bildiradi."
+        },
+        {
+          "id": "ex-beg-1-5",
+          "type": "error-correction",
+          "question": "Xatoni toping va to'g'rilang: 'He are very happy with his score.'",
+          "correctAnswer": "He is very happy with his score.",
+          "explanation": "'He' bilan 'is' ishlatilishi shart."
+        }
+      ]
+    },
+    {
       "id": "lesson-1-1",
       "unitId": "unit-1",
       "order": 1,
@@ -10,7 +466,12 @@
           "id": "ex-1-1-1",
           "type": "multiple-choice",
           "question": "What does 'significant' mean in academic writing?",
-          "options": ["Important", "Small", "Quick", "Rare"],
+          "options": [
+            "Important",
+            "Small",
+            "Quick",
+            "Rare"
+          ],
           "correctAnswer": "Important",
           "explanation": "Significant means important or of consequence, commonly used in academic contexts."
         },
@@ -18,7 +479,12 @@
           "id": "ex-1-1-2",
           "type": "fill-blank",
           "question": "The study produced _____ results that changed our understanding.",
-          "options": ["significant", "significantly", "significance", "signify"],
+          "options": [
+            "significant",
+            "significantly",
+            "significance",
+            "signify"
+          ],
           "correctAnswer": "significant",
           "explanation": "Use adjective form 'significant' to modify the noun 'results'."
         },
@@ -26,7 +492,12 @@
           "id": "ex-1-1-3",
           "type": "multiple-choice",
           "question": "Which word means 'to examine or investigate'?",
-          "options": ["Analyze", "Create", "Ignore", "Destroy"],
+          "options": [
+            "Analyze",
+            "Create",
+            "Ignore",
+            "Destroy"
+          ],
           "correctAnswer": "Analyze",
           "explanation": "Analyze means to examine or investigate something in detail."
         },
@@ -34,7 +505,12 @@
           "id": "ex-1-1-4",
           "type": "fill-blank",
           "question": "Researchers _____ the data carefully before drawing conclusions.",
-          "options": ["analyzed", "analyze", "analyzing", "analysis"],
+          "options": [
+            "analyzed",
+            "analyze",
+            "analyzing",
+            "analysis"
+          ],
           "correctAnswer": "analyzed",
           "explanation": "Use past tense 'analyzed' as the action happened before drawing conclusions."
         },
@@ -49,7 +525,12 @@
           "id": "ex-1-1-6",
           "type": "match-pairs",
           "question": "Match: 'academic' with its meaning",
-          "options": ["Related to school", "Related to sports", "Related to food", "Related to music"],
+          "options": [
+            "Related to school",
+            "Related to sports",
+            "Related to food",
+            "Related to music"
+          ],
           "correctAnswer": "Related to school",
           "explanation": "Academic relates to education, scholarship, or school."
         },
@@ -57,7 +538,12 @@
           "id": "ex-1-1-7",
           "type": "multiple-choice",
           "question": "What does 'crucial' mean?",
-          "options": ["Extremely important", "Small", "Simple", "Easy"],
+          "options": [
+            "Extremely important",
+            "Small",
+            "Simple",
+            "Easy"
+          ],
           "correctAnswer": "Extremely important",
           "explanation": "Crucial means extremely important or decisive."
         },
@@ -65,7 +551,12 @@
           "id": "ex-1-1-8",
           "type": "fill-blank",
           "question": "It is _____ to follow the instructions carefully.",
-          "options": ["crucial", "crucially", "cruciate", "cruciation"],
+          "options": [
+            "crucial",
+            "crucially",
+            "cruciate",
+            "cruciation"
+          ],
           "correctAnswer": "crucial",
           "explanation": "Use adjective 'crucial' after 'it is'."
         }
@@ -81,7 +572,12 @@
           "id": "ex-1-2-1",
           "type": "fill-blank",
           "question": "Students need to _____ a research paper for their final assignment.",
-          "options": ["write", "make", "do", "conduct"],
+          "options": [
+            "write",
+            "make",
+            "do",
+            "conduct"
+          ],
           "correctAnswer": "write",
           "explanation": "The correct collocation is 'write a research paper'."
         },
@@ -89,7 +585,12 @@
           "id": "ex-1-2-2",
           "type": "multiple-choice",
           "question": "Which collocation is correct?",
-          "options": ["Make a decision", "Do a decision", "Create a decision", "Form a decision"],
+          "options": [
+            "Make a decision",
+            "Do a decision",
+            "Create a decision",
+            "Form a decision"
+          ],
           "correctAnswer": "Make a decision",
           "explanation": "The correct collocation is 'make a decision'."
         },
@@ -97,7 +598,12 @@
           "id": "ex-1-2-3",
           "type": "fill-blank",
           "question": "The professor will _____ a lecture on advanced mathematics.",
-          "options": ["give", "make", "do", "provide"],
+          "options": [
+            "give",
+            "make",
+            "do",
+            "provide"
+          ],
           "correctAnswer": "give",
           "explanation": "The correct collocation is 'give a lecture'."
         },
@@ -112,7 +618,12 @@
           "id": "ex-1-2-5",
           "type": "multiple-choice",
           "question": "Which verb goes with 'progress'?",
-          "options": ["Make", "Do", "Take", "Get"],
+          "options": [
+            "Make",
+            "Do",
+            "Take",
+            "Get"
+          ],
           "correctAnswer": "Make",
           "explanation": "The correct collocation is 'make progress'."
         },
@@ -120,7 +631,12 @@
           "id": "ex-1-2-6",
           "type": "fill-blank",
           "question": "Students must _____ an exam to pass the course.",
-          "options": ["take", "make", "do", "get"],
+          "options": [
+            "take",
+            "make",
+            "do",
+            "get"
+          ],
           "correctAnswer": "take",
           "explanation": "The correct collocation is 'take an exam'."
         },
@@ -128,7 +644,12 @@
           "id": "ex-1-2-7",
           "type": "match-pairs",
           "question": "Match: 'acquire knowledge' with its meaning",
-          "options": ["Gain understanding", "Lose understanding", "Ignore understanding", "Forget understanding"],
+          "options": [
+            "Gain understanding",
+            "Lose understanding",
+            "Ignore understanding",
+            "Forget understanding"
+          ],
           "correctAnswer": "Gain understanding",
           "explanation": "Acquire knowledge means to gain or obtain understanding."
         },
@@ -151,7 +672,12 @@
           "id": "ex-1-3-1",
           "type": "multiple-choice",
           "question": "Which word shows contrast?",
-          "options": ["However", "Therefore", "Moreover", "Furthermore"],
+          "options": [
+            "However",
+            "Therefore",
+            "Moreover",
+            "Furthermore"
+          ],
           "correctAnswer": "However",
           "explanation": "However is used to show contrast between ideas."
         },
@@ -159,7 +685,12 @@
           "id": "ex-1-3-2",
           "type": "fill-blank",
           "question": "The study was small; _____, the results were significant.",
-          "options": ["however", "therefore", "moreover", "furthermore"],
+          "options": [
+            "however",
+            "therefore",
+            "moreover",
+            "furthermore"
+          ],
           "correctAnswer": "however",
           "explanation": "Use 'however' to show contrast between small study and significant results."
         },
@@ -167,7 +698,12 @@
           "id": "ex-1-3-3",
           "type": "multiple-choice",
           "question": "Which word means 'for this reason'?",
-          "options": ["Consequently", "However", "Moreover", "Furthermore"],
+          "options": [
+            "Consequently",
+            "However",
+            "Moreover",
+            "Furthermore"
+          ],
           "correctAnswer": "Consequently",
           "explanation": "Consequently means 'as a result' or 'for this reason'."
         },
@@ -175,7 +711,12 @@
           "id": "ex-1-3-4",
           "type": "fill-blank",
           "question": "The data supports the hypothesis; _____, we can accept it.",
-          "options": ["consequently", "however", "moreover", "furthermore"],
+          "options": [
+            "consequently",
+            "however",
+            "moreover",
+            "furthermore"
+          ],
           "correctAnswer": "consequently",
           "explanation": "Use 'consequently' to show the result."
         },
@@ -190,7 +731,12 @@
           "id": "ex-1-3-6",
           "type": "match-pairs",
           "question": "Match: 'on the other hand' with its meaning",
-          "options": ["Conversely", "Similarly", "Therefore", "Moreover"],
+          "options": [
+            "Conversely",
+            "Similarly",
+            "Therefore",
+            "Moreover"
+          ],
           "correctAnswer": "Conversely",
           "explanation": "On the other hand means conversely or from a different perspective."
         },
@@ -205,7 +751,12 @@
           "id": "ex-1-3-8",
           "type": "multiple-choice",
           "question": "Which adds information?",
-          "options": ["Moreover", "However", "Therefore", "Consequently"],
+          "options": [
+            "Moreover",
+            "However",
+            "Therefore",
+            "Consequently"
+          ],
           "correctAnswer": "Moreover",
           "explanation": "Moreover is used to add more information."
         }
@@ -228,7 +779,12 @@
           "id": "ex-1-4-2",
           "type": "fill-blank",
           "question": "There _____ a lot of information available online.",
-          "options": ["is", "are", "were", "have"],
+          "options": [
+            "is",
+            "are",
+            "were",
+            "have"
+          ],
           "correctAnswer": "is",
           "explanation": "Information is uncountable, so use singular 'is'."
         },
@@ -236,7 +792,12 @@
           "id": "ex-1-4-3",
           "type": "multiple-choice",
           "question": "Which is correct?",
-          "options": ["The news is surprising", "The news are surprising", "The news be surprising", "The news were surprising"],
+          "options": [
+            "The news is surprising",
+            "The news are surprising",
+            "The news be surprising",
+            "The news were surprising"
+          ],
           "correctAnswer": "The news is surprising",
           "explanation": "News is uncountable and always singular."
         },
@@ -251,7 +812,12 @@
           "id": "ex-1-4-5",
           "type": "fill-blank",
           "question": "The professor _____ in the office yesterday.",
-          "options": ["was", "were", "is", "are"],
+          "options": [
+            "was",
+            "were",
+            "is",
+            "are"
+          ],
           "correctAnswer": "was",
           "explanation": "Professor is singular, so use 'was' for past tense."
         },
@@ -266,7 +832,12 @@
           "id": "ex-1-4-7",
           "type": "multiple-choice",
           "question": "Which is correct?",
-          "options": ["She gave me advice", "She gave me advise", "She advice me", "She advised me an advice"],
+          "options": [
+            "She gave me advice",
+            "She gave me advise",
+            "She advice me",
+            "She advised me an advice"
+          ],
           "correctAnswer": "She gave me advice",
           "explanation": "Advice is a noun, so use 'gave me advice'."
         },
@@ -274,7 +845,12 @@
           "id": "ex-1-4-8",
           "type": "fill-blank",
           "question": "Each student _____ submit their assignment on time.",
-          "options": ["must", "musts", "must to", "musting"],
+          "options": [
+            "must",
+            "musts",
+            "must to",
+            "musting"
+          ],
           "correctAnswer": "must",
           "explanation": "Modal verbs like 'must' don't change form."
         }
@@ -290,7 +866,12 @@
           "id": "ex-2-1-1",
           "type": "multiple-choice",
           "question": "What does 'collaborate' mean?",
-          "options": ["Work together", "Work alone", "Ignore others", "Compete"],
+          "options": [
+            "Work together",
+            "Work alone",
+            "Ignore others",
+            "Compete"
+          ],
           "correctAnswer": "Work together",
           "explanation": "Collaborate means to work jointly with others."
         },
@@ -298,7 +879,12 @@
           "id": "ex-2-1-2",
           "type": "fill-blank",
           "question": "The team _____ on the project for three months.",
-          "options": ["collaborated", "collaborating", "collaborate", "collaboration"],
+          "options": [
+            "collaborated",
+            "collaborating",
+            "collaborate",
+            "collaboration"
+          ],
           "correctAnswer": "collaborated",
           "explanation": "Use past tense 'collaborated' for an action completed in the past."
         },
@@ -306,7 +892,12 @@
           "id": "ex-2-1-3",
           "type": "multiple-choice",
           "question": "What does 'responsibility' mean?",
-          "options": ["Duty or obligation", "Freedom", "Option", "Choice"],
+          "options": [
+            "Duty or obligation",
+            "Freedom",
+            "Option",
+            "Choice"
+          ],
           "correctAnswer": "Duty or obligation",
           "explanation": "Responsibility means the state or fact of having a duty to deal with something."
         },
@@ -314,7 +905,12 @@
           "id": "ex-2-1-4",
           "type": "fill-blank",
           "question": "She has many _____ at work.",
-          "options": ["responsibilities", "responsibility", "responsible", "responsibly"],
+          "options": [
+            "responsibilities",
+            "responsibility",
+            "responsible",
+            "responsibly"
+          ],
           "correctAnswer": "responsibilities",
           "explanation": "Use plural form 'responsibilities' with 'many'."
         },
@@ -329,7 +925,12 @@
           "id": "ex-2-1-6",
           "type": "match-pairs",
           "question": "Match: 'deadline' with its meaning",
-          "options": ["Latest time by which something must be done", "Start time", "Meeting time", "Break time"],
+          "options": [
+            "Latest time by which something must be done",
+            "Start time",
+            "Meeting time",
+            "Break time"
+          ],
           "correctAnswer": "Latest time by which something must be done",
           "explanation": "Deadline is the latest time or date by which something should be completed."
         },
@@ -337,7 +938,12 @@
           "id": "ex-2-1-7",
           "type": "multiple-choice",
           "question": "What does 'efficient' mean?",
-          "options": ["Working well without wasting time", "Working slowly", "Making mistakes", "Being lazy"],
+          "options": [
+            "Working well without wasting time",
+            "Working slowly",
+            "Making mistakes",
+            "Being lazy"
+          ],
           "correctAnswer": "Working well without wasting time",
           "explanation": "Efficient means achieving maximum productivity with minimum wasted effort."
         },
@@ -345,7 +951,12 @@
           "id": "ex-2-1-8",
           "type": "fill-blank",
           "question": "The new system is more _____ than the old one.",
-          "options": ["efficient", "efficiency", "efficiently", "efficacy"],
+          "options": [
+            "efficient",
+            "efficiency",
+            "efficiently",
+            "efficacy"
+          ],
           "correctAnswer": "efficient",
           "explanation": "Use adjective 'efficient' to describe the system."
         }
@@ -361,7 +972,12 @@
           "id": "ex-2-2-1",
           "type": "fill-blank",
           "question": "She wants to _____ a career in marketing.",
-          "options": ["pursue", "chase", "follow", "catch"],
+          "options": [
+            "pursue",
+            "chase",
+            "follow",
+            "catch"
+          ],
           "correctAnswer": "pursue",
           "explanation": "The correct collocation is 'pursue a career'."
         },
@@ -369,7 +985,12 @@
           "id": "ex-2-2-2",
           "type": "multiple-choice",
           "question": "Which collocation is correct?",
-          "options": ["Make a meeting", "Do a meeting", "Have a meeting", "Take a meeting"],
+          "options": [
+            "Make a meeting",
+            "Do a meeting",
+            "Have a meeting",
+            "Take a meeting"
+          ],
           "correctAnswer": "Have a meeting",
           "explanation": "The correct collocation is 'have a meeting'."
         },
@@ -377,7 +998,12 @@
           "id": "ex-2-2-3",
           "type": "fill-blank",
           "question": "They _____ a job interview tomorrow.",
-          "options": ["have", "make", "do", "take"],
+          "options": [
+            "have",
+            "make",
+            "do",
+            "take"
+          ],
           "correctAnswer": "have",
           "explanation": "The correct collocation is 'have a job interview'."
         },
@@ -392,7 +1018,12 @@
           "id": "ex-2-2-5",
           "type": "multiple-choice",
           "question": "Which verb goes with 'experience'?",
-          "options": ["Gain", "Make", "Do", "Take"],
+          "options": [
+            "Gain",
+            "Make",
+            "Do",
+            "Take"
+          ],
           "correctAnswer": "Gain",
           "explanation": "The correct collocation is 'gain experience'."
         },
@@ -400,7 +1031,12 @@
           "id": "ex-2-2-6",
           "type": "fill-blank",
           "question": "She _____ valuable experience during her internship.",
-          "options": ["gained", "gain", "gaining", "gains"],
+          "options": [
+            "gained",
+            "gain",
+            "gaining",
+            "gains"
+          ],
           "correctAnswer": "gained",
           "explanation": "Use past tense 'gained' for experience already obtained."
         },
@@ -408,7 +1044,12 @@
           "id": "ex-2-2-7",
           "type": "match-pairs",
           "question": "Match: 'apply for' with its meaning",
-          "options": ["Request formally", "Reject", "Ignore", "Cancel"],
+          "options": [
+            "Request formally",
+            "Reject",
+            "Ignore",
+            "Cancel"
+          ],
           "correctAnswer": "Request formally",
           "explanation": "Apply for means to make a formal request or application."
         },
@@ -431,7 +1072,12 @@
           "id": "ex-2-3-1",
           "type": "multiple-choice",
           "question": "What does 'professional' mean?",
-          "options": ["Relating to a profession", "Unskilled", "Amateur", "Informal"],
+          "options": [
+            "Relating to a profession",
+            "Unskilled",
+            "Amateur",
+            "Informal"
+          ],
           "correctAnswer": "Relating to a profession",
           "explanation": "Professional means relating to a profession or showing competence."
         },
@@ -439,7 +1085,12 @@
           "id": "ex-2-3-2",
           "type": "fill-blank",
           "question": "She maintains a _____ attitude at work.",
-          "options": ["professional", "profession", "professionally", "professor"],
+          "options": [
+            "professional",
+            "profession",
+            "professionally",
+            "professor"
+          ],
           "correctAnswer": "professional",
           "explanation": "Use adjective 'professional' to describe the attitude."
         },
@@ -447,7 +1098,12 @@
           "id": "ex-2-3-3",
           "type": "multiple-choice",
           "question": "What does 'negotiate' mean?",
-          "options": ["Discuss to reach agreement", "Refuse", "Ignore", "Accept immediately"],
+          "options": [
+            "Discuss to reach agreement",
+            "Refuse",
+            "Ignore",
+            "Accept immediately"
+          ],
           "correctAnswer": "Discuss to reach agreement",
           "explanation": "Negotiate means to try to reach an agreement through discussion."
         },
@@ -455,7 +1111,12 @@
           "id": "ex-2-3-4",
           "type": "fill-blank",
           "question": "They _____ the contract terms successfully.",
-          "options": ["negotiated", "negotiate", "negotiating", "negotiation"],
+          "options": [
+            "negotiated",
+            "negotiate",
+            "negotiating",
+            "negotiation"
+          ],
           "correctAnswer": "negotiated",
           "explanation": "Use past tense 'negotiated' for completed action."
         },
@@ -470,7 +1131,12 @@
           "id": "ex-2-3-6",
           "type": "match-pairs",
           "question": "Match: 'resume' with its meaning",
-          "options": ["Document listing qualifications", "Continue doing something", "Stop work", "Take a break"],
+          "options": [
+            "Document listing qualifications",
+            "Continue doing something",
+            "Stop work",
+            "Take a break"
+          ],
           "correctAnswer": "Document listing qualifications",
           "explanation": "A resume is a document listing a person's qualifications and experience."
         },
@@ -485,7 +1151,12 @@
           "id": "ex-2-3-8",
           "type": "multiple-choice",
           "question": "What does 'delegate' mean?",
-          "options": ["Assign responsibility to others", "Do everything yourself", "Ignore tasks", "Cancel tasks"],
+          "options": [
+            "Assign responsibility to others",
+            "Do everything yourself",
+            "Ignore tasks",
+            "Cancel tasks"
+          ],
           "correctAnswer": "Assign responsibility to others",
           "explanation": "Delegate means to entrust a task or responsibility to another person."
         }
@@ -508,7 +1179,12 @@
           "id": "ex-2-4-2",
           "type": "fill-blank",
           "question": "The manager _____ the proposal yesterday.",
-          "options": ["approved", "approve", "approving", "approval"],
+          "options": [
+            "approved",
+            "approve",
+            "approving",
+            "approval"
+          ],
           "correctAnswer": "approved",
           "explanation": "Use past tense 'approved' for completed action."
         },
@@ -516,7 +1192,12 @@
           "id": "ex-2-4-3",
           "type": "multiple-choice",
           "question": "Which is correct?",
-          "options": ["Submit a report", "Send a report", "Give a report", "All are correct"],
+          "options": [
+            "Submit a report",
+            "Send a report",
+            "Give a report",
+            "All are correct"
+          ],
           "correctAnswer": "All are correct",
           "explanation": "All three collocations are acceptable in different contexts."
         },
@@ -531,7 +1212,12 @@
           "id": "ex-2-4-5",
           "type": "fill-blank",
           "question": "They _____ the agreement last week.",
-          "options": ["signed", "sign", "signing", "signature"],
+          "options": [
+            "signed",
+            "sign",
+            "signing",
+            "signature"
+          ],
           "correctAnswer": "signed",
           "explanation": "Use past tense 'signed' for completed action."
         },
@@ -539,7 +1225,12 @@
           "id": "ex-2-4-6",
           "type": "multiple-choice",
           "question": "What does 'mandatory' mean?",
-          "options": ["Required", "Optional", "Suggested", "Recommended"],
+          "options": [
+            "Required",
+            "Optional",
+            "Suggested",
+            "Recommended"
+          ],
           "correctAnswer": "Required",
           "explanation": "Mandatory means required by law or rule; compulsory."
         },
@@ -547,7 +1238,12 @@
           "id": "ex-2-4-7",
           "type": "match-pairs",
           "question": "Match: 'agenda' with its meaning",
-          "options": ["List of items to be discussed", "List of completed items", "Personal goals", "Future plans"],
+          "options": [
+            "List of items to be discussed",
+            "List of completed items",
+            "Personal goals",
+            "Future plans"
+          ],
           "correctAnswer": "List of items to be discussed",
           "explanation": "An agenda is a list of items to be discussed at a meeting."
         },
@@ -555,7 +1251,12 @@
           "id": "ex-2-4-8",
           "type": "fill-blank",
           "question": "The meeting _____ was quite long.",
-          "options": ["agenda", "agendas", "agend", "agendum"],
+          "options": [
+            "agenda",
+            "agendas",
+            "agend",
+            "agendum"
+          ],
           "correctAnswer": "agenda",
           "explanation": "Use 'agenda' as a noun to describe the meeting plan."
         }
@@ -571,7 +1272,12 @@
           "id": "ex-3-1-1",
           "type": "multiple-choice",
           "question": "What does 'sustainable' mean?",
-          "options": ["Able to be maintained", "Temporary", "Harmful", "Wasteful"],
+          "options": [
+            "Able to be maintained",
+            "Temporary",
+            "Harmful",
+            "Wasteful"
+          ],
           "correctAnswer": "Able to be maintained",
           "explanation": "Sustainable means able to be maintained at a certain rate or level."
         },
@@ -579,7 +1285,12 @@
           "id": "ex-3-1-2",
           "type": "fill-blank",
           "question": "We need _____ energy sources.",
-          "options": ["sustainable", "sustain", "sustainability", "sustaining"],
+          "options": [
+            "sustainable",
+            "sustain",
+            "sustainability",
+            "sustaining"
+          ],
           "correctAnswer": "sustainable",
           "explanation": "Use adjective 'sustainable' to describe energy sources."
         },
@@ -587,7 +1298,12 @@
           "id": "ex-3-1-3",
           "type": "multiple-choice",
           "question": "What does 'pollution' mean?",
-          "options": ["Contamination of environment", "Clean air", "Healthy environment", "Natural state"],
+          "options": [
+            "Contamination of environment",
+            "Clean air",
+            "Healthy environment",
+            "Natural state"
+          ],
           "correctAnswer": "Contamination of environment",
           "explanation": "Pollution is the introduction of harmful materials into the environment."
         },
@@ -595,7 +1311,12 @@
           "id": "ex-3-1-4",
           "type": "fill-blank",
           "question": "Air _____ is a serious problem in many cities.",
-          "options": ["pollution", "pollute", "polluting", "pollutant"],
+          "options": [
+            "pollution",
+            "pollute",
+            "polluting",
+            "pollutant"
+          ],
           "correctAnswer": "pollution",
           "explanation": "Use noun 'pollution' to describe the problem."
         },
@@ -610,7 +1331,12 @@
           "id": "ex-3-1-6",
           "type": "match-pairs",
           "question": "Match: 'renewable' with its meaning",
-          "options": ["Can be replenished", "Cannot be replaced", "Permanent", "Finite"],
+          "options": [
+            "Can be replenished",
+            "Cannot be replaced",
+            "Permanent",
+            "Finite"
+          ],
           "correctAnswer": "Can be replenished",
           "explanation": "Renewable means capable of being replaced naturally."
         },
@@ -618,7 +1344,12 @@
           "id": "ex-3-1-7",
           "type": "multiple-choice",
           "question": "What does 'conservation' mean?",
-          "options": ["Protection from harm", "Destruction", "Waste", "Pollution"],
+          "options": [
+            "Protection from harm",
+            "Destruction",
+            "Waste",
+            "Pollution"
+          ],
           "correctAnswer": "Protection from harm",
           "explanation": "Conservation means the protection of something from harm or loss."
         },
@@ -626,7 +1357,12 @@
           "id": "ex-3-1-8",
           "type": "fill-blank",
           "question": "Water _____ is important for everyone.",
-          "options": ["conservation", "conserve", "conserving", "conserved"],
+          "options": [
+            "conservation",
+            "conserve",
+            "conserving",
+            "conserved"
+          ],
           "correctAnswer": "conservation",
           "explanation": "Use noun 'conservation' to describe the practice."
         }
@@ -642,7 +1378,12 @@
           "id": "ex-3-2-1",
           "type": "fill-blank",
           "question": "Global _____ is a major concern.",
-          "options": ["warming", "warm", "warmingly", "warmed"],
+          "options": [
+            "warming",
+            "warm",
+            "warmingly",
+            "warmed"
+          ],
           "correctAnswer": "warming",
           "explanation": "Use noun 'warming' in 'global warming'."
         },
@@ -650,7 +1391,12 @@
           "id": "ex-3-2-2",
           "type": "multiple-choice",
           "question": "Which collocation is correct?",
-          "options": ["Climate change", "Climate changing", "Climate changes", "Climate changed"],
+          "options": [
+            "Climate change",
+            "Climate changing",
+            "Climate changes",
+            "Climate changed"
+          ],
           "correctAnswer": "Climate change",
           "explanation": "The correct collocation is 'climate change'."
         },
@@ -658,7 +1404,12 @@
           "id": "ex-3-2-3",
           "type": "fill-blank",
           "question": "We must reduce carbon _____.",
-          "options": ["emissions", "emission", "emitting", "emitted"],
+          "options": [
+            "emissions",
+            "emission",
+            "emitting",
+            "emitted"
+          ],
           "correctAnswer": "emissions",
           "explanation": "Use plural 'emissions' for carbon output."
         },
@@ -673,7 +1424,12 @@
           "id": "ex-3-2-5",
           "type": "multiple-choice",
           "question": "What does 'biodiversity' mean?",
-          "options": ["Variety of life", "Single species", "Extinction", "Pollution"],
+          "options": [
+            "Variety of life",
+            "Single species",
+            "Extinction",
+            "Pollution"
+          ],
           "correctAnswer": "Variety of life",
           "explanation": "Biodiversity is the variety of plant and animal life in a particular habitat."
         },
@@ -681,7 +1437,12 @@
           "id": "ex-3-2-6",
           "type": "fill-blank",
           "question": "The rainforest has high _____.",
-          "options": ["biodiversity", "biodiverse", "biodiversities", "biodiversify"],
+          "options": [
+            "biodiversity",
+            "biodiverse",
+            "biodiversities",
+            "biodiversify"
+          ],
           "correctAnswer": "biodiversity",
           "explanation": "Use noun 'biodiversity' to describe the variety."
         },
@@ -689,7 +1450,12 @@
           "id": "ex-3-2-7",
           "type": "match-pairs",
           "question": "Match: 'deforestation' with its meaning",
-          "options": ["Clearing of forests", "Planting trees", "Growing forests", "Protecting forests"],
+          "options": [
+            "Clearing of forests",
+            "Planting trees",
+            "Growing forests",
+            "Protecting forests"
+          ],
           "correctAnswer": "Clearing of forests",
           "explanation": "Deforestation is the action of clearing a wide area of trees."
         },
@@ -712,7 +1478,12 @@
           "id": "ex-3-3-1",
           "type": "multiple-choice",
           "question": "What does 'recycle' mean?",
-          "options": ["Convert waste into reusable material", "Throw away", "Burn", "Ignore"],
+          "options": [
+            "Convert waste into reusable material",
+            "Throw away",
+            "Burn",
+            "Ignore"
+          ],
           "correctAnswer": "Convert waste into reusable material",
           "explanation": "Recycle means to convert waste into reusable material."
         },
@@ -720,7 +1491,12 @@
           "id": "ex-3-3-2",
           "type": "fill-blank",
           "question": "We should _____ plastic bottles.",
-          "options": ["recycle", "recycling", "recyclable", "recycled"],
+          "options": [
+            "recycle",
+            "recycling",
+            "recyclable",
+            "recycled"
+          ],
           "correctAnswer": "recycle",
           "explanation": "Use verb 'recycle' for the action."
         },
@@ -728,7 +1504,12 @@
           "id": "ex-3-3-3",
           "type": "multiple-choice",
           "question": "What does 'reduce' mean?",
-          "options": ["Make less", "Make more", "Keep same", "Increase"],
+          "options": [
+            "Make less",
+            "Make more",
+            "Keep same",
+            "Increase"
+          ],
           "correctAnswer": "Make less",
           "explanation": "Reduce means to make smaller or less in amount."
         },
@@ -736,7 +1517,12 @@
           "id": "ex-3-3-4",
           "type": "fill-blank",
           "question": "We must _____ our energy consumption.",
-          "options": ["reduce", "reduction", "reducing", "reduced"],
+          "options": [
+            "reduce",
+            "reduction",
+            "reducing",
+            "reduced"
+          ],
           "correctAnswer": "reduce",
           "explanation": "Use verb 'reduce' for the action."
         },
@@ -751,7 +1537,12 @@
           "id": "ex-3-3-6",
           "type": "match-pairs",
           "question": "Match: 'eco-friendly' with its meaning",
-          options": ["Not harmful to environment", "Harmful to environment", "Expensive", "Cheap"],
+          "options": [
+            "Not harmful to environment",
+            "Harmful to environment",
+            "Expensive",
+            "Cheap"
+          ],
           "correctAnswer": "Not harmful to environment",
           "explanation": "Eco-friendly means not harmful to the environment."
         },
@@ -766,7 +1557,12 @@
           "id": "ex-3-3-8",
           "type": "multiple-choice",
           "question": "What does 'preserve' mean?",
-          "options": ["Maintain in original state", "Change", "Destroy", "Damage"],
+          "options": [
+            "Maintain in original state",
+            "Change",
+            "Destroy",
+            "Damage"
+          ],
           "correctAnswer": "Maintain in original state",
           "explanation": "Preserve means to maintain something in its original or existing state."
         }
@@ -789,7 +1585,12 @@
           "id": "ex-3-4-2",
           "type": "fill-blank",
           "question": "Sea levels _____ rising.",
-          "options": ["are", "is", "were", "be"],
+          "options": [
+            "are",
+            "is",
+            "were",
+            "be"
+          ],
           "correctAnswer": "are",
           "explanation": "Use 'are' for plural subject 'levels'."
         },
@@ -797,7 +1598,12 @@
           "id": "ex-3-4-3",
           "type": "multiple-choice",
           "question": "Which is correct?",
-          "options": ["Extreme weather events", "Extreme weathers", "Extreme weather event", "Extreme weathers event"],
+          "options": [
+            "Extreme weather events",
+            "Extreme weathers",
+            "Extreme weather event",
+            "Extreme weathers event"
+          ],
           "correctAnswer": "Extreme weather events",
           "explanation": "Use plural 'events' with 'extreme weather'."
         },
@@ -812,7 +1618,12 @@
           "id": "ex-3-4-5",
           "type": "fill-blank",
           "question": "Temperature _____ increased significantly.",
-          "options": ["has", "have", "had", "having"],
+          "options": [
+            "has",
+            "have",
+            "had",
+            "having"
+          ],
           "correctAnswer": "has",
           "explanation": "Use 'has' with singular subject 'temperature'."
         },
@@ -820,7 +1631,12 @@
           "id": "ex-3-4-6",
           "type": "multiple-choice",
           "question": "What does 'adapt' mean?",
-          "options": ["Adjust to new conditions", "Stay the same", "Refuse to change", "Ignore change"],
+          "options": [
+            "Adjust to new conditions",
+            "Stay the same",
+            "Refuse to change",
+            "Ignore change"
+          ],
           "correctAnswer": "Adjust to new conditions",
           "explanation": "Adapt means to adjust or modify to new conditions."
         },
@@ -828,7 +1644,12 @@
           "id": "ex-3-4-7",
           "type": "match-pairs",
           "question": "Match: 'mitigate' with its meaning",
-          "options": ["Make less severe", "Make worse", "Ignore", "Increase"],
+          "options": [
+            "Make less severe",
+            "Make worse",
+            "Ignore",
+            "Increase"
+          ],
           "correctAnswer": "Make less severe",
           "explanation": "Mitigate means to make something less severe or serious."
         },
@@ -836,7 +1657,12 @@
           "id": "ex-3-4-8",
           "type": "fill-blank",
           "question": "We must _____ the effects of climate change.",
-          "options": ["mitigate", "mitigation", "mitigating", "mitigated"],
+          "options": [
+            "mitigate",
+            "mitigation",
+            "mitigating",
+            "mitigated"
+          ],
           "correctAnswer": "mitigate",
           "explanation": "Use verb 'mitigate' for the action."
         }

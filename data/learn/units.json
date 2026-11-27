@@ -1,19 +1,44 @@
 {
   "units": [
     {
-      "id": "unit-1",
+      "id": "unit-beg-1",
       "order": 1,
-      "topic": "Education",
+      "level": "beginner",
+      "topic": "Boshlang'ich Grammatika (To Be va Present Simple)",
+      "lessons": [
+        "lesson-beg-1",
+        "lesson-beg-2",
+        "lesson-beg-3",
+        "lesson-beg-4"
+      ]
+    },
+    {
+      "id": "unit-elem-1",
+      "order": 2,
+      "level": "elementary",
+      "topic": "Elementary: O'tgan Zamon va Sifatlar",
+      "lessons": [
+        "lesson-elem-1",
+        "lesson-elem-2",
+        "lesson-elem-3"
+      ]
+    },
+    {
+      "id": "unit-1",
+      "order": 3,
+      "level": "intermediate",
+      "topic": "Intermediate: Academic Education & Vocabulary",
       "lessons": [
         "lesson-1-1",
         "lesson-1-2",
-        "lesson-1-3",
-        "lesson-1-4"
+        "lesson-int-1",
+        "lesson-int-2"
       ]
     },
     {
       "id": "unit-2",
-      "order": 2,
+      "order": 4,
+      "level": "intermediate",
       "topic": "Work & Career",
       "lessons": [
         "lesson-2-1",
@@ -24,13 +49,36 @@
     },
     {
       "id": "unit-3",
-      "order": 3,
-      "topic": "Environment",
+      "order": 5,
+      "level": "intermediate",
+      "topic": "Environment & Nature",
       "lessons": [
         "lesson-3-1",
         "lesson-3-2",
         "lesson-3-3",
         "lesson-3-4"
+      ]
+    },
+    {
+      "id": "unit-up-1",
+      "order": 6,
+      "level": "upper",
+      "topic": "Upper-Intermediate: Academic Writing & Passive Voice",
+      "lessons": [
+        "lesson-up-1",
+        "lesson-up-2",
+        "lesson-up-3"
+      ]
+    },
+    {
+      "id": "unit-adv-1",
+      "order": 7,
+      "level": "advanced",
+      "topic": "Advanced (Band 7.5+): C1/C2 Lexis & Inversion",
+      "lessons": [
+        "lesson-adv-1",
+        "lesson-adv-2",
+        "lesson-adv-3"
       ]
     }
   ]

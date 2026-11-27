@@ -250,6 +250,7 @@ export interface Lesson {
   unitId: string;
   order: number;
   title: string;
+  level?: string;
   exercises: Exercise[];
 }
 
@@ -257,6 +258,7 @@ export interface Unit {
   id: string;
   order: number;
   topic: string;
+  level?: string;
   lessons: string[];
 }
 

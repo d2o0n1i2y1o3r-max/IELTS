@@ -53,7 +53,7 @@ export default function Navbar() {
       items: [
         { href: '/auth', label: userProfile ? 'Mening profilim' : "Ro'yxatdan o'tish", icon: User },
         { href: '/', label: t('nav.home') || 'Bosh sahifa', icon: Sparkles },
-        { href: '/learn', label: t('nav.learn') || "O'rganish", icon: FileText },
+        { href: '/learn', label: "Darslar va Mashqlar", icon: FileText },
       ],
     },
     {
