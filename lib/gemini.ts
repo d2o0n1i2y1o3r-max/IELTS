@@ -1,7 +1,11 @@
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 
-const PRIMARY_MODEL = 'gemini-3.5-flash-lite';
-const FALLBACK_MODEL = 'gemini-3.8-flash';
+// Real, active Google Generative Language models
+const MODELS = [
+  'gemini-2.0-flash',
+  'gemini-1.5-flash',
+  'gemini-1.5-pro',
+];
 
 export interface GeminiOptions {
   temperature?: number;
@@ -14,10 +18,13 @@ export async function callGemini(
   systemInstruction?: string,
   options: GeminiOptions = {}
 ): Promise<string> {
-  const models = [PRIMARY_MODEL, FALLBACK_MODEL];
+  if (!GEMINI_API_KEY || GEMINI_API_KEY.startsWith('AQ.')) {
+    throw new Error('Valid Google Gemini API key is not configured');
+  }
+
   let lastError: any = null;
 
-  for (const model of models) {
+  for (const model of MODELS) {
     try {
       const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${GEMINI_API_KEY}`;
 
@@ -25,18 +32,18 @@ export async function callGemini(
         contents: [
           {
             role: 'user',
-            parts: [{ text: prompt }]
-          }
+            parts: [{ text: prompt }],
+          },
         ],
         generationConfig: {
           temperature: options.temperature ?? 0.7,
           maxOutputTokens: options.maxTokens ?? 1500,
-        }
+        },
       };
 
       if (systemInstruction) {
         body.systemInstruction = {
-          parts: [{ text: systemInstruction }]
+          parts: [{ text: systemInstruction }],
         };
       }
 
@@ -44,11 +51,15 @@ export async function callGemini(
         body.generationConfig.responseMimeType = 'application/json';
       }
 
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 6000);
+
       const res = await fetch(url, {
         method: 'POST',
+        signal: controller.signal,
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body)
-      });
+        body: JSON.stringify(body),
+      }).finally(() => clearTimeout(timeoutId));
 
       if (!res.ok) {
         const errData = await res.json().catch(() => ({}));
@@ -58,15 +69,18 @@ export async function callGemini(
       }
 
       const data = await res.json();
-      const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
-      if (text) {
-        return text;
+      const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+
+      if (!text) {
+        throw new Error('No content returned from Gemini');
       }
+
+      return text.trim();
     } catch (err) {
-      console.error(`Gemini fetch error for ${model}:`, err);
       lastError = err;
+      continue;
     }
   }
 
-  throw new Error(`All Gemini models failed: ${JSON.stringify(lastError)}`);
+  throw lastError || new Error('All Gemini models failed');
 }

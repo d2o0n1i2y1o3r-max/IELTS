@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { answerIELTSQuestion } from '@/lib/ielts-kb';
 
 async function retryWithBackoff<T>(
   fn: () => Promise<T>,
@@ -32,12 +33,10 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Messages are required' }, { status: 400 });
     }
 
-    if (!process.env.OPENROUTER_API_KEY) {
-      console.error('Missing OPENROUTER_API_KEY environment variable');
-      return NextResponse.json({
-        reply: "Hozircha AI ulanish sozlanmagan. Iltimos, .env.local faylida OPENROUTER_API_KEY o'rnating. Shunga qaramay, IELTS bo'yicha umumiy suhbat bera olaman!",
-        error: 'MISSING_API_KEY'
-      });
+    if (!process.env.OPENROUTER_API_KEY && !process.env.GITHUB_MODELS_TOKEN) {
+      const lastMessage = messages[messages.length - 1]?.content || '';
+      const kbAnswer = answerIELTSQuestion(lastMessage);
+      return NextResponse.json({ reply: kbAnswer.reply });
     }
 
     const model = process.env.OPENROUTER_MODEL || 'google/gemma-7b-it:free';

@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { callCfAI, parseCfAIJson } from '@/lib/cf-ai';
+import { answerIELTSQuestion } from '@/lib/ielts-kb';
 
 async function retryWithBackoff<T>(
   fn: () => Promise<T>,
@@ -38,18 +39,9 @@ export async function POST(request: Request) {
     if (language === 'en') langInstruction = "Ingliz tilida";
 
     if (!process.env.GITHUB_MODELS_TOKEN) {
-      console.error('Missing GITHUB_MODELS_TOKEN environment variable');
       const lastMessage = messages[messages.length - 1]?.content || '';
-      let mood: 'calm' | 'agitated' = 'calm';
-      let reply = "Hozircha AI ulanish sozlanmagan. Iltimos, .env.local faylida GITHUB_MODELS_TOKEN o'rnating.";
-      if (language === 'ru') reply = "ИИ пока не настроен. Пожалуйста, установите GITHUB_MODELS_TOKEN в .env.local.";
-      if (language === 'en') reply = "AI is not configured yet. Please set GITHUB_MODELS_TOKEN in .env.local.";
-
-      if (lastMessage.toLowerCase().includes('xato') || lastMessage.toLowerCase().includes('yomon') || lastMessage.toLowerCase().includes('qiyin')) {
-         mood = 'agitated';
-      }
-
-      return NextResponse.json({ reply, mood });
+      const kbAnswer = answerIELTSQuestion(lastMessage);
+      return NextResponse.json(kbAnswer);
     }
 
     const conversation = messages

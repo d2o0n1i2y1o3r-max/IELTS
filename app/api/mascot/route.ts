@@ -1,21 +1,25 @@
 import { NextResponse } from 'next/server';
 import { callGemini } from '@/lib/gemini';
 import { callAI, parseJSON } from '@/lib/cf-ai';
+import { answerIELTSQuestion } from '@/lib/ielts-kb';
 
 export async function POST(request: Request) {
   try {
-    const { messages } = await request.json();
+    const { messages, model = 'gemini' } = await request.json();
 
     if (!messages || !Array.isArray(messages)) {
       console.error('Invalid messages format:', messages);
       return NextResponse.json({ error: 'Messages are required' }, { status: 400 });
     }
 
+    const userMessages = messages.filter((m: any) => m.role === 'user');
+    const lastUserQuery = userMessages[userMessages.length - 1]?.content || '';
+
     const conversation = messages
       .slice(-6)
       .map((m: any) => `${m.role === 'user' ? 'Foydalanuvchi' : 'AI Mascot'}: ${m.content}`)
       .join('\n');
-    
+
     const systemPrompt = `You are a friendly, encouraging and highly knowledgeable IELTS coach AI mascot.
 Analyze the user's latest message in the context of the conversation.
 Reply naturally in the exact language the user used (Uzbek, Russian, or English).
@@ -55,10 +59,10 @@ Respond with JSON:`;
         });
       }
     } catch (geminiError) {
-      console.warn('Gemini failed, trying fallback:', geminiError);
+      console.warn('Gemini attempt failed, trying fallback:', geminiError);
     }
 
-    // 2. Fallback to GitHub Models / CF AI if Gemini fails
+    // 2. Try GitHub Models / CF AI if Gemini fails
     if (process.env.GITHUB_MODELS_TOKEN) {
       try {
         const raw = await callAI(systemPrompt, prompt, { maxTokens: 1024, temperature: 0.6 });
@@ -67,15 +71,13 @@ Respond with JSON:`;
           return NextResponse.json(data);
         }
       } catch (fbError) {
-        console.error('Fallback AI also failed:', fbError);
+        console.warn('Fallback AI also failed:', fbError);
       }
     }
 
-    // 3. Fallback answer if everything fails
-    return NextResponse.json({
-      reply: "Salom! Men sizning IELTS bo'yicha yordamchingizman. Savolingizni bering, sizga yordam berishdan xursand bo'laman!",
-      mood: 'calm',
-    });
+    // 3. Intelligent IELTS Knowledge Base Responder (Reliable offline/Vercel zero-key fallback)
+    const kbAnswer = answerIELTSQuestion(lastUserQuery);
+    return NextResponse.json(kbAnswer);
 
   } catch (error: any) {
     console.error('Mascot API error:', error);
