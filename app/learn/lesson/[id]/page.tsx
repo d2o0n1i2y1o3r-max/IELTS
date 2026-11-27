@@ -13,6 +13,49 @@ import FillBlankExercise from '@/components/exercises/FillBlankExercise';
 import MatchPairsExercise from '@/components/exercises/MatchPairsExercise';
 import ErrorCorrectionExercise from '@/components/exercises/ErrorCorrectionExercise';
 
+function normalizeAnswerText(text: string): string {
+  return text
+    .toLowerCase()
+    .trim()
+    .replace(/[’`]/g, "'")
+    .replace(/[.,!?;:()]/g, '')
+    .replace(/\s+/g, ' ')
+    .replace(/\bhe's\b/g, 'he is')
+    .replace(/\bshe's\b/g, 'she is')
+    .replace(/\bit's\b/g, 'it is')
+    .replace(/\bthey're\b/g, 'they are')
+    .replace(/\bwe're\b/g, 'we are')
+    .replace(/\byou're\b/g, 'you are')
+    .replace(/\bdon't\b/g, 'do not')
+    .replace(/\bdoesn't\b/g, 'does not')
+    .replace(/\bdidn't\b/g, 'did not')
+    .replace(/\bwon't\b/g, 'will not')
+    .replace(/\bcan't\b/g, 'cannot');
+}
+
+function checkIsAnswerCorrect(userAns: string, correctAns: string, exerciseType?: string): boolean {
+  if (!userAns || !correctAns) return false;
+
+  const normUser = normalizeAnswerText(userAns);
+  const normCorrect = normalizeAnswerText(correctAns);
+
+  if (normUser === normCorrect) return true;
+
+  if (exerciseType === 'error-correction') {
+    const userWords = normUser.split(' ').filter(Boolean);
+    const correctWords = normCorrect.split(' ').filter(Boolean);
+
+    // If user typed the corrected verb or word directly (e.g. 'is' or 'are -> is')
+    if (userWords.length <= 3 && userWords.every((w) => correctWords.includes(w) || w === 'to' || w === '->')) {
+      return true;
+    }
+  }
+
+  if (normUser.replace(/\s/g, '') === normCorrect.replace(/\s/g, '')) return true;
+
+  return false;
+}
+
 export default function LessonPlayerPage() {
   const router = useRouter();
   const params = useParams();
@@ -79,7 +122,11 @@ export default function LessonPlayerPage() {
 
     setSubmitting(true);
 
-    const correct = answer.toLowerCase().trim() === currentExercise.correctAnswer.toLowerCase().trim();
+    const correct = checkIsAnswerCorrect(
+      answer,
+      currentExercise.correctAnswer,
+      currentExercise.type
+    );
     setIsCorrect(correct);
     setShowFeedback(true);
 
