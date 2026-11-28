@@ -1,10 +1,10 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { useRouter, useParams } from 'next/navigation';
+import { useRouter, useParams, useSearchParams } from 'next/navigation';
 import { useAppStore } from '@/lib/store';
-import { Lesson, Exercise, LearnProgress } from '@/lib/types';
-import { ArrowRight, CheckCircle, AlertCircle, Loader2, BookOpen } from 'lucide-react';
+import { Lesson, Exercise, LearnProgress, GameMode, GAME_MODES } from '@/lib/types';
+import { ArrowRight, CheckCircle, AlertCircle, Loader2, BookOpen, Crown, Gem, Shield } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 // Exercise components
@@ -62,8 +62,12 @@ function checkIsAnswerCorrect(userAns: string, correctAns: string, exerciseType?
 export default function LessonPlayerPage() {
   const router = useRouter();
   const params = useParams();
+  const searchParams = useSearchParams();
   const { language, setCurrentLesson, addExerciseResult, exerciseResults } = useAppStore();
   const { t } = useTranslation();
+
+  const modeParam = (searchParams.get('mode') as GameMode) || 'normal';
+  const gameMode = GAME_MODES[modeParam] || GAME_MODES.normal;
 
   const [lesson, setLesson] = useState<Lesson | null>(null);
   const [progress, setProgress] = useState<LearnProgress | null>(null);
@@ -120,6 +124,13 @@ export default function LessonPlayerPage() {
           return;
         }
 
+        // Adjust question pool based on Game Mode (5 for Normal, 8 for Gold, 12 for Diamond)
+        const targetCount = Math.min(gameMode.questionCount, (lessonData.exercises || []).length);
+        const configuredLesson: Lesson = {
+          ...lessonData,
+          exercises: (lessonData.exercises || []).slice(0, Math.max(targetCount, 5)),
+        };
+
         // Merge server and local progress
         const mergedXp = Math.max(defaultProg.xp || 0, progressData?.xp || 0);
         const mergedProg: LearnProgress = {
@@ -132,9 +143,9 @@ export default function LessonPlayerPage() {
           lastActiveDate: new Date().toISOString(),
         };
 
-        setLesson(lessonData);
+        setLesson(configuredLesson);
         setProgress(mergedProg);
-        setCurrentLesson(lessonData);
+        setCurrentLesson(configuredLesson);
         setStartTime(Date.now());
       } catch (error) {
         console.error('Error loading lesson:', error);
@@ -209,7 +220,9 @@ export default function LessonPlayerPage() {
     const duration = Math.floor((Date.now() - startTime) / 1000);
 
     const isPerfect = effectiveCorrect >= totalExercises;
-    const earnedXp = effectiveCorrect * 5 + (isPerfect ? 10 : 0);
+    const baseEarned = effectiveCorrect * 5 + (isPerfect ? 10 : 0);
+    // Multiply XP according to Game Mode (1.0x Normal, 1.5x Gold, 2.0x Diamond)
+    const earnedXp = Math.round(baseEarned * gameMode.multiplier);
 
     const accuracy = effectiveCorrect / totalExercises;
     let stars = 1;
@@ -272,7 +285,7 @@ export default function LessonPlayerPage() {
 
     // 3. Navigate to complete screen with earned XP and new total XP
     router.push(
-      `/learn/complete?lessonId=${lesson.id}&stars=${stars}&xpEarned=${earnedXp}&totalXp=${currentXp}`
+      `/learn/complete?lessonId=${lesson.id}&stars=${stars}&xpEarned=${earnedXp}&totalXp=${currentXp}&mode=${gameMode.id}`
     );
   };
 
@@ -320,9 +333,22 @@ export default function LessonPlayerPage() {
       {/* Progress Bar & Header */}
       <div className="space-y-2">
         <div className="flex items-center justify-between text-sm text-slate-600 dark:text-slate-400">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 flex-wrap">
             <span className="font-bold text-slate-900 dark:text-white">
               {lesson.title}
+            </span>
+            {/* Game Mode Badge */}
+            <span
+              className={`text-[10px] font-black px-2.5 py-0.5 rounded-full text-white bg-gradient-to-r ${gameMode.gradient} flex items-center gap-1 shadow-xs`}
+            >
+              {gameMode.id === 'diamond' ? (
+                <Gem className="w-3 h-3" />
+              ) : gameMode.id === 'gold' ? (
+                <Crown className="w-3 h-3" />
+              ) : (
+                <Shield className="w-3 h-3" />
+              )}
+              {gameMode.name} ({gameMode.multiplierText})
             </span>
             <span className="text-xs px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800">
               {currentExerciseIndex + 1} / {lesson.exercises.length}

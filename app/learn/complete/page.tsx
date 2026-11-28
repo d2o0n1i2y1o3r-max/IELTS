@@ -2,8 +2,9 @@
 
 import React, { useEffect, useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { Star, Trophy, Flame, ArrowRight, Home } from 'lucide-react';
+import { Star, Trophy, Flame, ArrowRight, Home, Crown, Gem, Shield } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { GameMode, GAME_MODES } from '@/lib/types';
 
 function LessonCompleteContent() {
   const router = useRouter();
@@ -13,16 +14,21 @@ function LessonCompleteContent() {
   const [stars, setStars] = useState(0);
   const [xpEarned, setXpEarned] = useState(5);
   const [totalXp, setTotalXp] = useState(0);
+  const [mode, setMode] = useState<GameMode>('normal');
 
   useEffect(() => {
     const starsParam = searchParams.get('stars');
     const earnedParam = searchParams.get('xpEarned') || searchParams.get('xp');
     const totalParam = searchParams.get('totalXp');
+    const modeParam = searchParams.get('mode') as GameMode;
 
     if (starsParam) setStars(parseInt(starsParam, 10));
     if (earnedParam) setXpEarned(parseInt(earnedParam, 10));
     if (totalParam) setTotalXp(parseInt(totalParam, 10));
+    if (modeParam && GAME_MODES[modeParam]) setMode(modeParam);
   }, [searchParams]);
+
+  const modeConfig = GAME_MODES[mode] || GAME_MODES.normal;
 
   return (
     <div className="max-w-md mx-auto space-y-8 pb-12">
@@ -58,13 +64,20 @@ function LessonCompleteContent() {
               <Trophy className="w-5 h-5 text-brand-500" />
             </div>
             <div>
-              <span className="text-slate-600 dark:text-slate-400 block">{t('learn.xp_earned')}</span>
+              <div className="flex items-center gap-1.5">
+                <span className="text-slate-600 dark:text-slate-400 font-bold">{t('learn.xp_earned')}</span>
+                <span
+                  className={`text-[9px] font-black px-2 py-0.2 rounded-full text-white bg-gradient-to-r ${modeConfig.gradient}`}
+                >
+                  {modeConfig.multiplierText}
+                </span>
+              </div>
               {totalXp > 0 && (
                 <span className="text-xs text-slate-400">Jami: {totalXp} XP</span>
               )}
             </div>
           </div>
-          <span className="text-2xl font-bold text-emerald-500">+{xpEarned} XP</span>
+          <span className="text-2xl font-black text-emerald-500">+{xpEarned} XP</span>
         </div>
 
         <div className="flex items-center justify-between">

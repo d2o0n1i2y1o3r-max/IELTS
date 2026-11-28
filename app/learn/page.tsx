@@ -20,6 +20,8 @@ import { useTranslation } from 'react-i18next';
 import { getStoredUser, UserProfile } from '@/lib/userAuth';
 import MysteryChestModal, { ChestRarity } from '@/components/MysteryChestModal';
 import TopicTheoryModal from '@/components/TopicTheoryModal';
+import GameModeModal from '@/components/GameModeModal';
+import { GameMode } from '@/lib/types';
 
 type LevelKey = 'beginner' | 'elementary' | 'intermediate' | 'upper' | 'advanced';
 
@@ -108,6 +110,7 @@ export default function LearnPage() {
   const [activeTheoryUnit, setActiveTheoryUnit] = useState<Unit | null>(null);
   const [pendingLessonId, setPendingLessonId] = useState<string | null>(null);
   const [lockToast, setLockToast] = useState<string | null>(null);
+  const [gameModeTarget, setGameModeTarget] = useState<{ id: string; title: string } | null>(null);
 
   const showLockMessage = (msg: string) => {
     setLockToast(msg);
@@ -306,9 +309,22 @@ export default function LearnPage() {
   const handleStartExercise = () => {
     if (pendingLessonId) {
       const target = pendingLessonId;
+      const lessonObj = lessons.find((l) => l.id === target);
+      const title = lessonObj?.title || 'IELTS Mashg\'ulot';
+
       setPendingLessonId(null);
       setActiveTheoryUnit(null);
-      router.push(`/learn/lesson/${target}`);
+
+      // Open Game Mode selector (Oddiy, Oltin, Olmos)
+      setGameModeTarget({ id: target, title });
+    }
+  };
+
+  const handleLaunchWithMode = (mode: GameMode) => {
+    if (gameModeTarget) {
+      const lessonId = gameModeTarget.id;
+      setGameModeTarget(null);
+      router.push(`/learn/lesson/${lessonId}?mode=${mode}`);
     }
   };
 
@@ -872,6 +888,16 @@ export default function LearnPage() {
           theory={activeTheoryUnit.theory}
           title={activeTheoryUnit.topic}
           level={activeTheoryUnit.level}
+        />
+      )}
+
+      {/* ─── Game Mode Selection Modal (Oddiy, Oltin, Olmos) ─── */}
+      {gameModeTarget && (
+        <GameModeModal
+          isOpen={Boolean(gameModeTarget)}
+          lessonTitle={gameModeTarget.title}
+          onClose={() => setGameModeTarget(null)}
+          onSelectMode={handleLaunchWithMode}
         />
       )}
     </div>

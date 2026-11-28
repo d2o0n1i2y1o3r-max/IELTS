@@ -241,6 +241,64 @@ export type ExerciseType =
   | 'listening'
   | 'speaking';
 
+export type GameMode = 'normal' | 'gold' | 'diamond';
+
+export interface GameModeConfig {
+  id: GameMode;
+  name: string;
+  title: string;
+  multiplier: number;
+  multiplierText: string;
+  questionCount: number;
+  difficultyLabel: string;
+  color: string;
+  borderColor: string;
+  gradient: string;
+  description: string;
+}
+
+export const GAME_MODES: Record<GameMode, GameModeConfig> = {
+  normal: {
+    id: 'normal',
+    name: 'Oddiy',
+    title: "Oddiy O'yin",
+    multiplier: 1.0,
+    multiplierText: '1x XP',
+    questionCount: 5,
+    difficultyLabel: "Me'yordagi daraja",
+    color: 'text-emerald-500',
+    borderColor: 'border-emerald-500',
+    gradient: 'from-emerald-500 to-green-600',
+    description: "Standart 5 ta mashq, odatiy 5 XP mukofot.",
+  },
+  gold: {
+    id: 'gold',
+    name: 'Oltin',
+    title: "Oltin O'yin",
+    multiplier: 1.5,
+    multiplierText: '1.5x XP',
+    questionCount: 8,
+    difficultyLabel: "Qiyin topshiriqlar",
+    color: 'text-amber-500',
+    borderColor: 'border-amber-400',
+    gradient: 'from-amber-400 via-yellow-500 to-amber-600',
+    description: "8 ta qiyin topshiriq va 1.5 barobar ko'p XP mukofoti!",
+  },
+  diamond: {
+    id: 'diamond',
+    name: 'Olmos',
+    title: "Olmos O'yin",
+    multiplier: 2.0,
+    multiplierText: '2x XP',
+    questionCount: 12,
+    difficultyLabel: "O'ta qiyin (Master)",
+    color: 'text-cyan-400',
+    borderColor: 'border-cyan-400',
+    gradient: 'from-cyan-400 via-blue-500 to-indigo-600',
+    description: "12 ta o'ta murakkab savol va 2 barobar KATTA XP sovrini!",
+  },
+};
+
 export interface Exercise {
   id: string;
   type: ExerciseType;
