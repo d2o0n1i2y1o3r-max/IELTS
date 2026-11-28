@@ -14,6 +14,8 @@ import MatchPairsExercise from '@/components/exercises/MatchPairsExercise';
 import ErrorCorrectionExercise from '@/components/exercises/ErrorCorrectionExercise';
 import ListeningExercise from '@/components/exercises/ListeningExercise';
 import SpeakingExercise from '@/components/exercises/SpeakingExercise';
+import WritingExercise from '@/components/exercises/WritingExercise';
+import ReadingExercise from '@/components/exercises/ReadingExercise';
 import TopicTheoryModal from '@/components/TopicTheoryModal';
 
 function normalizeAnswerText(text: string): string {
@@ -299,6 +301,8 @@ export default function LessonPlayerPage() {
       'error-correction': ErrorCorrectionExercise,
       'listening': ListeningExercise,
       'speaking': SpeakingExercise,
+      'writing': WritingExercise,
+      'reading': ReadingExercise,
     };
 
     const ExerciseComponent = components[currentExercise.type];

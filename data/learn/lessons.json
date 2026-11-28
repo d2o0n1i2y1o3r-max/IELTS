@@ -701,6 +701,66 @@
           "question": "Fix the nuance: \"Hardly had the policy announced when protests began.\"",
           "correctAnswer": "Hardly had the policy been announced when protests began.",
           "explanation": "Passive kerak: had the policy BEEN announced."
+        },
+        {
+          "id": "ex-writing-adv-1",
+          "type": "writing",
+          "question": "Epistomologik pluralizm va bilim konstruksiyasi haqida akademik essay yozing.",
+          "writingPrompt": "Knowledge is not merely discovered but constructed through social and cultural processes. Critically evaluate this claim with reference to epistemological frameworks.",
+          "correctAnswer": "The proposition that knowledge is socially constructed rather than objectively discovered constitutes a fundamental tenet of constructivist epistemology, challenging the positivist assumption of value-free inquiry. Drawing upon the seminal works of Kuhn and Foucault, one may argue that paradigmatic frameworks and power structures inevitably shape the production and validation of knowledge claims. This perspective is particularly illuminating when examining how indigenous and marginalised knowledge systems have been systematically delegitimised within Western academic discourse. Nevertheless, a wholesale rejection of empirical methodology would undermine the very foundations of scientific progress that have yielded transformative advances in medicine, technology, and environmental stewardship. A more nuanced epistemological stance—one that embraces methodological pluralism whilst maintaining rigorous standards of evidence—offers the most intellectually honest approach to navigating this complex terrain.",
+          "explanation": "C2 academic prose: 'constitutes a fundamental tenet', 'epistemological stance', 'methodological pluralism'.",
+          "keyPhrases": [
+            "knowledge",
+            "epistemological",
+            "nevertheless",
+            "pluralism",
+            "nuanced"
+          ],
+          "minWords": 50
+        },
+        {
+          "id": "ex-writing-adv-4",
+          "type": "writing",
+          "question": "Axloqiy relativizm va universal inson huquqlari o'rtasidagi ziddiyatni tahlil qiling.",
+          "writingPrompt": "Can universal human rights be reconciled with moral relativism? Discuss with philosophical reasoning.",
+          "correctAnswer": "The philosophical tension between moral relativism and the universalist pretensions of international human rights frameworks represents one of the most intractable dilemmas in contemporary ethical discourse. Cultural relativists, drawing upon anthropological evidence of normative diversity across societies, contend that imposing a singular moral framework constitutes a form of neo-colonial hegemony that privileges Western liberal values over indigenous ethical traditions. Conversely, universalists maintain that certain inalienable rights—the prohibition of torture, the right to life, freedom from slavery—transcend cultural boundaries and derive their authority from our shared humanity rather than any particular cultural context. A potential resolution lies in what scholars term 'cross-cultural dialogue': an ongoing, reciprocal process of normative negotiation that acknowledges cultural specificity whilst identifying overlapping consensus on fundamental principles of human dignity. This approach eschews both the paralysing implications of radical relativism and the cultural imperialism inherent in unreflective universalism.",
+          "explanation": "Philosophical discourse: 'intractable dilemmas', 'neo-colonial hegemony', 'eschews' ishlating.",
+          "keyPhrases": [
+            "moral relativism",
+            "universal",
+            "conversely",
+            "resolution",
+            "dialogue"
+          ],
+          "minWords": 50
+        },
+        {
+          "id": "ex-reading-adv-1",
+          "type": "reading",
+          "question": "According to QBism, what do quantum probabilities represent?",
+          "readingPassage": "The epistemological implications of quantum mechanics continue to confound classical intuitions about the nature of reality. The Copenhagen interpretation, championed by Bohr and Heisenberg, posits that quantum systems exist in superposition until observation collapses the wave function into a definite state — a view that privileges measurement as constitutive of reality rather than merely revelatory. The many-worlds interpretation, by contrast, eliminates wave function collapse entirely, positing that all possible outcomes of quantum measurements are realised in an ever-branching multiverse. More recently, QBism (Quantum Bayesianism) has proposed a radically subjectivist framework in which quantum probabilities reflect an agent's personal degrees of belief rather than objective features of physical reality. Each interpretation carries profound metaphysical commitments that extend far beyond the laboratory, challenging our most fundamental assumptions about determinism, locality, and the relationship between observer and observed.",
+          "options": [
+            "Objective physical properties",
+            "Mathematical abstractions",
+            "An agent's personal degrees of belief",
+            "Universal constants"
+          ],
+          "correctAnswer": "An agent's personal degrees of belief",
+          "explanation": "'QBism proposes quantum probabilities reflect an agent's personal degrees of belief' — QBism bo'yicha kvant ehtimolliklari shaxsiy ishonch darajasini aks ettiradi."
+        },
+        {
+          "id": "ex-reading-adv-4",
+          "type": "reading",
+          "question": "What counter-argument do proponents of LLMs make?",
+          "readingPassage": "The emergence of large language models (LLMs) has precipitated a fundamental reassessment of the relationship between syntax and semantics in computational linguistics. Critics such as Bender and Koller argue that LLMs are essentially 'stochastic parrots' — sophisticated pattern-matching systems that manipulate linguistic form without genuine comprehension of meaning. Their influential paper contends that no system trained exclusively on textual data can acquire authentic understanding, as meaning is inherently grounded in embodied experience and social interaction. Proponents counter that the distinction between 'genuine' and 'simulated' understanding may be philosophically incoherent, invoking functionalist arguments that if a system's linguistic behaviour is indistinguishable from that of a competent speaker, attributing understanding becomes a matter of pragmatic convention rather than ontological fact.",
+          "options": [
+            "LLMs are identical to human brains",
+            "The distinction between genuine and simulated understanding may be incoherent",
+            "LLMs don't need language training",
+            "Textual data is sufficient for full understanding"
+          ],
+          "correctAnswer": "The distinction between genuine and simulated understanding may be incoherent",
+          "explanation": "'The distinction between genuine and simulated understanding may be philosophically incoherent' — Haqiqiy va simulyatsiya qilingan tushunish o'rtasidagi farq falsafiy jihatdan asossiz bo'lishi mumkin."
         }
       ]
     },
@@ -1400,6 +1460,66 @@
           "targetPhrase": "Empirical evidence decisively underpins this hypothesis.",
           "correctAnswer": "Empirical evidence decisively underpins this hypothesis.",
           "explanation": "Akademik C2 leksikasi va talaffuz."
+        },
+        {
+          "id": "ex-writing-adv-2",
+          "type": "writing",
+          "question": "Posthumanizm va texnologik singularlik tushunchasini tanqidiy baholang.",
+          "writingPrompt": "Some theorists predict that technological singularity will fundamentally alter what it means to be human. Critically discuss this claim.",
+          "correctAnswer": "The concept of technological singularity—the hypothetical point at which artificial superintelligence surpasses human cognitive capacities—has engendered profound philosophical and ethical deliberations regarding the trajectory of human civilisation. Proponents, drawing upon exponential growth models articulated by Kurzweil, posit that the convergence of nanotechnology, biotechnology, and artificial intelligence will inaugurate a posthuman era characterised by radical cognitive enhancement and biological transcendence. Conversely, sceptics caution that such prognostications oversimplify the irreducible complexity of consciousness and the emergent properties of biological neural networks. Moreover, the ethical ramifications of human augmentation—encompassing questions of identity, equity, and autonomy—demand rigorous interdisciplinary scrutiny. Ultimately, navigating the singularity hypothesis necessitates a dialectical engagement between techno-optimism and humanistic prudence, ensuring that technological advancement serves to amplify rather than diminish our collective humanity.",
+          "explanation": "Band 9 vocabulary: 'engendered', 'posit', 'inaugurate', 'dialectical engagement' ishlating.",
+          "keyPhrases": [
+            "singularity",
+            "proponents",
+            "conversely",
+            "moreover",
+            "ultimately"
+          ],
+          "minWords": 50
+        },
+        {
+          "id": "ex-writing-adv-5",
+          "type": "writing",
+          "question": "Postmodernizm va haqiqat tushunchasining transformatsiyasini baholang.",
+          "writingPrompt": "In a post-truth era, is objective truth still attainable? Discuss with reference to postmodern philosophy.",
+          "correctAnswer": "The postmodern critique of metanarratives, as articulated by Lyotard and Derrida, has fundamentally destabilised conventional understandings of objective truth and epistemological certainty. By deconstructing the binary oppositions upon which Western metaphysics has been predicated—truth/falsehood, presence/absence, speech/writing—poststructuralist thinkers have revealed the inherently contingent and discursively constructed nature of knowledge claims. This intellectual movement has acquired renewed urgency in the contemporary 'post-truth' era, characterised by the proliferation of misinformation, algorithmic echo chambers, and the strategic weaponisation of epistemic uncertainty by political actors. Nevertheless, dismissing the possibility of truth altogether leads to a corrosive nihilism that undermines the very possibility of meaningful discourse and democratic deliberation. A more sophisticated position recognises that whilst absolute, perspective-independent truth may be philosophically untenable, provisional truths grounded in rigorous evidence and intersubjective verification remain indispensable for the functioning of just and rational societies.",
+          "explanation": "Band 9 mastery: 'metanarratives', 'discursively constructed', 'untenable', 'intersubjective verification'.",
+          "keyPhrases": [
+            "postmodern",
+            "truth",
+            "nevertheless",
+            "whilst",
+            "indispensable"
+          ],
+          "minWords": 50
+        },
+        {
+          "id": "ex-reading-adv-2",
+          "type": "reading",
+          "question": "How does the many-worlds interpretation differ from the Copenhagen interpretation?",
+          "readingPassage": "The epistemological implications of quantum mechanics continue to confound classical intuitions about the nature of reality. The Copenhagen interpretation, championed by Bohr and Heisenberg, posits that quantum systems exist in superposition until observation collapses the wave function into a definite state — a view that privileges measurement as constitutive of reality rather than merely revelatory. The many-worlds interpretation, by contrast, eliminates wave function collapse entirely, positing that all possible outcomes of quantum measurements are realised in an ever-branching multiverse. More recently, QBism (Quantum Bayesianism) has proposed a radically subjectivist framework in which quantum probabilities reflect an agent's personal degrees of belief rather than objective features of physical reality. Each interpretation carries profound metaphysical commitments that extend far beyond the laboratory, challenging our most fundamental assumptions about determinism, locality, and the relationship between observer and observed.",
+          "options": [
+            "It denies quantum mechanics entirely",
+            "It eliminates wave function collapse and posits all outcomes are realised",
+            "It supports only one possible outcome",
+            "It ignores the role of observation"
+          ],
+          "correctAnswer": "It eliminates wave function collapse and posits all outcomes are realised",
+          "explanation": "'Many-worlds eliminates wave function collapse entirely, positing all possible outcomes are realised' — Ko'p olamlar talqini to'lqin funksiyasi qulashini butunlay yo'q qiladi."
+        },
+        {
+          "id": "ex-reading-adv-5",
+          "type": "reading",
+          "question": "What ethical concept does Hans Jonas's 'imperative of responsibility' address?",
+          "readingPassage": "The philosophical implications of CRISPR-Cas9 germline editing extend beyond conventional bioethical frameworks into questions of intergenerational justice and human identity. When modifications are made to the germline — the heritable genetic material passed to future generations — the edited individuals cannot provide informed consent for alterations that will permanently shape their biological constitution and that of their descendants. This raises what philosopher Hans Jonas termed the 'imperative of responsibility': an ethical obligation to future persons whose very existence and characteristics are contingent upon present decisions. Moreover, the capacity to select for specific traits introduces what Habermas has described as a 'liberal eugenics' that, unlike its coercive historical predecessors, operates through market mechanisms and parental choice, yet nonetheless threatens the normative foundations of moral equality by creating asymmetric relationships between designing parents and designed children.",
+          "options": [
+            "The right to genetic modification",
+            "An obligation to future persons affected by present decisions",
+            "The freedom of scientific research",
+            "Market regulation of biotechnology"
+          ],
+          "correctAnswer": "An obligation to future persons affected by present decisions",
+          "explanation": "'An ethical obligation to future persons whose existence is contingent upon present decisions' — Hozirgi qarorlarga bog'liq bo'lgan kelajak insonlarga nisbatan axloqiy javobgarlik."
         }
       ]
     },
@@ -2085,6 +2205,66 @@
           ],
           "correctAnswer": "have",
           "explanation": "Salbiy ravishlar (Seldom, Rarely) bilan gap boshlanganda yordamchi fe'l oldinga o'tadi."
+        },
+        {
+          "id": "ex-writing-adv-3",
+          "type": "writing",
+          "question": "Lingvistik determinizm (Sapir-Whorf gipotezasi) va uning zamonaviy ahamiyatini muhokama qiling.",
+          "writingPrompt": "The language we speak shapes the way we think. Critically evaluate this claim with reference to the Sapir-Whorf hypothesis.",
+          "correctAnswer": "The Sapir-Whorf hypothesis, positing that linguistic structures fundamentally constrain and shape cognitive processes, remains one of the most provocative and contentious propositions in contemporary linguistics and cognitive science. The strong version of linguistic determinism—asserting that language determines thought—has been largely discredited by cross-linguistic research demonstrating universal cognitive capacities. However, the weaker formulation of linguistic relativity, which suggests that language influences habitual thought patterns and perceptual categorisation, has garnered substantial empirical support through studies examining colour perception, spatial reasoning, and temporal conceptualisation across diverse linguistic communities. The implications for a globalised world are considerable: as languages become extinct at an accelerating rate, we risk losing irreplaceable windows into alternative modes of conceptualising reality. Preserving linguistic diversity, therefore, constitutes not merely a cultural imperative but an epistemic one, safeguarding the full spectrum of human cognitive potential.",
+          "explanation": "Expert-level discourse: 'provocative and contentious', 'garnered empirical support', 'epistemic imperative'.",
+          "keyPhrases": [
+            "sapir-whorf",
+            "linguistic",
+            "however",
+            "implications",
+            "therefore"
+          ],
+          "minWords": 50
+        },
+        {
+          "id": "ex-writing-adv-6",
+          "type": "writing",
+          "question": "Bioetika va genetik muhandislik (CRISPR) ning ijtimoiy ta'sirini batafsil muhokama qiling.",
+          "writingPrompt": "Gene editing technology (CRISPR) raises profound ethical questions. Discuss the potential benefits, risks, and ethical considerations.",
+          "correctAnswer": "The revolutionary CRISPR-Cas9 gene editing technology has precipitated a paradigmatic shift in biomedical research, simultaneously offering unprecedented therapeutic possibilities and raising profound bioethical concerns that demand careful philosophical scrutiny. The technology's potential to eradicate hereditary diseases, develop targeted cancer therapies, and enhance agricultural resilience represents a transformative advance with far-reaching humanitarian implications. However, the spectre of germline editing—heritable genetic modifications that would propagate through subsequent generations—raises deeply troubling questions regarding informed consent, genetic determinism, and the commodification of human biological potential. Furthermore, the prospect of 'designer babies' selected for enhanced cognitive or physical attributes threatens to exacerbate existing socioeconomic inequalities, creating a genetically stratified society that fundamentally violates principles of distributive justice. Navigating these ethical complexities demands robust governance frameworks that balance scientific innovation with precautionary principles, ensuring that gene editing technologies serve the common good rather than the interests of a privileged few.",
+          "explanation": "Interdisciplinary: 'paradigmatic shift', 'germline editing', 'distributive justice', 'precautionary principles'.",
+          "keyPhrases": [
+            "crispr",
+            "ethical",
+            "however",
+            "furthermore",
+            "navigating"
+          ],
+          "minWords": 50
+        },
+        {
+          "id": "ex-reading-adv-3",
+          "type": "reading",
+          "question": "What is the 'stochastic parrot' argument?",
+          "readingPassage": "The emergence of large language models (LLMs) has precipitated a fundamental reassessment of the relationship between syntax and semantics in computational linguistics. Critics such as Bender and Koller argue that LLMs are essentially 'stochastic parrots' — sophisticated pattern-matching systems that manipulate linguistic form without genuine comprehension of meaning. Their influential paper contends that no system trained exclusively on textual data can acquire authentic understanding, as meaning is inherently grounded in embodied experience and social interaction. Proponents counter that the distinction between 'genuine' and 'simulated' understanding may be philosophically incoherent, invoking functionalist arguments that if a system's linguistic behaviour is indistinguishable from that of a competent speaker, attributing understanding becomes a matter of pragmatic convention rather than ontological fact.",
+          "options": [
+            "LLMs can truly understand language",
+            "LLMs manipulate form without genuine comprehension",
+            "LLMs are better than humans at language",
+            "LLMs learn from embodied experience"
+          ],
+          "correctAnswer": "LLMs manipulate form without genuine comprehension",
+          "explanation": "'Stochastic parrots — sophisticated pattern-matching systems that manipulate linguistic form without genuine comprehension' — LLM'lar haqiqiy tushunishsiz til shakllarini manipulyatsiya qiladi."
+        },
+        {
+          "id": "ex-reading-adv-6",
+          "type": "reading",
+          "question": "How does Habermas's concept of 'liberal eugenics' differ from historical eugenics?",
+          "readingPassage": "The philosophical implications of CRISPR-Cas9 germline editing extend beyond conventional bioethical frameworks into questions of intergenerational justice and human identity. When modifications are made to the germline — the heritable genetic material passed to future generations — the edited individuals cannot provide informed consent for alterations that will permanently shape their biological constitution and that of their descendants. This raises what philosopher Hans Jonas termed the 'imperative of responsibility': an ethical obligation to future persons whose very existence and characteristics are contingent upon present decisions. Moreover, the capacity to select for specific traits introduces what Habermas has described as a 'liberal eugenics' that, unlike its coercive historical predecessors, operates through market mechanisms and parental choice, yet nonetheless threatens the normative foundations of moral equality by creating asymmetric relationships between designing parents and designed children.",
+          "options": [
+            "It is completely harmless",
+            "It operates through market mechanisms instead of coercion",
+            "It is government-controlled",
+            "It focuses only on disease prevention"
+          ],
+          "correctAnswer": "It operates through market mechanisms instead of coercion",
+          "explanation": "'Unlike its coercive historical predecessors, operates through market mechanisms and parental choice' — Majburiy tarixiy amaliyotlardan farqli o'laroq, bozor mexanizmlari va ota-ona tanlovi orqali ishlaydi."
         }
       ]
     },
@@ -2789,6 +2969,66 @@
           "targetPhrase": "Although urbanization brings advantages, it also creates challenges.",
           "correctAnswer": "Although urbanization brings advantages, it also creates challenges.",
           "explanation": "Murakkab gap (Complex sentence) ravon talaffuz qilinishi kerak."
+        },
+        {
+          "id": "ex-writing-upper-1",
+          "type": "writing",
+          "question": "Sun'iy intellektning kelajak ish bozoriga ta'sirini muhokama qiling.",
+          "writingPrompt": "Artificial intelligence is transforming the job market. Some jobs will disappear, while new ones will emerge. Discuss both sides and give your opinion.",
+          "correctAnswer": "The advent of artificial intelligence has sparked considerable debate regarding its impact on the labour market. While automation may render certain routine occupations obsolete, it simultaneously creates demand for specialists in emerging fields such as machine learning and data science. Moreover, AI-augmented workplaces could enhance productivity and allow employees to focus on creative, higher-order tasks. Notwithstanding these potential benefits, significant investment in workforce retraining programmes is imperative to ensure equitable access to new employment opportunities. Ultimately, societies must proactively adapt their educational frameworks to prepare citizens for an AI-driven economy.",
+          "explanation": "Band 7+ vocabulary: 'render obsolete', 'notwithstanding', 'imperative', 'proactively' ishlating.",
+          "keyPhrases": [
+            "artificial intelligence",
+            "while",
+            "moreover",
+            "notwithstanding",
+            "ultimately"
+          ],
+          "minWords": 40
+        },
+        {
+          "id": "ex-writing-upper-4",
+          "type": "writing",
+          "question": "Gender tengligini ta'minlashning yo'llarini muhokama qiling.",
+          "writingPrompt": "Despite progress, gender inequality persists in many parts of the world. What are the main causes and what measures should be taken?",
+          "correctAnswer": "Despite considerable advances in gender equality over recent decades, significant disparities persist in many regions, particularly regarding access to education, economic participation, and political representation. Deep-rooted cultural norms and institutional biases continue to perpetuate discriminatory practices against women and marginalised genders. To address these systemic inequities, comprehensive legislative reforms must be complemented by grassroots initiatives that challenge stereotypes and promote inclusive values. Furthermore, organisations should implement transparent pay equity audits and leadership development programmes specifically designed to empower underrepresented groups. Achieving genuine gender parity requires sustained commitment from all sectors of society.",
+          "explanation": "Nominalisation: 'participation', 'representation', 'commitment'. Passive voice academic style.",
+          "keyPhrases": [
+            "gender",
+            "despite",
+            "furthermore",
+            "comprehensive",
+            "achieving"
+          ],
+          "minWords": 40
+        },
+        {
+          "id": "ex-reading-upper-1",
+          "type": "reading",
+          "question": "What did the ProPublica study reveal about the COMPAS algorithm?",
+          "readingPassage": "The proliferation of algorithmic decision-making in judicial systems has ignited a contentious debate regarding fairness, transparency, and accountability. Proponents contend that AI-powered risk assessment tools can reduce human bias in sentencing decisions by providing objective, data-driven recommendations. However, a landmark study by ProPublica revealed that the widely used COMPAS algorithm exhibited significant racial bias, incorrectly flagging Black defendants as high-risk at nearly twice the rate of white defendants. This finding underscores a fundamental paradox: algorithms trained on historically biased data inevitably perpetuate and potentially amplify existing societal inequities.",
+          "options": [
+            "It was perfectly fair",
+            "It showed significant racial bias",
+            "It reduced crime rates",
+            "It was too expensive"
+          ],
+          "correctAnswer": "It showed significant racial bias",
+          "explanation": "'COMPAS algorithm exhibited significant racial bias' — COMPAS algoritmi sezilarli irqiy tarafkashlik ko'rsatgan."
+        },
+        {
+          "id": "ex-reading-upper-4",
+          "type": "reading",
+          "question": "Which activities are mentioned as capable of changing brain structure?",
+          "readingPassage": "Neuroplasticity — the brain's remarkable capacity to reorganise itself by forming new neural connections — has revolutionised our understanding of cognitive development and rehabilitation. Contrary to the previously held belief that the adult brain is essentially fixed, contemporary neuroscience has demonstrated that targeted cognitive exercises, mindfulness meditation, and even musical training can induce measurable structural changes in the prefrontal cortex and hippocampus. These findings have profound implications for the treatment of neurological conditions such as stroke, traumatic brain injury, and age-related cognitive decline, offering hope that the brain can, to a significant extent, heal and adapt throughout the lifespan.",
+          "options": [
+            "Running and swimming",
+            "Cognitive exercises, meditation, and music",
+            "Reading and writing only",
+            "Social interaction only"
+          ],
+          "correctAnswer": "Cognitive exercises, meditation, and music",
+          "explanation": "'Targeted cognitive exercises, mindfulness meditation, and musical training' — Maqsadli kognitiv mashqlar, meditatsiya va musiqa o'rganish miyani o'zgartira oladi."
         }
       ]
     },
@@ -3487,6 +3727,66 @@
           ],
           "correctAnswer": "had been conducted",
           "explanation": "Past Perfect Passive: had been + V3."
+        },
+        {
+          "id": "ex-writing-upper-2",
+          "type": "writing",
+          "question": "Madaniy xilma-xillik jamiyat uchun foydami yoki zararlimi?",
+          "writingPrompt": "Cultural diversity enriches society. To what extent do you agree or disagree?",
+          "correctAnswer": "Cultural diversity serves as a catalyst for innovation and social progress, enriching communities through the exchange of ideas, traditions, and perspectives. Exposure to diverse cultures fosters empathy, broadens cognitive horizons, and promotes creative problem-solving in both academic and professional settings. Nevertheless, cultural differences can occasionally give rise to misunderstandings and social tensions if not managed through inclusive policies and intercultural dialogue. It is therefore incumbent upon governments and educational institutions to promote cultural awareness whilst celebrating the unique contributions of each community. On balance, the benefits of cultural diversity significantly outweigh its challenges.",
+          "explanation": "Academic register: 'serves as a catalyst', 'incumbent upon', 'On balance' ishlating.",
+          "keyPhrases": [
+            "cultural diversity",
+            "catalyst",
+            "nevertheless",
+            "incumbent",
+            "on balance"
+          ],
+          "minWords": 40
+        },
+        {
+          "id": "ex-writing-upper-5",
+          "type": "writing",
+          "question": "Raqamli xavfsizlik (cybersecurity) va shaxsiy ma'lumotlar himoyasi haqida yozing.",
+          "writingPrompt": "In the digital age, protecting personal data has become a critical concern. Discuss the challenges and propose solutions.",
+          "correctAnswer": "The exponential growth of digital technologies has precipitated unprecedented challenges in safeguarding personal data and ensuring cybersecurity. Data breaches, identity theft, and sophisticated phishing attacks have become increasingly prevalent, undermining public trust in digital platforms. Governments have responded by enacting comprehensive data protection legislation, such as the GDPR, which mandates stringent standards for data handling and processing. Nevertheless, individual users must also cultivate digital literacy and adopt robust security practices, including multi-factor authentication and regular password updates. A collaborative approach between technology companies, regulators, and citizens is indispensable for creating a secure digital ecosystem.",
+          "explanation": "Specialised vocabulary: 'precipitated', 'mandates', 'indispensable' ishlating.",
+          "keyPhrases": [
+            "digital",
+            "personal data",
+            "nevertheless",
+            "collaborative",
+            "indispensable"
+          ],
+          "minWords": 40
+        },
+        {
+          "id": "ex-reading-upper-2",
+          "type": "reading",
+          "question": "What is the fundamental paradox described in the passage?",
+          "readingPassage": "The proliferation of algorithmic decision-making in judicial systems has ignited a contentious debate regarding fairness, transparency, and accountability. Proponents contend that AI-powered risk assessment tools can reduce human bias in sentencing decisions by providing objective, data-driven recommendations. However, a landmark study by ProPublica revealed that the widely used COMPAS algorithm exhibited significant racial bias, incorrectly flagging Black defendants as high-risk at nearly twice the rate of white defendants. This finding underscores a fundamental paradox: algorithms trained on historically biased data inevitably perpetuate and potentially amplify existing societal inequities.",
+          "options": [
+            "AI is too slow for courts",
+            "Algorithms trained on biased data perpetuate inequities",
+            "Judges prefer AI over human judgment",
+            "Technology is too expensive for courts"
+          ],
+          "correctAnswer": "Algorithms trained on biased data perpetuate inequities",
+          "explanation": "'Algorithms trained on historically biased data inevitably perpetuate existing societal inequities' — Tarixiy tarafkash ma'lumotlarda o'qitilgan algoritmlar mavjud tengsizliklarni davom ettiradi."
+        },
+        {
+          "id": "ex-reading-upper-5",
+          "type": "reading",
+          "question": "What do degrowth advocates propose for wealthy nations?",
+          "readingPassage": "The concept of degrowth challenges the prevailing economic orthodoxy that equates prosperity with perpetual GDP expansion. Advocates of degrowth propose a planned reduction of economic output in wealthy nations, redirecting resources towards social welfare, ecological restoration, and equitable distribution. They argue that infinite growth on a finite planet is fundamentally unsustainable and that conventional metrics like GDP fail to capture genuine indicators of human well-being such as community cohesion, environmental quality, and leisure time. Critics, however, warn that degrowth could precipitate widespread unemployment, reduce innovation incentives, and disproportionately impact developing economies that depend on global trade networks.",
+          "options": [
+            "Increasing GDP growth",
+            "A planned reduction of economic output",
+            "Eliminating all trade",
+            "Moving to rural areas"
+          ],
+          "correctAnswer": "A planned reduction of economic output",
+          "explanation": "'A planned reduction of economic output in wealthy nations' — Boy mamlakatlarda iqtisodiy ishlab chiqarishni rejalashtirilgan kamaytirish."
         }
       ]
     },
@@ -4167,6 +4467,66 @@
           "question": "Fix the error: \"A tremendous amount of resources was consume by the industry.\"",
           "correctAnswer": "A tremendous amount of resources was consumed by the industry.",
           "explanation": "Passive voice: was/were + V3 (consumed)."
+        },
+        {
+          "id": "ex-writing-upper-3",
+          "type": "writing",
+          "question": "Iqlim o'zgarishi va uning oqibatlarini batafsil muhokama qiling.",
+          "writingPrompt": "Climate change is the greatest challenge facing humanity. Discuss the causes, effects, and possible solutions.",
+          "correctAnswer": "Climate change represents arguably the most pressing existential threat confronting contemporary civilisation. The primary drivers include the burning of fossil fuels, industrial emissions, and large-scale deforestation, all of which contribute to the accumulation of greenhouse gases in the atmosphere. The consequences are far-reaching, encompassing rising sea levels, more frequent extreme weather events, and the displacement of vulnerable populations. To mitigate these effects, a multi-pronged approach is essential, incorporating renewable energy transition, international cooperation through binding agreements, and individual behavioural change. Without decisive and coordinated global action, the ramifications for future generations will be catastrophic.",
+          "explanation": "Complex structures: 'arguably the most pressing', 'multi-pronged approach', 'ramifications' ishlating.",
+          "keyPhrases": [
+            "climate change",
+            "existential",
+            "consequences",
+            "mitigate",
+            "without"
+          ],
+          "minWords": 40
+        },
+        {
+          "id": "ex-writing-upper-6",
+          "type": "writing",
+          "question": "Ta'limdagi innovatsiyalar va an'anaviy usullar o'rtasidagi muvozanatni muhokama qiling.",
+          "writingPrompt": "Educational innovation should not come at the expense of traditional teaching methods. Discuss.",
+          "correctAnswer": "The tension between educational innovation and traditional pedagogical approaches has intensified as technology reshapes learning environments worldwide. Progressive methods, including gamification, flipped classrooms, and personalised AI tutoring, offer compelling advantages in terms of student engagement and differentiated instruction. Conversely, time-tested approaches such as Socratic questioning, lecture-based learning, and structured examinations provide essential frameworks for knowledge acquisition and assessment. Rather than viewing these paradigms as mutually exclusive, educators should strive to synthesise innovative and conventional methodologies into a cohesive pedagogical framework. This integrated approach would harness the strengths of both traditions whilst addressing the diverse needs of contemporary learners.",
+          "explanation": "Sophisticated vocabulary: 'pedagogical', 'paradigms', 'synthesise', 'cohesive' ishlating.",
+          "keyPhrases": [
+            "innovation",
+            "traditional",
+            "conversely",
+            "rather than",
+            "integrated approach"
+          ],
+          "minWords": 40
+        },
+        {
+          "id": "ex-reading-upper-3",
+          "type": "reading",
+          "question": "What previous belief about the adult brain has been overturned?",
+          "readingPassage": "Neuroplasticity — the brain's remarkable capacity to reorganise itself by forming new neural connections — has revolutionised our understanding of cognitive development and rehabilitation. Contrary to the previously held belief that the adult brain is essentially fixed, contemporary neuroscience has demonstrated that targeted cognitive exercises, mindfulness meditation, and even musical training can induce measurable structural changes in the prefrontal cortex and hippocampus. These findings have profound implications for the treatment of neurological conditions such as stroke, traumatic brain injury, and age-related cognitive decline, offering hope that the brain can, to a significant extent, heal and adapt throughout the lifespan.",
+          "options": [
+            "That it grows continuously",
+            "That it is essentially fixed",
+            "That it needs constant stimulation",
+            "That it cannot process music"
+          ],
+          "correctAnswer": "That it is essentially fixed",
+          "explanation": "'Contrary to the previously held belief that the adult brain is essentially fixed' — Katta yoshdagilar miyasi o'zgarmas degan eski e'tiqod rad etildi."
+        },
+        {
+          "id": "ex-reading-upper-6",
+          "type": "reading",
+          "question": "According to degrowth advocates, what does GDP fail to measure?",
+          "readingPassage": "The concept of degrowth challenges the prevailing economic orthodoxy that equates prosperity with perpetual GDP expansion. Advocates of degrowth propose a planned reduction of economic output in wealthy nations, redirecting resources towards social welfare, ecological restoration, and equitable distribution. They argue that infinite growth on a finite planet is fundamentally unsustainable and that conventional metrics like GDP fail to capture genuine indicators of human well-being such as community cohesion, environmental quality, and leisure time. Critics, however, warn that degrowth could precipitate widespread unemployment, reduce innovation incentives, and disproportionately impact developing economies that depend on global trade networks.",
+          "options": [
+            "Total economic output",
+            "Corporate profits",
+            "Genuine indicators of well-being like community and environment",
+            "Government spending"
+          ],
+          "correctAnswer": "Genuine indicators of well-being like community and environment",
+          "explanation": "'GDP fail to capture genuine indicators of human well-being such as community cohesion, environmental quality' — GDP jamiyat birligini va atrof-muhit sifatini o'lchay olmaydi."
         }
       ]
     },
@@ -4929,6 +5289,93 @@
           "targetPhrase": "I studied very hard yesterday.",
           "correctAnswer": "I studied very hard yesterday.",
           "explanation": "O'tgan zamon talaffuzi: 'studied' fe'li."
+        },
+        {
+          "id": "ex-writing-elem-1",
+          "type": "writing",
+          "question": "Sevimli mashg'ulotingiz (hobby) haqida 3-4 gap yozing.",
+          "writingPrompt": "In my free time, I enjoy... I started... because... It makes me feel...",
+          "correctAnswer": "In my free time, I enjoy reading books. I started reading when I was 10 because my teacher recommended it. It makes me feel relaxed and happy.",
+          "explanation": "Past Simple va Present Simple'ni birga ishlating. 'I enjoy', 'I started', 'It makes me feel' iboralarini qo'llang.",
+          "keyPhrases": [
+            "in my free time",
+            "i enjoy",
+            "because",
+            "feel"
+          ],
+          "minWords": 15
+        },
+        {
+          "id": "ex-writing-elem-4",
+          "type": "writing",
+          "question": "Kelgusi yozda nima qilishni rejalashtiryapsiz?",
+          "writingPrompt": "Future plans: I am going to... I want to... I hope to... I plan to...",
+          "correctAnswer": "Next summer, I am going to travel to the mountains. I want to learn swimming. I hope to visit my friends in Samarkand. I plan to read many books.",
+          "explanation": "'I am going to', 'I want to', 'I hope to', 'I plan to' kelajak reja iboralarini ishlating.",
+          "keyPhrases": [
+            "i am going to",
+            "i want to",
+            "i hope",
+            "i plan"
+          ],
+          "minWords": 15
+        },
+        {
+          "id": "ex-writing-elem-7",
+          "type": "writing",
+          "question": "O'qituvchingiz yoki boshqa muhim shaxs haqida yozing.",
+          "writingPrompt": "Describe someone important: He/She is... I admire him/her because... He/She always...",
+          "correctAnswer": "My English teacher is Mrs. Johnson. She is very kind and patient. I admire her because she always explains things clearly. She always encourages us to work hard.",
+          "explanation": "'I admire because', 'He/She always' birikmalarini ishlating.",
+          "keyPhrases": [
+            "is",
+            "i admire",
+            "because",
+            "always"
+          ],
+          "minWords": 15
+        },
+        {
+          "id": "ex-reading-elem-1",
+          "type": "reading",
+          "question": "Where did the family stay?",
+          "readingPassage": "Last summer, my family went to the seaside for a holiday. We stayed in a small hotel near the beach. Every morning, we swam in the sea and played volleyball on the sand. In the afternoon, we visited the local market and bought fresh fruit. My favorite part was watching the sunset over the ocean. We stayed for one week and had a wonderful time.",
+          "options": [
+            "In a big house",
+            "In a small hotel",
+            "With relatives",
+            "In a tent"
+          ],
+          "correctAnswer": "In a small hotel",
+          "explanation": "'We stayed in a small hotel near the beach' — Oila plyaj yaqinidagi kichik mehmonxonada qolgan."
+        },
+        {
+          "id": "ex-reading-elem-4",
+          "type": "reading",
+          "question": "What did Maria's family think about the pasta?",
+          "readingPassage": "Maria is learning to cook. Last weekend, she made pasta for the first time. She followed a recipe from the internet. First, she boiled the water. Then, she added the pasta and cooked it for 10 minutes. After that, she made a tomato sauce with onions and garlic. Her family said the pasta was delicious. Maria was very happy and proud.",
+          "options": [
+            "It was terrible",
+            "It was okay",
+            "It was delicious",
+            "It was too salty"
+          ],
+          "correctAnswer": "It was delicious",
+          "explanation": "'Her family said the pasta was delicious' — Oilasi pasta mazali bo'ldi degan."
+        },
+        {
+          "id": "ex-reading-elem-7",
+          "type": "reading",
+          "question": "What does David do at the hospital?",
+          "readingPassage": "David wants to become a doctor when he grows up. He studies biology and chemistry at school. He also volunteers at a local hospital on weekends. David helps the nurses by bringing medicine to patients. He enjoys talking to elderly patients because they tell interesting stories. David believes that helping others is the most important thing in life.",
+          "options": [
+            "He operates on patients",
+            "He brings medicine to patients",
+            "He cleans the rooms",
+            "He cooks food"
+          ],
+          "correctAnswer": "He brings medicine to patients",
+          "explanation": "'David helps the nurses by bringing medicine to patients' — David hamshiralarga dori yetkazib beradi."
         }
       ]
     },
@@ -5673,6 +6120,91 @@
           ],
           "correctAnswer": "We travelled to London last summer.",
           "explanation": "O'tgan zamonda to'g'ri fe'llarga -ed qo'shiladi."
+        },
+        {
+          "id": "ex-writing-elem-2",
+          "type": "writing",
+          "question": "O'tgan hafta oxirida nima qilganingizni yozing.",
+          "writingPrompt": "Past Simple tense ishlating: Last weekend, I... First, I... Then I... Finally...",
+          "correctAnswer": "Last weekend, I visited my grandparents. First, I helped them in the garden. Then I ate delicious food. Finally, I played with my cousins.",
+          "explanation": "Past Simple (visited, helped, ate, played) va sequence words (first, then, finally) ishlating.",
+          "keyPhrases": [
+            "last weekend",
+            "first",
+            "then",
+            "finally"
+          ],
+          "minWords": 15
+        },
+        {
+          "id": "ex-writing-elem-5",
+          "type": "writing",
+          "question": "Eng yoqtirgan filmingiz haqida yozing.",
+          "writingPrompt": "My favorite movie is... It is about... I like it because... The main character...",
+          "correctAnswer": "My favorite movie is The Lion King. It is about a young lion who becomes king. I like it because it teaches important lessons about family. The main character Simba is very brave.",
+          "explanation": "'It is about', 'I like it because', 'The main character' iboralarini ishlating.",
+          "keyPhrases": [
+            "my favorite movie",
+            "it is about",
+            "i like it because"
+          ],
+          "minWords": 15
+        },
+        {
+          "id": "ex-writing-elem-8",
+          "type": "writing",
+          "question": "Kompyuter va telefon foydalanish haqida fikringizni yozing.",
+          "writingPrompt": "I use my phone/computer for... It is useful because... However, too much screen time can...",
+          "correctAnswer": "I use my phone for studying English and chatting with friends. It is useful because I can learn new words every day. However, too much screen time can be bad for our eyes.",
+          "explanation": "'I use... for', 'It is useful because', 'However' bog'lovchi so'zlarini ishlating.",
+          "keyPhrases": [
+            "i use",
+            "useful because",
+            "however"
+          ],
+          "minWords": 15
+        },
+        {
+          "id": "ex-reading-elem-2",
+          "type": "reading",
+          "question": "How long did they stay at the seaside?",
+          "readingPassage": "Last summer, my family went to the seaside for a holiday. We stayed in a small hotel near the beach. Every morning, we swam in the sea and played volleyball on the sand. In the afternoon, we visited the local market and bought fresh fruit. My favorite part was watching the sunset over the ocean. We stayed for one week and had a wonderful time.",
+          "options": [
+            "Three days",
+            "Five days",
+            "One week",
+            "Two weeks"
+          ],
+          "correctAnswer": "One week",
+          "explanation": "'We stayed for one week' — Ular bir hafta bo'lishgan."
+        },
+        {
+          "id": "ex-reading-elem-5",
+          "type": "reading",
+          "question": "Why was the Great Wall built?",
+          "readingPassage": "The Great Wall of China is one of the most famous landmarks in the world. It was built over 2,000 years ago to protect China from invaders. The wall is about 21,000 kilometers long. Today, millions of tourists visit the Great Wall every year. It is so large that some people say you can see it from space, but this is actually not true.",
+          "options": [
+            "For decoration",
+            "To protect China from invaders",
+            "For tourism",
+            "For farming"
+          ],
+          "correctAnswer": "To protect China from invaders",
+          "explanation": "'It was built to protect China from invaders' — Devor Xitoyni bosqinchilardan himoya qilish uchun qurilgan."
+        },
+        {
+          "id": "ex-reading-elem-8",
+          "type": "reading",
+          "question": "Why does David enjoy talking to elderly patients?",
+          "readingPassage": "David wants to become a doctor when he grows up. He studies biology and chemistry at school. He also volunteers at a local hospital on weekends. David helps the nurses by bringing medicine to patients. He enjoys talking to elderly patients because they tell interesting stories. David believes that helping others is the most important thing in life.",
+          "options": [
+            "They give him money",
+            "They tell interesting stories",
+            "They help him study",
+            "They are his relatives"
+          ],
+          "correctAnswer": "They tell interesting stories",
+          "explanation": "'They tell interesting stories' — Keksa bemorlar qiziqarli hikoyalar aytishadi."
         }
       ]
     },
@@ -6410,6 +6942,63 @@
           ],
           "correctAnswer": "on",
           "explanation": "Hafta kunlari oldidan 'on' predlogi ishlatiladi."
+        },
+        {
+          "id": "ex-writing-elem-3",
+          "type": "writing",
+          "question": "Shahringiz yoki qishlog'ingizni tasvirlang.",
+          "writingPrompt": "I live in... It is located... There are many... The best thing about my city is...",
+          "correctAnswer": "I live in Tashkent. It is located in the center of Uzbekistan. There are many beautiful parks and buildings. The best thing about my city is the friendly people.",
+          "explanation": "Joy tasvirlashda 'It is located', 'There are many', 'The best thing about' ishlating.",
+          "keyPhrases": [
+            "i live in",
+            "there are",
+            "the best thing"
+          ],
+          "minWords": 15
+        },
+        {
+          "id": "ex-writing-elem-6",
+          "type": "writing",
+          "question": "Sog'lom turmush tarzi haqida fikringizni yozing.",
+          "writingPrompt": "I think healthy lifestyle is important because... We should... For example, we can...",
+          "correctAnswer": "I think a healthy lifestyle is important because it helps us feel good. We should eat fruits and vegetables every day. For example, we can walk or exercise in the morning.",
+          "explanation": "'I think', 'We should', 'For example' akademik iboralarini ishlating.",
+          "keyPhrases": [
+            "i think",
+            "important",
+            "we should",
+            "for example"
+          ],
+          "minWords": 15
+        },
+        {
+          "id": "ex-reading-elem-3",
+          "type": "reading",
+          "question": "How long did Maria cook the pasta?",
+          "readingPassage": "Maria is learning to cook. Last weekend, she made pasta for the first time. She followed a recipe from the internet. First, she boiled the water. Then, she added the pasta and cooked it for 10 minutes. After that, she made a tomato sauce with onions and garlic. Her family said the pasta was delicious. Maria was very happy and proud.",
+          "options": [
+            "5 minutes",
+            "8 minutes",
+            "10 minutes",
+            "15 minutes"
+          ],
+          "correctAnswer": "10 minutes",
+          "explanation": "'She cooked it for 10 minutes' — Maria pastani 10 daqiqa pishirdi."
+        },
+        {
+          "id": "ex-reading-elem-6",
+          "type": "reading",
+          "question": "Can you see the Great Wall from space?",
+          "readingPassage": "The Great Wall of China is one of the most famous landmarks in the world. It was built over 2,000 years ago to protect China from invaders. The wall is about 21,000 kilometers long. Today, millions of tourists visit the Great Wall every year. It is so large that some people say you can see it from space, but this is actually not true.",
+          "options": [
+            "Yes, definitely",
+            "No, it is not true",
+            "Only sometimes",
+            "Only at night"
+          ],
+          "correctAnswer": "No, it is not true",
+          "explanation": "'This is actually not true' — Bu aslida haqiqat emas."
         }
       ]
     },
@@ -7004,6 +7593,62 @@
           ],
           "correctAnswer": "I practice English every morning at eight o'clock.",
           "explanation": "Eshitilgan jumla: I practice English every morning at eight o'clock."
+        },
+        {
+          "id": "ex-writing-beg-1",
+          "type": "writing",
+          "question": "O'zingiz haqingizda 2-3 ta gap yozing. (Ismingiz, yoshingiz, qaerda yashaysiz)",
+          "writingPrompt": "Present Simple va 'to be' fe'lidan foydalaning. Masalan: My name is... I am... I live in...",
+          "correctAnswer": "My name is [name]. I am [age] years old. I live in [city].",
+          "explanation": "O'zingiz haqingizda yozishda 'I am', 'My name is', 'I live in' iboralarini ishlating.",
+          "keyPhrases": [
+            "my name",
+            "i am",
+            "i live"
+          ],
+          "minWords": 8
+        },
+        {
+          "id": "ex-writing-beg-5",
+          "type": "writing",
+          "question": "Maktabingiz yoki ishingiz haqida qisqacha yozing.",
+          "writingPrompt": "I study/work at... I like... My favorite subject is...",
+          "correctAnswer": "I study at school number 5. I like English. My favorite subject is math.",
+          "explanation": "'I study at', 'My favorite subject is' iboralarini ishlating.",
+          "keyPhrases": [
+            "i study",
+            "i like",
+            "my favorite"
+          ],
+          "minWords": 8
+        },
+        {
+          "id": "ex-reading-beg-1",
+          "type": "reading",
+          "question": "How old is Sara?",
+          "readingPassage": "My name is Sara. I am 12 years old. I live in Tashkent with my family. I have one brother and one sister. My brother is 15 years old. My sister is 8 years old. We go to school every day. I like English and Math.",
+          "options": [
+            "8 years old",
+            "12 years old",
+            "15 years old",
+            "10 years old"
+          ],
+          "correctAnswer": "12 years old",
+          "explanation": "Matnda 'I am 12 years old' deyilgan."
+        },
+        {
+          "id": "ex-reading-beg-5",
+          "type": "reading",
+          "question": "What color is the room?",
+          "readingPassage": "This is my room. It is small but nice. There is a bed near the window. There is a desk with a lamp on it. I have a bookshelf with many books. My favorite color is blue, so my room is blue. I like my room very much.",
+          "options": [
+            "Red",
+            "Green",
+            "Blue",
+            "Yellow"
+          ],
+          "correctAnswer": "Blue",
+          "explanation": "'My favorite color is blue, so my room is blue' — Xona ko'k rangda."
         }
       ]
     },
@@ -7578,6 +8223,62 @@
           ],
           "correctAnswer": "Lug'at boyligi",
           "explanation": "'Vocabulary' ingliz tilida so'z boyligini anglatadi."
+        },
+        {
+          "id": "ex-writing-beg-2",
+          "type": "writing",
+          "question": "Oilangiz haqida 2-3 gap yozing.",
+          "writingPrompt": "Oila a'zolaringizni tasvirlang: I have... My mother/father is... She/He works as...",
+          "correctAnswer": "I have a big family. My father is a teacher. My mother is a doctor.",
+          "explanation": "'I have', 'My father/mother is' konstruksiyalaridan foydalaning.",
+          "keyPhrases": [
+            "i have",
+            "my",
+            "is"
+          ],
+          "minWords": 8
+        },
+        {
+          "id": "ex-writing-beg-6",
+          "type": "writing",
+          "question": "Hafta oxiri (weekend) nima qilishni yoqtirasiz?",
+          "writingPrompt": "On weekends, I usually... I like to... Sometimes I...",
+          "correctAnswer": "On weekends, I usually stay at home. I like to watch TV. Sometimes I play football.",
+          "explanation": "'On weekends', 'I usually', 'I like to' iboralarini ishlating.",
+          "keyPhrases": [
+            "weekend",
+            "i usually",
+            "i like"
+          ],
+          "minWords": 8
+        },
+        {
+          "id": "ex-reading-beg-2",
+          "type": "reading",
+          "question": "How many brothers does Sara have?",
+          "readingPassage": "My name is Sara. I am 12 years old. I live in Tashkent with my family. I have one brother and one sister. My brother is 15 years old. My sister is 8 years old. We go to school every day. I like English and Math.",
+          "options": [
+            "Two",
+            "One",
+            "Three",
+            "None"
+          ],
+          "correctAnswer": "One",
+          "explanation": "'I have one brother' — Saraning bitta akasi bor."
+        },
+        {
+          "id": "ex-reading-beg-6",
+          "type": "reading",
+          "question": "Where is the bed?",
+          "readingPassage": "This is my room. It is small but nice. There is a bed near the window. There is a desk with a lamp on it. I have a bookshelf with many books. My favorite color is blue, so my room is blue. I like my room very much.",
+          "options": [
+            "Near the door",
+            "Near the window",
+            "Near the desk",
+            "In the center"
+          ],
+          "correctAnswer": "Near the window",
+          "explanation": "'There is a bed near the window' — Karavot deraza yonida."
         }
       ]
     },
@@ -8157,6 +8858,62 @@
           ],
           "correctAnswer": "are",
           "explanation": "Ko'plik 'They' bilan 'are' shakli qo'llanadi."
+        },
+        {
+          "id": "ex-writing-beg-3",
+          "type": "writing",
+          "question": "Kundalik tartibingizni yozing (ertalab nima qilasiz).",
+          "writingPrompt": "Present Simple tense ishlating: I wake up at... I eat... I go to...",
+          "correctAnswer": "I wake up at 7 o'clock. I eat breakfast. Then I go to school.",
+          "explanation": "Kundalik ishlarni Present Simple bilan yozing.",
+          "keyPhrases": [
+            "i wake",
+            "i go",
+            "i eat"
+          ],
+          "minWords": 8
+        },
+        {
+          "id": "ex-writing-beg-7",
+          "type": "writing",
+          "question": "Eng yaqin do'stingiz haqida yozing.",
+          "writingPrompt": "My best friend is... He/She is... We like to...",
+          "correctAnswer": "My best friend is Ali. He is very kind. We like to play together.",
+          "explanation": "'My best friend is', 'He/She is' va 'We like to' ishlating.",
+          "keyPhrases": [
+            "my best friend",
+            "is",
+            "we"
+          ],
+          "minWords": 8
+        },
+        {
+          "id": "ex-reading-beg-3",
+          "type": "reading",
+          "question": "What time does Tom wake up?",
+          "readingPassage": "Tom is a student. He wakes up at 7 o'clock every morning. He eats breakfast at home. Then he walks to school. School starts at 8:30. Tom likes science class the most. After school, he plays football with his friends.",
+          "options": [
+            "6 o'clock",
+            "7 o'clock",
+            "8 o'clock",
+            "8:30"
+          ],
+          "correctAnswer": "7 o'clock",
+          "explanation": "'He wakes up at 7 o'clock every morning' — Tom har kuni ertalab 7 da turadi."
+        },
+        {
+          "id": "ex-reading-beg-7",
+          "type": "reading",
+          "question": "What does Mimi like to drink?",
+          "readingPassage": "Anna has a cat. The cat's name is Mimi. Mimi is white and small. She likes to drink milk and play with a ball. Anna takes care of Mimi every day. She gives Mimi food and water. Mimi sleeps on Anna's bed at night.",
+          "options": [
+            "Water",
+            "Juice",
+            "Milk",
+            "Tea"
+          ],
+          "correctAnswer": "Milk",
+          "explanation": "'She likes to drink milk' — Mimi sut ichishni yoqtiradi."
         }
       ]
     },
@@ -8731,6 +9488,62 @@
           ],
           "correctAnswer": "I practice English every morning at eight o'clock.",
           "explanation": "Eshitilgan jumla: I practice English every morning at eight o'clock."
+        },
+        {
+          "id": "ex-writing-beg-4",
+          "type": "writing",
+          "question": "Eng yaxshi ko'rgan taomnigiz haqida yozing.",
+          "writingPrompt": "My favorite food is... I like it because... I eat it...",
+          "correctAnswer": "My favorite food is plov. I like it because it is delicious. I eat it every day.",
+          "explanation": "'My favorite... is...' va 'I like it because...' strukturalarini ishlating.",
+          "keyPhrases": [
+            "my favorite",
+            "i like",
+            "because"
+          ],
+          "minWords": 8
+        },
+        {
+          "id": "ex-writing-beg-8",
+          "type": "writing",
+          "question": "Yashash joyingizni (uyingizni) tasvirlang.",
+          "writingPrompt": "I live in... It is... There is/are... I like my...",
+          "correctAnswer": "I live in a small house. It is near the school. There are three rooms. I like my room.",
+          "explanation": "'I live in', 'There is/are', 'I like my' strukturalarini ishlating.",
+          "keyPhrases": [
+            "i live",
+            "there",
+            "my"
+          ],
+          "minWords": 8
+        },
+        {
+          "id": "ex-reading-beg-4",
+          "type": "reading",
+          "question": "What is Tom's favorite subject?",
+          "readingPassage": "Tom is a student. He wakes up at 7 o'clock every morning. He eats breakfast at home. Then he walks to school. School starts at 8:30. Tom likes science class the most. After school, he plays football with his friends.",
+          "options": [
+            "Math",
+            "English",
+            "Science",
+            "History"
+          ],
+          "correctAnswer": "Science",
+          "explanation": "'Tom likes science class the most' — Tom eng ko'p science (fan) darsini yoqtiradi."
+        },
+        {
+          "id": "ex-reading-beg-8",
+          "type": "reading",
+          "question": "Where does Mimi sleep?",
+          "readingPassage": "Anna has a cat. The cat's name is Mimi. Mimi is white and small. She likes to drink milk and play with a ball. Anna takes care of Mimi every day. She gives Mimi food and water. Mimi sleeps on Anna's bed at night.",
+          "options": [
+            "On the floor",
+            "On Anna's bed",
+            "On the sofa",
+            "In a box"
+          ],
+          "correctAnswer": "On Anna's bed",
+          "explanation": "'Mimi sleeps on Anna's bed at night' — Mimi kechasi Anna karavotida uxlaydi."
         }
       ]
     },

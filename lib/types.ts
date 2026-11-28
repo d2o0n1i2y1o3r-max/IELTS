@@ -239,7 +239,9 @@ export type ExerciseType =
   | 'match-pairs'
   | 'error-correction'
   | 'listening'
-  | 'speaking';
+  | 'speaking'
+  | 'writing'
+  | 'reading';
 
 export type GameMode = 'normal' | 'gold' | 'diamond';
 
@@ -309,6 +311,10 @@ export interface Exercise {
   translations?: Record<string, string>;
   audioPrompt?: string; // For listening exercises (spoken aloud)
   targetPhrase?: string; // For speaking exercises (user must say this)
+  writingPrompt?: string; // For writing exercises (prompt/topic)
+  minWords?: number; // Minimum word count for writing
+  keyPhrases?: string[]; // Key phrases to check in writing response
+  readingPassage?: string; // For reading exercises (passage text)
 }
 
 export interface TopicTheory {
