@@ -2,8 +2,8 @@ import { NextResponse } from 'next/server';
 import { saveLearnSession, getUserLearnProgress, updateUserLearnProgress } from '@/lib/db';
 import { LearnSession, LearnProgress } from '@/lib/types';
 
-const XP_PER_CORRECT = 10;
-const XP_PERFECT_BONUS = 20;
+const XP_PER_CORRECT = 5;
+const XP_PERFECT_BONUS = 10;
 
 export async function POST(request: Request) {
   try {

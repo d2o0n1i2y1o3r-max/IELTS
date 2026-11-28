@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import { useAppStore } from '@/lib/store';
 import { Lesson, Exercise, LearnProgress } from '@/lib/types';
-import { ArrowRight, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
+import { ArrowRight, CheckCircle, AlertCircle, Loader2, BookOpen } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 // Exercise components
@@ -12,6 +12,9 @@ import MultipleChoiceExercise from '@/components/exercises/MultipleChoiceExercis
 import FillBlankExercise from '@/components/exercises/FillBlankExercise';
 import MatchPairsExercise from '@/components/exercises/MatchPairsExercise';
 import ErrorCorrectionExercise from '@/components/exercises/ErrorCorrectionExercise';
+import ListeningExercise from '@/components/exercises/ListeningExercise';
+import SpeakingExercise from '@/components/exercises/SpeakingExercise';
+import TopicTheoryModal from '@/components/TopicTheoryModal';
 
 function normalizeAnswerText(text: string): string {
   return text
@@ -71,6 +74,7 @@ export default function LessonPlayerPage() {
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [startTime, setStartTime] = useState(Date.now());
+  const [showTheoryModal, setShowTheoryModal] = useState(false);
 
   useEffect(() => {
     async function loadData() {
@@ -205,6 +209,8 @@ export default function LessonPlayerPage() {
       'fill-blank': FillBlankExercise,
       'match-pairs': MatchPairsExercise,
       'error-correction': ErrorCorrectionExercise,
+      'listening': ListeningExercise,
+      'speaking': SpeakingExercise,
     };
 
     const ExerciseComponent = components[currentExercise.type];
@@ -236,10 +242,28 @@ export default function LessonPlayerPage() {
 
   return (
     <div className="max-w-2xl mx-auto space-y-6 pb-12">
-      {/* Progress Bar */}
+      {/* Progress Bar & Header */}
       <div className="space-y-2">
         <div className="flex items-center justify-between text-sm text-slate-600 dark:text-slate-400">
-          <span>{currentExerciseIndex + 1} / {lesson.exercises.length}</span>
+          <div className="flex items-center gap-2">
+            <span className="font-bold text-slate-900 dark:text-white">
+              {lesson.title}
+            </span>
+            <span className="text-xs px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800">
+              {currentExerciseIndex + 1} / {lesson.exercises.length}
+            </span>
+          </div>
+
+          {/* Theory Guidebook Button */}
+          <button
+            type="button"
+            onClick={() => setShowTheoryModal(true)}
+            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-900/50 text-xs font-bold hover:bg-blue-100 dark:hover:bg-blue-900/50 transition active:scale-95"
+            title="Mavzu qoidalari va tushuntirishlarni ko'rish"
+          >
+            <BookOpen className="w-3.5 h-3.5" />
+            <span>Mavzu Qoidalari</span>
+          </button>
         </div>
         <div className="h-2 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
           <div
@@ -248,6 +272,16 @@ export default function LessonPlayerPage() {
           />
         </div>
       </div>
+
+      {/* Topic Theory Modal */}
+      <TopicTheoryModal
+        isOpen={showTheoryModal}
+        onClose={() => setShowTheoryModal(false)}
+        onStart={() => setShowTheoryModal(false)}
+        theory={lesson.theory}
+        title={lesson.title}
+        level={lesson.level}
+      />
 
       {/* Exercise */}
       <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-sm">

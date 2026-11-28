@@ -241,6 +241,28 @@
           ],
           "correctAnswer": "were",
           "explanation": "'They' ko'plikdagi o'tgan zamon uchun 'were' talab qiladi."
+        },
+        {
+          "id": "ex-elem-1-listening",
+          "type": "listening",
+          "question": "Audioni eshiting va to'g'ri variantni toping:",
+          "audioPrompt": "She travelled to London last summer.",
+          "options": [
+            "She travelled to London last summer.",
+            "She travels to London this summer.",
+            "They travelled to London last summer.",
+            "She will travel to London next summer."
+          ],
+          "correctAnswer": "She travelled to London last summer.",
+          "explanation": "Audioda o'tgan zamondagi \"She travelled to London last summer.\" gapi aytildi."
+        },
+        {
+          "id": "ex-elem-1-speaking",
+          "type": "speaking",
+          "question": "Mikrofonga quyidagi gapni aniq ayting:",
+          "targetPhrase": "I achieved a high score in English.",
+          "correctAnswer": "I achieved a high score in English.",
+          "explanation": "O'tgan zamondagi fe'lni to'g'ri talaffuz qilish muhim."
         }
       ]
     },
@@ -453,6 +475,28 @@
           "question": "Xatoni toping va to'g'rilang: 'He are very happy with his score.'",
           "correctAnswer": "He is very happy with his score.",
           "explanation": "'He' bilan 'is' ishlatilishi shart."
+        },
+        {
+          "id": "ex-beg-1-listening",
+          "type": "listening",
+          "question": "Audioni eshiting va to'g'ri gapni tanlang:",
+          "audioPrompt": "I am preparing for the IELTS exam.",
+          "options": [
+            "I am preparing for the IELTS exam.",
+            "He is preparing for the IELTS exam.",
+            "They are preparing for the test.",
+            "I was preparing for the IELTS exam."
+          ],
+          "correctAnswer": "I am preparing for the IELTS exam.",
+          "explanation": "Talaffuz qilingan jumla: \"I am preparing for the IELTS exam.\""
+        },
+        {
+          "id": "ex-beg-1-speaking",
+          "type": "speaking",
+          "question": "Quyidagi gapni mikrofonga aniq va ravon talaffuz qiling:",
+          "targetPhrase": "I am a student from Uzbekistan.",
+          "correctAnswer": "I am a student from Uzbekistan.",
+          "explanation": "Ushbu gapni talaffuz qilish orqali siz to be fe'li va ravonlikni mashq qilasiz."
         }
       ]
     },

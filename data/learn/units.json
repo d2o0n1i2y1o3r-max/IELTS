@@ -10,7 +10,44 @@
         "lesson-beg-2",
         "lesson-beg-3",
         "lesson-beg-4"
-      ]
+      ],
+      "theory": {
+        "title": "Boshlang'ich Grammatika (To Be va Present Simple)",
+        "summary": "Ingliz tili poydevori: Shaxs olmoshlari, to be fe'li (am, is, are) va doimiy takrorlanuvchi harakatlar zamoni (Present Simple).",
+        "rules": [
+          "To Be (am, is, are): I am, He/She/It is, We/You/They are shakllari orqali kasb, holat va yosh ifodalanadi.",
+          "Present Simple qoidasi: Uchinchi shaxs birlikda (he/she/it) fe'l oxiriga -s yoki -es qo'shiladi (He studies, She speaks).",
+          "Savol va inkor: Do/Does yordamchi fe'llari ishlatiladi (Do you speak English? / She does not work).",
+          "Imlo qoidasi: Ingliz tilida 'I' (men) har doim katta harf bilan yoziladi."
+        ],
+        "vocabulary": [
+          {
+            "word": "Student",
+            "meaning": "Talaba, o'quvchi",
+            "example": "I am an IELTS student."
+          },
+          {
+            "word": "Practice",
+            "meaning": "Mashq qilmoq",
+            "example": "She practices speaking every morning."
+          },
+          {
+            "word": "Improve",
+            "meaning": "Rivojlantirmoq",
+            "example": "Daily reading helps improve your vocabulary."
+          },
+          {
+            "word": "Language",
+            "meaning": "Til",
+            "example": "English is an international language."
+          }
+        ],
+        "tips": [
+          "Speaking 1-qismida qisqa emas, to'liq gaplar bilan javob berishga odatlaning (masalan, 'Yes, I am a university student').",
+          "Har doim to be va oddiy fe'lni birga ishlatishdan saqlaning (NOT: 'I am study', BUT: 'I study').",
+          "Har kuni kamida 15 daqiqa baland ovozda o'qish talaffuzni sezilarli yaxshilaydi."
+        ]
+      }
     },
     {
       "id": "unit-elem-1",
@@ -21,7 +58,37 @@
         "lesson-elem-1",
         "lesson-elem-2",
         "lesson-elem-3"
-      ]
+      ],
+      "theory": {
+        "title": "Elementary: O'tgan Zamon (Past Simple) va Sifatlar",
+        "summary": "O'tmishdagi voqea-hodisalarni tasvirlash, to'g'ri va noto'g'ri fe'llar, joy va vaqt predloglari (in, on, at).",
+        "rules": [
+          "Past Simple: O'tgan zamonda to'g'ri fe'llarga -ed qo'shiladi (visited, played), noto'g'ri fe'llar esa 2-shaklga o'zgaradi (went, took, saw).",
+          "Inkor va so'roq: 'did' va 'did not' bilan fe'l o'zining asosiy shakliga qaytadi (Did you go? / I did not see).",
+          "Predloglar: Vaqtda soat oldidan 'at', kunlar oldidan 'on', oylar va yillar oldidan 'in' ishlatiladi."
+        ],
+        "vocabulary": [
+          {
+            "word": "Achieve",
+            "meaning": "Erishmoq",
+            "example": "He achieved a band 7.0 in his test."
+          },
+          {
+            "word": "Experience",
+            "meaning": "Tajriba",
+            "example": "Travelling gave me great experience."
+          },
+          {
+            "word": "Prepare",
+            "meaning": "Tayyorlanmoq",
+            "example": "They prepared thoroughly for the exam."
+          }
+        ],
+        "tips": [
+          "IELTS Speaking Part 2 da bolalik yoki o'tgan voqealarni aytib berishda faqat Past Simple zamonidan to'g'ri foydalaning.",
+          "Noto'g'ri fe'llar jadvalini yodlashda ularni gaplar ichida ishlatib mashq qiling."
+        ]
+      }
     },
     {
       "id": "unit-1",
@@ -33,7 +100,37 @@
         "lesson-1-2",
         "lesson-int-1",
         "lesson-int-2"
-      ]
+      ],
+      "theory": {
+        "title": "Intermediate: Academic Education & Vocabulary",
+        "summary": "IELTS Writing Task 1 & 2 va Speaking uchun zarur bo'lgan akademik so'zlar, bog'lovchilar va murakkab gaplar.",
+        "rules": [
+          "Complex sentences: Although, whereas, because kabi bog'lovchilar orqali murakkab gaplar tuzing.",
+          "Modal fe'llar: ehtimollik va tavsiyalarda might, should, could fe'llaridan unumli foydalaning.",
+          "Akademik til: Norasmiy so'zlar (gonna, stuff, kids) o'rniga akademik ekvivalentlarni ishlating (children, aspects)."
+        ],
+        "vocabulary": [
+          {
+            "word": "Significantly",
+            "meaning": "Sezilarli darajada",
+            "example": "The rate increased significantly."
+          },
+          {
+            "word": "Crucial",
+            "meaning": "Juda muhim",
+            "example": "Education plays a crucial role in society."
+          },
+          {
+            "word": "Acquire",
+            "meaning": "Egallamoq, olmoq",
+            "example": "Students acquire valuable skills."
+          }
+        ],
+        "tips": [
+          "Writing Task 2 da har bir fikringizni misollar bilan mustahkamlang.",
+          "Bir xil so'zlarni takrorlamaslik uchun sinonimlardan foydalaning."
+        ]
+      }
     },
     {
       "id": "unit-2",

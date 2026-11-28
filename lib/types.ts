@@ -233,7 +233,13 @@ export interface User {
 
 // ─── Learn Mode Types ───
 
-export type ExerciseType = 'multiple-choice' | 'fill-blank' | 'match-pairs' | 'error-correction';
+export type ExerciseType =
+  | 'multiple-choice'
+  | 'fill-blank'
+  | 'match-pairs'
+  | 'error-correction'
+  | 'listening'
+  | 'speaking';
 
 export interface Exercise {
   id: string;
@@ -243,6 +249,16 @@ export interface Exercise {
   correctAnswer: string;
   explanation: string;
   translations?: Record<string, string>;
+  audioPrompt?: string; // For listening exercises (spoken aloud)
+  targetPhrase?: string; // For speaking exercises (user must say this)
+}
+
+export interface TopicTheory {
+  title: string;
+  summary: string;
+  rules: string[];
+  vocabulary: { word: string; meaning: string; example: string }[];
+  tips: string[];
 }
 
 export interface Lesson {
@@ -251,6 +267,7 @@ export interface Lesson {
   order: number;
   title: string;
   level?: string;
+  theory?: TopicTheory;
   exercises: Exercise[];
 }
 
@@ -259,7 +276,71 @@ export interface Unit {
   order: number;
   topic: string;
   level?: string;
+  theory?: TopicTheory;
   lessons: string[];
+}
+
+export function getLevelFromXP(xp: number): {
+  level: 'beginner' | 'elementary' | 'intermediate' | 'upper' | 'advanced';
+  label: string;
+  currentLevelXp: number;
+  nextLevelXp: number;
+  progressPercent: number;
+  band: string;
+} {
+  const safeXp = Math.max(0, xp || 0);
+  if (safeXp < 1000) {
+    return {
+      level: 'beginner',
+      label: "Boshlang'ich (Beginner)",
+      currentLevelXp: safeXp,
+      nextLevelXp: 1000,
+      progressPercent: Math.min(100, Math.floor((safeXp / 1000) * 100)),
+      band: 'Band 3.5 – 4.0',
+    };
+  }
+  if (safeXp < 2000) {
+    const lvlXp = safeXp - 1000;
+    return {
+      level: 'elementary',
+      label: 'Elementary',
+      currentLevelXp: lvlXp,
+      nextLevelXp: 1000,
+      progressPercent: Math.min(100, Math.floor((lvlXp / 1000) * 100)),
+      band: 'Band 4.5 – 5.0',
+    };
+  }
+  if (safeXp < 3000) {
+    const lvlXp = safeXp - 2000;
+    return {
+      level: 'intermediate',
+      label: "O'rta (Intermediate)",
+      currentLevelXp: lvlXp,
+      nextLevelXp: 1000,
+      progressPercent: Math.min(100, Math.floor((lvlXp / 1000) * 100)),
+      band: 'Band 5.5 – 6.0',
+    };
+  }
+  if (safeXp < 4000) {
+    const lvlXp = safeXp - 3000;
+    return {
+      level: 'upper',
+      label: 'Upper-Intermediate',
+      currentLevelXp: lvlXp,
+      nextLevelXp: 1000,
+      progressPercent: Math.min(100, Math.floor((lvlXp / 1000) * 100)),
+      band: 'Band 6.5 – 7.0',
+    };
+  }
+  const lvlXp = safeXp - 4000;
+  return {
+    level: 'advanced',
+    label: 'Advanced (Yuqori)',
+    currentLevelXp: lvlXp,
+    nextLevelXp: 1000,
+    progressPercent: 100,
+    band: 'Band 7.5 – 9.0',
+  };
 }
 
 export interface LearnProgress {
