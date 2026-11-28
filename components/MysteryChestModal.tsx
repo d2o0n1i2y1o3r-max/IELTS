@@ -178,6 +178,42 @@ export default function MysteryChestModal({
 
     const config = RARITY_CONFIGS[rarity];
 
+    // 1. Update LocalStorage immediately
+    try {
+      let localProg: any = null;
+      const progRaw = localStorage.getItem('ielts_learn_progress');
+      if (progRaw) {
+        localProg = JSON.parse(progRaw);
+      }
+      const baseProg = localProg || {
+        userId,
+        completedLessons: {},
+        xp: 0,
+        lastActiveDate: new Date().toISOString(),
+      };
+
+      baseProg.xp = (baseProg.xp || 0) + config.xp;
+      if (chestId) {
+        baseProg.completedLessons[`chest-${chestId}`] = {
+          stars: 3,
+          completedAt: new Date().toISOString(),
+        };
+      }
+      localStorage.setItem('ielts_learn_progress', JSON.stringify(baseProg));
+
+      // Also update ielts_user_profile
+      const profRaw = localStorage.getItem('ielts_user_profile');
+      if (profRaw) {
+        const prof = JSON.parse(profRaw);
+        prof.xp = baseProg.xp;
+        localStorage.setItem('ielts_user_profile', JSON.stringify(prof));
+        window.dispatchEvent(new Event('ielts_auth_changed'));
+      }
+    } catch (e) {
+      console.warn('LocalStorage chest save error:', e);
+    }
+
+    // 2. Sync to Server
     try {
       await fetch('/api/learn/chest', {
         method: 'POST',

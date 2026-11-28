@@ -11,14 +11,17 @@ function LessonCompleteContent() {
   const { t } = useTranslation();
 
   const [stars, setStars] = useState(0);
-  const [xp, setXp] = useState(0);
+  const [xpEarned, setXpEarned] = useState(5);
+  const [totalXp, setTotalXp] = useState(0);
 
   useEffect(() => {
     const starsParam = searchParams.get('stars');
-    const xpParam = searchParams.get('xp');
+    const earnedParam = searchParams.get('xpEarned') || searchParams.get('xp');
+    const totalParam = searchParams.get('totalXp');
 
     if (starsParam) setStars(parseInt(starsParam, 10));
-    if (xpParam) setXp(parseInt(xpParam, 10));
+    if (earnedParam) setXpEarned(parseInt(earnedParam, 10));
+    if (totalParam) setTotalXp(parseInt(totalParam, 10));
   }, [searchParams]);
 
   return (
@@ -54,9 +57,14 @@ function LessonCompleteContent() {
             <div className="p-2 bg-brand-100 dark:bg-brand-950 rounded-xl">
               <Trophy className="w-5 h-5 text-brand-500" />
             </div>
-            <span className="text-slate-600 dark:text-slate-400">{t('learn.xp_earned')}</span>
+            <div>
+              <span className="text-slate-600 dark:text-slate-400 block">{t('learn.xp_earned')}</span>
+              {totalXp > 0 && (
+                <span className="text-xs text-slate-400">Jami: {totalXp} XP</span>
+              )}
+            </div>
           </div>
-          <span className="text-2xl font-bold text-slate-900 dark:text-white">+{xp}</span>
+          <span className="text-2xl font-bold text-emerald-500">+{xpEarned} XP</span>
         </div>
 
         <div className="flex items-center justify-between">

@@ -75,19 +75,35 @@ export default function LessonPlayerPage() {
   const [submitting, setSubmitting] = useState(false);
   const [startTime, setStartTime] = useState(Date.now());
   const [showTheoryModal, setShowTheoryModal] = useState(false);
+  const [resultsMap, setResultsMap] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
     async function loadData() {
       try {
         let userData: any = null;
+        let localProgress: any = null;
         if (typeof window !== 'undefined') {
           const raw = localStorage.getItem('ielts_user_profile') || localStorage.getItem('registered_user');
           try {
             userData = raw ? JSON.parse(raw) : null;
           } catch {}
+
+          const progRaw = localStorage.getItem('ielts_learn_progress');
+          try {
+            localProgress = progRaw ? JSON.parse(progRaw) : null;
+          } catch {}
         }
 
         const effectiveUserId = userData?.id || 'user-default';
+
+        // Set fallback progress immediately so user is never blocked
+        const defaultProg: LearnProgress = localProgress || {
+          userId: effectiveUserId,
+          completedLessons: {},
+          xp: userData?.xp || 0,
+          lastActiveDate: new Date().toISOString(),
+        };
+        setProgress(defaultProg);
 
         const [lessonsRes, progressRes] = await Promise.all([
           fetch('/api/learn/lessons'),
@@ -104,8 +120,20 @@ export default function LessonPlayerPage() {
           return;
         }
 
+        // Merge server and local progress
+        const mergedXp = Math.max(defaultProg.xp || 0, progressData?.xp || 0);
+        const mergedProg: LearnProgress = {
+          userId: effectiveUserId,
+          completedLessons: {
+            ...(defaultProg.completedLessons || {}),
+            ...(progressData?.completedLessons || {}),
+          },
+          xp: mergedXp,
+          lastActiveDate: new Date().toISOString(),
+        };
+
         setLesson(lessonData);
-        setProgress(progressData);
+        setProgress(mergedProg);
         setCurrentLesson(lessonData);
         setStartTime(Date.now());
       } catch (error) {
@@ -122,7 +150,7 @@ export default function LessonPlayerPage() {
   const progressPercent = lesson ? ((currentExerciseIndex) / lesson.exercises.length) * 100 : 0;
 
   const handleAnswer = async (answer: string) => {
-    if (!currentExercise || !progress) return;
+    if (!currentExercise) return;
 
     setSubmitting(true);
 
@@ -134,6 +162,7 @@ export default function LessonPlayerPage() {
     setIsCorrect(correct);
     setShowFeedback(true);
 
+    setResultsMap((prev) => ({ ...prev, [currentExercise.id]: correct }));
     addExerciseResult(currentExercise.id, correct);
 
     if (!correct) {
@@ -169,36 +198,82 @@ export default function LessonPlayerPage() {
   };
 
   const completeLesson = async () => {
-    if (!lesson || !progress) return;
+    if (!lesson) return;
 
-    const correctCount = Object.values(exerciseResults).filter((v) => v).length;
+    // Calculate correct answers
     const totalExercises = lesson.exercises.length;
+    const answeredCount = Object.keys(resultsMap).length;
+    const correctCount = Object.values(resultsMap).filter(Boolean).length;
+    // Guaranteed at least 1 correct for completing lesson
+    const effectiveCorrect = Math.max(1, correctCount);
     const duration = Math.floor((Date.now() - startTime) / 1000);
 
+    const isPerfect = effectiveCorrect >= totalExercises;
+    const earnedXp = effectiveCorrect * 5 + (isPerfect ? 10 : 0);
+
+    const accuracy = effectiveCorrect / totalExercises;
+    let stars = 1;
+    if (accuracy >= 0.8) stars = 2;
+    if (accuracy >= 0.95) stars = 3;
+
+    // 1. Direct LocalStorage Save (Guaranteed persistence on Vercel & Client)
+    let currentXp = 0;
     try {
-      const res = await fetch('/api/learn/session', {
+      let localProg: any = null;
+      const progRaw = localStorage.getItem('ielts_learn_progress');
+      if (progRaw) {
+        localProg = JSON.parse(progRaw);
+      }
+
+      const userId = progress?.userId || 'user-default';
+      const baseProg = localProg || {
+        userId,
+        completedLessons: {},
+        xp: 0,
+        lastActiveDate: new Date().toISOString(),
+      };
+
+      currentXp = (baseProg.xp || 0) + earnedXp;
+      baseProg.xp = currentXp;
+      baseProg.completedLessons[lesson.id] = {
+        stars,
+        completedAt: new Date().toISOString(),
+      };
+
+      localStorage.setItem('ielts_learn_progress', JSON.stringify(baseProg));
+
+      // Also sync into ielts_user_profile
+      const profRaw = localStorage.getItem('ielts_user_profile');
+      if (profRaw) {
+        const prof = JSON.parse(profRaw);
+        prof.xp = currentXp;
+        localStorage.setItem('ielts_user_profile', JSON.stringify(prof));
+        window.dispatchEvent(new Event('ielts_auth_changed'));
+      }
+    } catch (err) {
+      console.warn('LocalStorage save error:', err);
+    }
+
+    // 2. Async Server Sync
+    try {
+      fetch('/api/learn/session', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          userId: progress.userId,
+          userId: progress?.userId || 'user-default',
           lessonId: lesson.id,
           exercisesCompleted: lesson.exercises.map((e) => e.id),
-          correctCount,
+          correctCount: effectiveCorrect,
           totalExercises,
           duration,
         }),
-      });
+      }).catch((e) => console.warn('Server session sync error:', e));
+    } catch {}
 
-      const data = await res.json();
-
-      if (res.ok) {
-        router.push(`/learn/complete?lessonId=${lesson.id}&stars=${data.stars}&xp=${data.progress.xp}`);
-      } else {
-        console.error('Failed to complete lesson:', data.error);
-      }
-    } catch (error) {
-      console.error('Error completing lesson:', error);
-    }
+    // 3. Navigate to complete screen with earned XP and new total XP
+    router.push(
+      `/learn/complete?lessonId=${lesson.id}&stars=${stars}&xpEarned=${earnedXp}&totalXp=${currentXp}`
+    );
   };
 
   const renderExercise = () => {
